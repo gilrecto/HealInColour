@@ -1,0 +1,294 @@
+{% assign setting = section.settings %}
+{% liquid
+	assign desktop_pad = setting.pad_desk
+	assign laptop_pad = setting.pad_lap
+	assign tablet_pad = setting.pad_tab
+	assign mobile_pad = setting.pad_mob
+%}
+
+{%- style -%}
+	#shopify-section-{{ section.id }} .announcement {
+		padding: {{ desktop_pad }}px 0;
+		background-color: var(--gradient-background);
+		color: rgb(var(--color-foreground));
+	}
+	.marquee-item .announcement-text > span:before {
+    background-color: rgba(var(--color-foreground));
+	}
+	{%- if section.settings.enable_marq -%}
+		.announcement .marquee-inner {
+			--gap: 7rem;
+			display: flex;
+			gap: var(--gap);
+			user-select: none;
+		}
+		.announcement .marquee-inner:hover {
+			animation-play-state: paused !important;
+		}
+		.announcement .marquee-inner > span {
+			flex-shrink: 0;
+			display: flex;
+			justify-content: space-around;
+			min-width: 100%;
+			gap: var(--gap);
+		}
+		.announcement .marquee-inner.to-left {
+			animation: scroll 20s linear infinite;
+		}
+		.announcement .marquee-inner.to-right {
+			animation: scroll 20s linear infinite reverse;
+		}
+		.announcement .marquee-item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		@keyframes scroll {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(calc(-100% - var(--gap)));
+			}
+		}
+	{%- endif -%}
+
+	@media only screen and (max-width: 1199px) {
+		#shopify-section-{{ section.id }} .announcement {
+			padding: {{ laptop_pad }}px 0;
+		}
+	}
+
+	@media only screen and (max-width: 991px) {
+		#shopify-section-{{ section.id }} .announcement {
+			padding: {{ tablet_pad }}px 0;
+		}
+		.announcement .marquee-inner {
+			width: 150vw;
+			animation-duration: 10s !important;
+		}
+	}
+	
+	@media only screen and (max-width: 767px) {
+		#shopify-section-{{ section.id }} .announcement {
+			padding: {{ mobile_pad }}px 0;
+		}
+		.announcement .marquee-inner {
+			--gap: 4rem;
+		}
+		.announcement .marquee-item .icon-wrapper svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+{%- endstyle -%}
+
+
+<div class="announcement color-{{ setting.section_colors }} ts-min-h-12 ts-flex ts-items-center">
+	<div class="page-width ts-overflow-hidden ts-w-full">
+		{% if section.settings.enable_marq %}
+			<div class="marquee-inner {{ setting.dir }}">
+				{%- for cont_loop in (1..2) -%}
+					<span>
+						{%- for block in section.blocks -%}
+							<div class="marquee-item">
+								<p class="announcement-text text-{{ setting.text_alignment }}{% if block.settings.show_ico %} with-ico ts-flex ts-justify-center{% endif %} ts-leading-[1.25] ts-m-0 md:ts-space-x-12 ts-space-x-7 ts-font-header ts-text-clamp_l">
+									{% if block.settings.show_ico %}
+										<span class="icon-wrapper">
+											{% if block.settings.svg_ico != blank and block.settings.icon == blank %}
+												{{ block.settings.svg_ico }}
+											{% elsif block.settings.svg_ico == blank and block.settings.icon != blank %}
+												{% render 'image', image: block.settings.icon, section: section class: "announcement-icon md:ts-w-[2.5rem] ts-w-[20rem] ts-h-auto md:ts-mr-[1.2rem] ts-mr-[1rem]" %}
+											{% endif %}
+										</span>
+									{% endif %}
+									<span>
+										{{ block.settings.text }}
+									</span>
+								</p>
+							</div>
+						{%- endfor -%}
+					</span>
+				{%- endfor -%}
+			</div>
+		{% else %}
+			<div class="row ts-flex ts-items-center ts-justify-evenly">
+				{%- for block in section.blocks -%}
+					<div class="col">
+						<p class="announcement-text text-{{ setting.text_alignment }}{% if block.settings.show_ico %} with-ico ts-flex ts-justify-center ts-items-center{% endif %} ts-leading-[1.25] ts-m-0 lg:ts-space-x-12 md:ts-space-x-8 ts-space-x-4 ts-font-header ts-text-clamp_l">
+							{% if block.settings.show_ico %}
+								<span class="icon-wrapper ts-leading-[0] sm-mobile:[&>*]:ts-w-[1.8rem] sm-mobile:[&>*]:ts-h-[1.8rem]">
+									{% if block.settings.svg_ico != blank and block.settings.icon == blank %}
+										{{ block.settings.svg_ico }}
+									{% elsif block.settings.svg_ico == blank and block.settings.icon != blank %}
+										{% render 'image', image: block.settings.icon, section: section class: "announcement-icon md:ts-w-[2.5rem] ts-w-[20rem] ts-h-auto md:ts-mr-[1.2rem] ts-mr-[1rem]" %}
+									{% endif %}
+								</span>
+							{% endif %}
+							<span>
+								{{ block.settings.text }}
+							</span>
+						</p>
+					</div>
+				{%- endfor -%}
+			</div>
+		{% endif %}
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Marquee Announcement",
+		"class": "hic-marquee-announcement",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "color_scheme",
+				"id": "section_colors",
+				"label": "Section Color Scheme",
+				"default": "background-1"
+			},
+			{
+				"type": "checkbox",
+				"id": "enable_marq",
+				"label": "Enable Marquee",
+				"default": false
+			},
+			{
+				"type": "select",
+				"id": "dir",
+				"label": "Direction",
+				"options": [
+					{
+						"value": "to-left",
+						"label": "Right to Left"
+					},
+					{
+						"value": "to-right",
+						"label": "Left to Right"
+					}
+				],
+				"default": "to-left"
+			},
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"options": [
+					{
+						"value": "start",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "end",
+						"label": "Right"
+					}
+				],
+				"default": "center",
+				"label": "Alignment"
+			},
+			{
+				"type": "header",
+				"content": "Section spacing",
+				"info": "Top and bottom padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_desk",
+				"label": "Dektop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_lap",
+				"label": "Laptop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_tab",
+				"label": "Tablet",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_mob",
+				"label": "Mobile",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding"
+			}
+		],
+		"blocks": [
+			{
+				"type": "marq_item",
+				"name": "Announcement Item",
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"default": "Announcement",
+						"label": "Announcement Label"
+					},
+					{
+						"type":"header",
+						"content":"Icon Settings"
+					},
+					{
+						"type": "checkbox",
+						"id": "show_ico",
+						"label": "Show Icon",
+						"default": false
+					},
+					{
+						"type": "liquid",
+						"id": "svg_ico",
+						"label": "Paste SVG icon code here",
+						"default": "SVG code"
+					},
+					{
+						"type": "paragraph",
+						"content": "----- OR -----"
+					},
+					{
+						"type": "image_picker",
+						"id": "icon",
+						"label": "Add Icon Image"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name":"Marquee Announcement",
+				"category":"Custom Section",
+				"blocks": [
+					{ "type": "marq_item" },
+					{ "type": "marq_item" },
+					{ "type": "marq_item" }
+				]
+			}
+		]
+	}
+{% endschema %}

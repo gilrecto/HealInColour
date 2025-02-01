@@ -1,0 +1,432 @@
+{% assign setting = section.settings %}
+{% liquid
+	assign desktop_pad = setting.pad_desk
+	assign laptop_pad = setting.pad_lap
+	assign tablet_pad = setting.pad_tab
+	assign mobile_pad = setting.pad_mob
+	assign shop_rating = shop.metafields.judgeme.all_reviews_rating
+	assign shop_review_count = shop.metafields.judgeme.all_reviews_count
+%}
+
+{%- style -%}
+	#shopify-section-{{ section.id }} .reviews-slider {
+		padding: {{ mobile_pad }}px 0;
+	}
+	.reviews-slider .swiper-button-disabled {
+		opacity: 0;
+	}
+	.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
+		column-gap: {{ setting.m_space }}px;
+	}
+	.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper .swiper-slide {
+		flex-basis: calc(100% / {{ setting.m_slides }}.3 - {{ setting.m_space }}px);
+	}
+
+	@media only screen and (min-width: 768px) {
+		#shopify-section-{{ section.id }} .reviews-slider {
+			padding: {{ tablet_pad }}px 0;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
+			flex-wrap: nowrap;
+			column-gap: {{ setting.t_space }}px;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper .swiper-slide {
+			flex-basis: calc(100% / {{ setting.t_slides }} - {{ setting.t_space }}px);
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		#shopify-section-{{ section.id }} .reviews-slider {
+			padding: {{ laptop_pad }}px 0;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
+			column-gap: {{ setting.l_space }}px;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper .swiper-slide {
+			flex-basis: calc(100% / {{ setting.l_slides }} - {{ setting.l_space }}px);
+    }
+	}
+	
+	@media only screen and (min-width: 1200px) {
+		#shopify-section-{{ section.id }} .reviews-slider {
+			padding: {{ desktop_pad }}px 0;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
+			column-gap: {{ setting.d_space }}px;
+		}
+		.reviews-slider .swiper:not(.swiper-initialized) .swiper-wrapper .swiper-slide {
+			flex-basis: calc(100% / {{ setting.d_slides }} - {{ setting.d_space }}px);
+		}
+	}
+{%- endstyle -%}
+
+{%- capture bg_style -%}
+	{%- if setting.use_parallax -%}
+		style="background: url({{ setting.bg_img | image_url: width: setting.bg_img.width }}) center/cover no-repeat;"
+	{%- endif -%}
+{%- endcapture -%}
+
+<div class="reviews-slider color-{{ setting.section_colors }}{% if setting.use_parallax %} !ts-bg-fixed{% endif %}"{% if setting.bg_img != blank %} {{ bg_style }}{% endif %}>
+	<div class="page-width !ts-max-w-[160rem]">
+		{%- if setting.title != blank or setting.body != blank -%}
+			<div class="title-area ts-text-center">
+				{%- if setting.title != blank  -%}
+					<h2 class="inline-richtext ts-text-clamp_l ts-leading-[1.1] ts-mt-0 ts-mb-[2.24rem]">
+						{{ setting.title }}
+					</h2>
+				{%- endif -%}
+				{%- if setting.body != blank  -%}
+					<div class="rte body-text ts-mb-8 ts-w-full ts-max-w-[86rem] ts-mx-auto ts-text-dark">
+						{{ setting.body }}
+					</div>
+				{%- endif -%}
+				{%- if setting.show_review_count -%}
+					<div class="jdgm-review-count-wrapper">
+						<a class="jdgm-all-reviews-rating-wrapper link ts-text-[1.5rem] ts-no-underline" href="{{ setting.review_page_link | default: '#' }}">
+							<span data-score="{{ shop_rating }}" class="jdgm-all-reviews-rating ts-block ts-w-full ts-max-w-[14rem] ts-mx-auto" aria-label="{{ shop_rating }} stars" tabindex="0" role="img">
+								{% render 'icon-stars' %}
+							</span>
+							<span class="jdgm-carousel-number-of-reviews ts-block ts-italic" data-number-of-reviews="{{ shop_review_count }}">{{ shop_review_count }} Reviews</span>
+						</a>
+					</div>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{%- if section.blocks.size > 0 -%}
+			<div class="reviews-wrapper md:ts-mt-[4.167vw] ts-mt-16 sm-mobile:-ts-mr-6">
+				<div class="swiper reviews-swiper">
+					<div class="swiper-wrapper">
+						{%- for block in section.blocks -%}
+							<div class="swiper-slide review-{{ forloop.index }} ts-group">
+								<div class="review-card color-{{ block.settings.section_colors }} ts-relative ts-p-4 ts-pb-10 ts-overflow-hidden ts-flex ts-items-center ts-justify-center ts-flex-wrap{% if block.settings.image == blank %} ts-flex-col{% endif %} ts-gap-8 ts-aspect-[4/5]">
+									{%- if block.settings.image != blank -%}
+
+										{% render 'image', image: block.settings.image, section: section, class: 'review-img' %}
+
+										{%- if block.settings.name != blank -%}
+											<span class="review-author ts-py-1 ts-px-5 ts-bg-brown ts-rounded-[6rem] ts-absolute ts-top-4 ts-left-4">
+												{{ block.settings.name }}
+											</span>
+										{%- endif -%}
+										{%- if block.settings.review != blank -%}
+											<div class="review-body ts-self-end ts-text-[1.2rem] ts-leading-[1.4] ts-z-[1]">
+												{{ block.settings.review }}
+											</div>
+										{%- endif -%}
+
+									{%- else -%}
+										<span class="review-stars ts-w-[9.2rem]">
+											{% render 'icon-stars' %}
+										</span>
+										{%- if block.settings.review != blank -%}
+											<div class="review-body ts-text-[1.5rem] ts-font-bold ts-leading-[1.4] ts-text-center ts-px-8">
+												{{ block.settings.review }}
+											</div>
+										{%- endif -%}
+										{%- if block.settings.name != blank -%}
+											<span class="review-author ts-py-1 ts-px-5 ts-bg-brown ts-rounded-[6rem] ts-max-w-max ts-mx-auto">
+												{{ block.settings.name }}
+											</span>
+										{%- endif -%}
+									{%- endif -%}
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+
+<script type="lazyload2">
+	{%- assign selector = 'reviews-swiper' -%}
+	{%- assign section_id = 'shopify-section-' | append: section.id -%}
+
+	const swiper_init__{{ section.id | remove: '-' }} = (selector) => {
+		let slider = selector,
+				swiper = Swiper;
+
+		let options = {
+			{%- if setting.mousewheel -%}
+				mousewheel: {
+					releaseOnEdges: true,
+					forceToAxis: true
+				},
+			{%- endif %}
+			slidesPerView: {{ setting.m_slides }}.3,
+			spaceBetween: {{ setting.m_space }},
+			loop: {{ setting.enable_loop }},
+			freeMode: true,
+			grabCursor: true,
+			{%- if setting.enable_autoplay -%}
+				autoplay: {
+					delay: {{ setting.autoplay_speed }},
+				},
+			{%- endif %}
+			breakpoints: {
+				768: {
+					slidesPerView: {{ setting.t_slides }},
+					spaceBetween: {{ setting.t_space }}
+				},
+				992: {
+					slidesPerView: {{ setting.l_slides }},
+					spaceBetween: {{ setting.l_space }},
+				},
+				1200: {
+					slidesPerView: {{ setting.d_slides }},
+					spaceBetween: {{ setting.d_space }}
+				}
+			}
+		}
+
+		const init_slider = () => {
+			init = true;
+			swiper = new Swiper(slider, options);
+		}
+
+		window.addEventListener('load', init_slider);
+	}
+
+	swiper_init__{{ section.id | remove: '-' }}('#shopify-section-{{ section.id }} .{{ selector }}');
+</script>
+
+{% schema %}
+	{
+		"name": "[HIC] Reviews Slider",
+		"class": "hic-reviews-slider",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "color_scheme",
+				"id": "section_colors",
+				"label": "Section Color Scheme",
+				"default": "background-1"
+			},
+			{
+				"type": "header",
+				"content": "Background Image"
+			},
+			{
+				"type": "checkbox",
+				"id": "use_parallax",
+				"label": "Parallax Background",
+				"default": false,
+				"info": "Add background image below to enable parallax effect."
+			},
+			{
+				"type": "image_picker",
+				"id": "bg_img",
+				"label": "Background Image"
+			},
+			{
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Section Heading",
+				"default": "What Our Customer Says"
+      },
+      {
+        "type": "richtext",
+        "id": "body",
+        "label": "Body Text"
+      },
+			{
+				"type": "checkbox",
+				"id": "show_review_count",
+				"label": "Show Review Count",
+				"default": true
+			},
+			{
+				"type": "url",
+				"id": "review_page_link",
+				"label": "Reviews Page Link"
+			},
+			{
+				"type":"header",
+				"content":"Slider Settings"
+			},
+			{
+				"type": "range",
+				"id": "d_slides",
+				"min": 2,
+				"max": 10,
+				"step": 1,
+				"label": "Slides To Show Desktop",
+				"default": 4
+			},
+			{
+				"type": "range",
+				"id": "l_slides",
+				"min": 2,
+				"max": 8,
+				"step": 1,
+				"label": "Slides To Show Laptop",
+				"default": 4
+			},
+			{
+				"type": "range",
+				"id": "t_slides",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Slides To Show Tablet",
+				"default": 3
+			},
+			{
+				"type": "range",
+				"id": "m_slides",
+				"min": 1,
+				"max": 6,
+				"step": 1,
+				"label": "Slides To Show Mobile",
+				"default": 2
+			},
+			{
+				"type": "number",
+				"id": "d_space",
+				"label": "Space Between Slides",
+				"default": 20,
+				"info": "Desktop"
+			},
+			{
+				"type": "number",
+				"id": "l_space",
+				"label": "Space Between Slides",
+				"default": 20,
+				"info": "Laptop"
+			},
+			{
+				"type": "number",
+				"id": "t_space",
+				"label": "Space Between Slides",
+				"default": 15,
+				"info": "Tablet"
+			},
+			{
+				"type": "number",
+				"id": "m_space",
+				"label": "Space Between Slides",
+				"default": 10,
+				"info": "Mobile"
+			},
+			{
+				"type":"checkbox",
+				"id":"enable_loop",
+				"label": "Enable Loop",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "mousewheel",
+				"default": false,
+				"label": "Enable Mousewheel Scroll"
+			},
+			{
+				"type":"checkbox",
+				"id":"enable_autoplay",
+				"label": "Enable Autoplay",
+				"default": true
+			},
+			{
+				"type":"number",
+				"id":"autoplay_speed",
+				"label": "Autoplay Speed",
+				"default": 5000
+			},
+			{
+        "type": "header",
+        "content": "Section spacing",
+        "info": "Top and bottom padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_desk",
+        "label": "Dektop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_lap",
+        "label": "Laptop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 80,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_tab",
+        "label": "Tablet",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 60,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_mob",
+        "label": "Mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 40,
+				"info": "Padding"
+      }
+		],
+		"blocks": [
+			{
+				"name": "Review",
+				"type": "review",
+				"settings": [
+					{
+						"type": "color_scheme",
+						"id": "section_colors",
+						"label": "Color Scheme",
+						"default": "background-1"
+					},
+					{
+						"type": "text",
+						"id": "name",
+						"label": "Review Name",
+						"default": "Customer Name"
+					},
+					{
+						"type": "richtext",
+						"id": "review",
+						"label": "Review Text",
+						"default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>"
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Review Image"
+					}
+				]
+			}
+		],
+		"presets": [
+      {
+        "name":"[HIC] Reviews Slider",
+        "category":"Custom Section",
+        "blocks": [
+          { "type": "review" },
+          { "type": "review" },
+          { "type": "review" },
+          { "type": "review" },
+          { "type": "review" }
+        ]
+      }
+    ]
+	}
+{% endschema %}

@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+iframe#preview-bar-iframe {
+	@apply ts-hidden;
+}
+p {
+	@apply ts-m-0;
+}
+p:not(:last-of-type) {
+	@apply ts-mb-6;
+}
+a, button, .accordion-item .accordion-content, .accordion-item .accordion-header,
+.product-card-wrapper .card__inner .quick-add {
+	@apply !ts-transition-all !ts-duration-300 !ts-ease-in-out;
+}
+.btn,
+.btn-primary {
+	@apply ts-py-4 ts-px-12 !ts-bg-dark hover:!ts-bg-light ts-text-light hover:ts-text-dark ts-border ts-border-solid ts-border-dark ts-rounded-[0.3rem] !ts-w-[max-content] ts-min-w-[11rem] ts-text-[1.3rem] ts-leading-none !ts-h-auto ts-uppercase ts-text-center ts-justify-center ts-font-header ts-font-medium ts-no-underline
+}
+.btn-secondary {
+	@apply ts-border-brown !ts-bg-brown ts-text-dark
+}
+ul {
+	@apply ts-m-0 ts-pl-8;
+}
+.page-width {
+	@apply !ts-px-6;
+}
+details[open] .modal-overlay:after {
+	@apply ts-bg-transparent
+}
+.announcement-bar__message {
+	@apply ts-font-body ts-font-bold ts-text-[1.3rem]
+}
+.product-card-wrapper .card__content .card__heading {
+	@apply ts-font-body ts-font-bold ts-text-[1.5rem]
+}
+.product-card-wrapper .card__content .card__heading > * {
+	@apply ts-truncate
+}
+.product-card-wrapper .card__content .card-information .price {
+	@apply ts-text-[1.3rem] ts-font-bold
+}
+.cur-code {
+	@apply ts-sr-only
+}
+.header__menu-item,
+.menu-drawer__menu-item {
+	@apply ts-font-bold ts-text-[1.5rem] ts-px-6
+}
+.header__menu-item span {
+	@apply ts-leading-none
+}
+.header__icon--cart .icon {
+	@apply ts-w-10 ts-h-10
+}
+.swiper.instagram-posts-swiper .icon-wrapper {
+	@apply ts-absolute ts-top-0 ts-w-full ts-h-full ts-bg-dark ts-bg-opacity-60 ts-flex ts-items-center ts-justify-center ts-pointer-events-none ts-opacity-0 ts-transition-all ts-duration-300 ts-ease-in-out [&>*]:ts-w-10 [&>*]:ts-h-auto [&>*]:ts-text-light
+}
+.swiper .swiper-controls .swiper-nav {
+	@apply ts-w-16 ts-h-16 ts-text-accent after:ts-text-[0] !ts-z-[2] ts-p-4 ts-rounded-full ts-bg-light
+}
+.swiper-pagination-bullets.swiper-pagination {
+	@apply ts-bottom-[-2.5rem]
+}
+.swiper-pagination-bullet {
+	@apply ts-w-4 ts-h-4
+}
+.swiper-pagination-bullet-active {
+	@apply ts-bg-accent
+}
+.footer__newsletter .newsletter-form__field-wrapper .field__input {
+	@apply ts-border ts-text-[1.5rem] ts-leading-none ts-text-light ts-border-solid ts-border-light placeholder:ts-opacity-100 placeholder:ts-text-light !ts-p-[1.4rem] !ts-m-0 ts-h-auto focus-visible:ts-shadow-none focus:!ts-shadow-none
+}
+.footer__newsletter .newsletter-form__field-wrapper .newsletter-form__button {
+	@apply !ts-w-auto !ts-h-auto ts-border ts-border-solid ts-border-light !ts-bg-brown ts-font-bold ts-uppercase ts-text-light ts-flex-1 ts-py-[1.65rem] ts-px-[2.6rem] focus-visible:!ts-shadow-none focus-visible:ts-outline-none hover:!ts-bg-light hover:ts-text-accent ts-border-s-0 ts-cursor-pointer
+}
+footer .footer__blocks-wrapper {
+	@apply ts-py-4 ts-border-y ts-border-y-light ts-border-solid ts-border-opacity-[0.08] ts-border-x-0
+}
+.list-social__item .list-social__link {
+	@apply !ts-p-0 !ts-text-light
+}
+.list-social__item .icon {
+	@apply !ts-w-[3.2rem] !ts-h-[3.2rem]
+}
+.footer-block__details-content .list-menu__item--link {
+	@apply !ts-text-[1.5rem] !ts-leading-[1.25]
+}
+.footer-block__heading.accordion-header {
+	@apply ts-flex ts-items-center ts-justify-between ts-pointer-events-auto
+}
+.review-card .media {
+	@apply ts-absolute ts-top-0 ts-w-full ts-h-full !ts-pb-0
+}
+.marquee-item p.announcement-text > span {
+	@apply ts-relative ts-pl-[3.5rem]
+}
+.marquee-item p.announcement-text > span::before {
+	@apply ts-content-[''] ts-block ts-w-[0.8rem] ts-h-[0.8rem] ts-rounded-full ts-absolute ts-top-1/2 -ts-translate-y-1/2
+}
+.contact .field .field__label,
+.contact .field .field__input {
+	@apply ts-text-brown
+}
+#main-collection-filters .facets__form {
+	@apply !ts-mb-0 md:!ts-grid-cols-[max-content,max-content] !ts-grid-cols-1 md:!ts-gap-0 ts-gap-y-6
+}
+.facet-filters__sort + .icon-caret {
+	@apply !ts-right-7
+}
+.pickup-availability-info > * {
+	@apply !ts-mb-0 ts-text-[1.5rem] ts-font-bold
+}
+.pickup-availability-info > .caption,
+.pickup-availability-info > .pickup-availability-button {
+	@apply ts-text-brown
+}
+.share-button__button .img-wrapper {
+	@apply ts-bg-transparent ts-w-[21.5rem]
+}
+#gallery--thumbs-swiper:not(.swiper-initialized) {
+	@apply ts-hidden
+}
+.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs {
+	@apply ts-absolute ts-z-[2]
+}
+.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs .slider__thumbs {
+	@apply ts-h-auto ts-w-full
+}
+.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs .slider__thumbs .slider__image {
+	@apply ts-border ts-border-solid ts-border-[#D9D9D9] ts-rounded-xl
+}
+.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs .slider__thumbs .swiper-slide.swiper-slide-thumb-active .slider__image {
+	@apply ts-border-brown
+}
+#judgeme_product_reviews .jdgm-rev-widg__title {
+	@apply ts-text-clamp_l ts-mb-12 ts-font-medium
+}
+#judgeme_product_reviews .jdgm-row-stars {
+	@apply ts-flex-wrap
+}
+#judgeme_product_reviews .jdgm-row-stars > * {
+	@apply ts-basis-full ts-border-0
+}
+#judgeme_product_reviews .jdgm-row-stars .jdgm-rev-widg__summary {
+	@apply ts-mb-9 ts-text-[2rem] ts-font-medium
+}
+#judgeme_product_reviews .jdgm-row-stars .jdgm-rev-widg__summary .jdgm-rev-widg__summary-stars {
+	@apply ts-flex ts-items-center ts-flex-row-reverse
+}
+#judgeme_product_reviews .jdgm-rev-widg__summary .jdgm-star {
+	@apply ts-pr-[0.85rem]
+}
+#judgeme_product_reviews .jdgm-rev-widg__summary .jdgm-rev-widg__summary-average {
+	@apply ts-mr-12
+}
+#judgeme_product_reviews .jdgm-rev-widg__summary a.jdgm-link {
+	@apply ts-text-light ts-no-underline
+}
+#judgeme_product_reviews .jdgm-rev-widg__summary .jdgm-rev-widg__summary-text {
+	@apply ts-text-[1.3rem] ts-mt-[0.7rem] ts-font-bold
+}
+#judgeme_product_reviews .jdgm-histogram__bar,
+#judgeme_product_reviews .jdgm-histogram__bar-content {
+ @apply ts-h-[0.5rem] ts-rounded
+}
+#judgeme_product_reviews .jdgm-histogram__bar {
+	@apply ts-mx-4 ts-bg-light
+}
+#judgeme_product_reviews .jdgm-histogram__frequency {
+	@apply ts-text-[1.3rem] ts-font-bold ts-text-light
+}
+#judgeme_product_reviews a.jdgm-write-rev-link {
+	@apply ts-my-14
+}
+#judgeme_product_reviews .jdgm-rev {
+	@apply ts-flex ts-gap-8
+}
+#judgeme_product_reviews .jdgm-rev .jdgm-rev__header {
+	@apply ts-flex-grow-0 ts-flex-shrink-0 ts-basis-[26%]
+}
+#judgeme_product_reviews .jdgm-rev .jdgm-rev__icon {
+	@apply ts-rounded-full
+}
+#judgeme_product_reviews .jdgm-rev span.jdgm-rev__timestamp {
+	@apply ts-hidden
+}
+main.main--blog-temp .featured-in .page-width {
+	@apply ts-max-w-[123rem]
+}
+main.main--blog-temp .featured-in .logo-grid {
+	@apply md:ts-grid-cols-7 ts-grid-cols-4
+}
+.blog-articles__article .card:not(.ratio)>.card__content {
+	@apply ts-p-0
+}
+body.policy-page--template .shopify-policy__container {
+	@apply ts-py-[7vw] ts-max-w-[120rem]
+}
+body.policy-page--template .shopify-policy__title h1 {
+	@apply ts-text-clamp_xl ts-uppercase
+}
+body.policy-page--template .shopify-policy__container .rte a {
+	@apply ts-break-words
+}
+main.main--cart-temp .page-width {
+	@apply ts-max-w-[136rem]
+}
+.price {
+	@apply !ts-text-accent
+}
+.logo-grid-item .link-to {
+	@apply ts-absolute ts-top-0 ts-left-0 ts-w-full ts-h-full ts-z-[2] ts-text-[0] ts-opacity-0
+}
+.instagram-posts .social-icons-wrapper ul {
+	@apply !ts-justify-center
+}
+.instagram-posts .social-icons-wrapper ul .list-social__link {
+	@apply !ts-text-brown
+}
+.topics .topic-wrapper {
+	@apply lg:ts-py-8 ts-py-7 lg:ts-px-20 ts-px-8 ts-border ts-border-solid ts-rounded-[1.5rem]
+}
+.topics .topic-wrapper:not(:last-of-type) {
+	@apply md:ts-mb-10 ts-mb-6
+}
+
+@media only screen and (min-width: 768px) {
+	.page-width {
+		@apply !ts-px-8;
+	}
+	.footer__blocks-wrapper .footer-block:first-of-type {
+		@apply ts-col-span-2
+	}
+	.list-social__item .icon {
+		@apply !ts-w-[3.125vw] !ts-h-[3.125vw]
+	}
+	#judgeme_product_reviews .jdgm-row-stars > * {
+		@apply ts-items-start
+	}
+	#judgeme_product_reviews a.jdgm-write-rev-link {
+		@apply ts-mr-0 ts-my-20
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.page-width {
+		@apply !ts-px-12;
+	}
+	.announcement-bar__message {
+		@apply ts-text-[1.5rem]
+	}
+	body .section-header {
+		@apply ts-fixed ts-w-auto ts-top-24 ts-left-0 ts-right-0 ts-mx-12 ts-transition-all ts-duration-300 ts-ease-in-out
+	}
+	body .section-header.scrolled-past-header {
+    @apply ts-top-0 ts-mx-0
+  }
+	sticky-header.header-wrapper {
+		@apply ts-rounded-full ts-border ts-border-solid ts-border-accent ts-transition-all ts-duration-300 ts-ease-in-out
+	}
+	body .section-header.scrolled-past-header sticky-header.header-wrapper {
+		@apply ts-rounded-none
+	}
+	sticky-header header.page-width {
+		@apply !ts-px-14
+	}
+	.swiper-pagination-bullets.swiper-pagination {
+		@apply ts-bottom-[-4rem]
+	}
+	.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs {
+		@apply ts-top-1/2 -ts-translate-y-1/2 ts-translate-x-1/2 ts-right-0
+	}
+	.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs .slider__thumbs {
+		@apply ts-h-[39.2rem]
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.page-width {
+		@apply !ts-px-24;
+	}
+	body .section-header {
+		@apply ts-mx-24
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	.footer__blocks-wrapper {
+		@apply ts-grid-cols-6
+	}
+	.footer__blocks-wrapper .social {
+		@apply ts-col-span-1
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.footer__blocks-wrapper {
+		@apply ts-grid-cols-5 ts-gap-y-16
+	}
+	.footer__blocks-wrapper .social {
+		@apply ts-col-span-full
+	}
+	.media-gallery-slider[data-desktop-layout="custom"] .gallery--thumbs {
+		@apply ts-w-full ts-left-1/2 -ts-translate-x-1/2 ts-bottom-[2.25rem]
+	}
+}
+@media only screen and (max-width: 767px) {
+	.footer__blocks-wrapper {
+		@apply ts-grid-cols-1 ts-gap-y-0 ts-space-y-8
+	}
+	.footer__blocks-wrapper > .accordion-item {
+		@apply ts-border-b ts-border-solid ts-border-transparent ts-border-b-accent ts-overflow-hidden
+	}
+	.footer__blocks-wrapper > .accordion-item.active {
+		@apply ts-pb-8
+	}
+	.marquee-item p.announcement-text > span {
+		@apply !ts-text-[2rem]
+	}
+	#judgeme_product_reviews .jdgm-row-stars .jdgm-rev-widg__summary .jdgm-rev-widg__summary-stars {
+		@apply ts-justify-center
+	}
+	#judgeme_product_reviews .jdgm-rev {
+		@apply ts-flex-col
+	}
+}

@@ -1,0 +1,376 @@
+{% assign setting = section.settings %}
+
+{%- style -%}
+	.banner-slider .swiper-nav-item {
+    color: rgba(var(--color-foreground));
+	}
+{%- endstyle -%}
+
+<div class="slider-banner color-{{ setting.section_colors }}">
+  <div class="swiper swiper-container banner-slider">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+				{%- liquid
+					assign slide = block.settings
+					
+					case slide.alignment
+						when 'left'
+							assign text_align = 'ts-text-left'
+						when 'center'
+							assign text_align = 'ts-text-center'
+						when 'right'
+							assign text_align = 'ts-text-right'
+					endcase
+				-%}
+
+				{% if setting.banner_height == "adapt" %}
+					{% style %}
+						.swiper--slide-{{ forloop.index }} {
+							aspect-ratio: {{ slide.banner_img.aspect_ratio }};
+						}
+						{% if slide.banner_img_mob != blank  %}
+							@media only screen and (max-width: 767px) {
+								.swiper--slide-{{ forloop.index }} {
+									aspect-ratio: {{ slide.banner_img_mob.aspect_ratio }};
+								}
+							}
+						{% endif %}
+					{% endstyle %}
+				{% endif %}
+
+        <div class="swiper-slide swiper--slide-{{ forloop.index }}{%  unless setting.banner_height == 'adapt' %} {{ setting.banner_height }}{% endunless %} sm-mobile:ts-h-[40rem]">
+					{%- if slide.overlay > 0 -%}
+						<div class="ts-absolute ts-top-0 ts-left-0 ts-w-full ts-h-full ts-z-[1] ts-pointer-events-none !ts-block ts-bg-dark" style="opacity: {{ slide.overlay }}%"></div>
+					{%- endif -%}
+
+					{%- if slide.banner_img != blank -%}
+						<div class="banner--media ts-h-full">
+							{%- liquid
+								assign height = slide.banner_img.width | divided_by: slide.banner_img.aspect_ratio | round
+								assign sizes = '100vw'
+								assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+								assign fetch_priority = 'auto'
+								assign image_class = 'lazy2 ts-w-full ts-max-w-full ts-h-auto'
+								assign mobile_image = slide.banner_img | image_url: width: slide.banner_img.width
+
+								if slide.banner_img_mob != blank
+									assign mobile_image = slide.banner_img_mob | image_url: width: slide.banner_img_mob.width
+								endif
+
+								if section.index == 1
+									assign fetch_priority = 'high'
+								endif
+							-%}
+
+							{%- if forloop.first %}
+								<picture class="media ts-h-full">
+									<source srcset="{{ mobile_image }}" media="(max-width: 767px)"/>
+									{{
+										slide.banner_img
+										| image_url: width: 3840
+										| image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority, class: image_class, alt: slide.banner_img.alt
+									}}
+								</picture>
+							{%- else -%}
+								<picture class="media ts-h-full"> 
+									<source srcset="{{ mobile_image }}" media="(max-width: 767px)"/>
+									{{
+										slide.banner_img
+										| image_url: width: 3840
+										| image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths, class: image_class, alt: slide.banner_img.alt
+									}}
+								</picture>
+            	{%- endif -%}
+						</div>
+					{%- else -%}
+						<div class="banner-media media ts-h-full"{% if setting.banner_height == "adapt" %} style="padding-bottom: 56.25%;"{% endif %}>
+							{%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+							{%- if placeholder_slide == 1 -%}
+								{{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' | append: image_class }}
+							{%- else -%}
+								{{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' | append: image_class }}
+							{%- endif -%}
+						</div>
+					{%- endif -%}
+
+					{%- if slide.title != blank or slide.body != blank or slide.btn_label != blank -%}
+						<div class="banner-content-box ts-absolute ts-top-0 ts-left-0 ts-w-full ts-h-full ts-flex ts-z-[2] {{ slide.v_alignment }} {{ text_align }}">
+							<div class="banner--content ts-w-[max-content] ts-max-w-[95rem] lg:ts-px-20 lg:ts-py-28 md:ts-px-12 md:ts-py-16 ts-px-8 ts-py-14">
+								{%- if slide.title != blank -%}
+									<h2 class="slide-heading {{ setting.heading_size }} ts-leading-[1.1] ts-uppercase ts-mt-0">{{ slide.title }}</h2>
+								{%- endif -%}
+
+								{% if slide.body != blank %}
+									<div class="rte-slide-body rte">
+										{{ slide.body }}
+									</div>
+								{% endif %}
+
+								{%- if slide.btn_label != blank -%}
+									<a href="{{ slide.btn_url | default: '#' }}" class="button button--primary ts-mt-8">{{ slide.btn_label }}</a>
+								{%- endif -%}
+							</div>
+						</div>
+					{%- endif -%}
+        </div>
+      {% endfor %}
+    </div>
+		{%- if setting.show_nav -%}
+			<div class="swiper-nav">
+				<div class="swiper-nav-item swiper-button-prev !ts-flex"></div>
+				<div class="swiper-nav-item swiper-button-next !ts-flex"></div>
+			</div>
+		{%- endif -%}
+  </div>
+</div>
+
+<script type="lazyload2">
+	const slider = '.banner-slider';
+	let autoPlay;
+	let nav;
+
+	const options = {
+		autoplay: {{ setting.autoplay }},
+		delay: {{ setting.delay | times:  1000}},
+		loop: {{ setting.loop }},
+		show_nav:  {{ setting.show_nav }}
+	}
+
+	if(options.autoplay) {
+		autoPlay = {
+			delay: options.delay,
+			disableOnInteraction: false
+		}
+	}
+
+	if(options.show_nav) {
+		nav = {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		}
+	}
+
+	const bannerSlide = new Swiper(slider, {
+		slidesPerView: 1,
+		spaceBetween: 0,
+		effect: "fade",
+		loop: options.loop,
+		autoplay: autoPlay,
+		{%- if setting.show_nav -%}
+			navigation: nav,
+		{%- endif -%}
+		mousewheel: {
+			releaseOnEdges: true,
+			forceToAxis: true
+		},
+	});
+</script>
+
+{% schema %}
+	{
+		"name": "[HIC] Slideshow Banner",
+		"class": "hic-slider-banner",
+		"tag": "section",
+		"settings": [
+			{
+        "type": "color_scheme",
+        "id": "section_colors",
+        "label": "Section Color Scheme",
+        "default": "background-1"
+      },
+			{
+				"type": "header",
+				"content": "Slider Settings"
+			},
+			{
+				"type": "checkbox",
+				"id": "autoplay",
+				"label": "Auto Rotate Slides",
+				"default": false
+			},
+			{
+				"type": "range",
+				"id": "delay",
+				"label": "Change Slide Every",
+				"min": 1,
+				"max": 20,
+				"step": 1,
+				"default": 5,
+				"unit": "s"
+			},
+			{
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop Slides",
+        "default": false
+      },
+			{
+				"type": "checkbox",
+				"id": "show_nav",
+				"label": "Show arrows",
+				"default": false
+			},
+			{
+				"type": "select",
+				"id": "banner_height",
+				"label": "Banner Height",
+				"options": [
+					{"label": "Small", "value": "md:ts-h-[45rem]"},
+					{"label": "Medium", "value": "md:ts-h-[58rem]"},
+					{"label": "Large", "value": "md:ts-h-[85rem]"},
+					{"label": "Adapt to first image", "value": "adapt"}
+				],
+				"default": "md:ts-h-[58rem]"
+			},
+			{
+				"type": "select",
+				"id": "heading_size",
+				"options": [
+					{
+						"value": "h2",
+						"label": "t:sections.all.heading_size.options__1.label"
+					},
+					{
+						"value": "h1",
+						"label": "t:sections.all.heading_size.options__2.label"
+					},
+					{
+						"value": "ts-text-clamp_l",
+						"label": "t:sections.all.heading_size.options__3.label"
+					},
+					{
+						"value": "ts-text-clamp_xl",
+						"label": "t:sections.all.heading_size.options__4.label"
+					},
+					{
+						"value": "ts-text-clamp_xxl",
+						"label": "t:sections.all.heading_size.options__5.label"
+					}
+				],
+				"default": "h1",
+				"label": "t:sections.all.heading_size.label"
+			}
+		],
+		"blocks": [
+			{
+				"type": "slide",
+				"name": "Banner Slide",
+				"settings": [
+					{
+            "type": "image_picker",
+            "id": "banner_img",
+            "label": "Banner Image",
+            "info": "Desktop"
+          },
+          {
+            "type": "image_picker",
+            "id": "banner_img_mob",
+            "label": "Banner Image",
+            "info": "Mobile"
+          },
+					{
+						"type": "range",
+						"id": "overlay",
+						"label": "Overlay",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"default": 0
+					},
+					{
+						"type": "header",
+						"content": "Contents"
+					},
+					{
+						"type": "inline_richtext",
+						"id": "title",
+						"label": "Heading",
+						"default": "Slide Heading"
+					},
+					{
+						"type": "richtext",
+						"id": "body",
+						"label": "Body Text",
+						"default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+					},
+					{
+						"type": "text",
+						"id": "btn_label",
+						"label": "Button Label",
+						"default": "Button"
+					},
+					{
+						"type": "url",
+						"id": "btn_url",
+						"label": "Button Link"
+					},
+					{
+						"type": "header",
+						"content": "Content Settings"
+					},
+					{
+						"type": "text_alignment",
+						"id": "alignment",
+						"label": "Text alignment",
+						"default": "center"
+					},
+					{
+						"type": "select",
+						"id": "v_alignment",
+						"label": "Content Box Alignment",
+						"options": [
+							{
+								"value": "ts-items-start ts-justify-start",
+								"label": "Top Left"
+							},
+							{
+								"value": "ts-items-start ts-justify-center",
+								"label": "Top Center"
+							},
+							{
+								"value": "ts-items-start ts-justify-end",
+								"label": "Top Right"
+							},
+							{
+								"value": "ts-items-center ts-justify-start",
+								"label": "Middle Left"
+							},
+							{
+								"value": "ts-items-center ts-justify-center",
+								"label": "Middle Center"
+							},
+							{
+								"value": "ts-items-center ts-justify-end",
+								"label": "Middle Right"
+							},
+							{
+								"value": "ts-items-end ts-justify-start",
+								"label": "Bottom Left"
+							},
+							{
+								"value": "ts-items-end ts-justify-center",
+								"label": "Bottom Center"
+							},
+							{
+								"value": "ts-items-end ts-justify-end",
+								"label": "Bottom Right"
+							}
+						],
+						"default": "ts-items-center ts-justify-center"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Slideshow Banner",
+				"blocks": [
+					{ "type": "slide" },
+					{ "type": "slide" },
+					{ "type": "slide" }
+				]
+			}
+		]
+	}
+{% endschema %}

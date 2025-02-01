@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "image_with_text_EEVWrw": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_UadxbW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Making Healing Visible",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_PezwrJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover how Heal In Colour is reshaping the world of wound care with inclusivity and innovation. Explore press features, media highlights, and stories that spotlight our mission to bring colour-matching solutions to bandages for all skin tones.<\/p>",
+            "text_style": "body",
+            "use_color": false,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UadxbW",
+        "text_PezwrJ"
+      ],
+      "custom_css": [
+        ".color-scheme-2 > div {padding: 0 !important;}",
+        ".global-media-settings {border: 0;}",
+        ".image-with-text__content {padding: 4rem 2.4rem 6.5rem !important;}",
+        ".image-with-text__text.rte.body {max-width: 44.5rem;}",
+        "@media only screen and (min-width: 750px) {.image-with-text__content {padding: 5vw 8.4vw !important; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/blog_page_img.jpg",
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hic_featured_in_ceWNje": {
+      "type": "hic_featured_in",
+      "custom_css": [
+        ".featured-in {background: #f4e8d2;}",
+        "h2.section__heading {font-size: clamp(3rem, 5vw, 5.2rem); line-height: 1; color: #4b2d20;}",
+        ".rte {color: #4b2d20;}"
+      ],
+      "settings": {
+        "section_colors": "scheme-3",
+        "heading": "ARTICLES",
+        "heading_size": "ts-text-clamp_xl",
+        "subheading": "<p>We've been in the news! Check out some of our feature stories.<\/p>",
+        "alignment": "ts-text-center",
+        "pad_desk": 70,
+        "pad_lap": 50,
+        "pad_tab": 40,
+        "pad_mob": 20
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "custom_css": [
+        ".main-blog {background: #F4E8D2;}"
+      ],
+      "settings": {
+        "section_color_scheme": "scheme-1",
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "adapt",
+        "show_date": false,
+        "show_author": false,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "image_with_text_EEVWrw",
+    "hic_featured_in_ceWNje",
+    "main"
+  ]
+}

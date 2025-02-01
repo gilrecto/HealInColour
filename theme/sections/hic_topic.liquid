@@ -1,0 +1,239 @@
+{% assign setting = section.settings %}
+{% liquid
+	assign desktop_pad = setting.pad_desk
+	assign laptop_pad = setting.pad_lap
+	assign tablet_pad = setting.pad_tab
+	assign mobile_pad = setting.pad_mob
+%}
+
+{%- style -%}
+	#shopify-section-{{ section.id }} .topics {
+		padding: {{ mobile_pad }}px 0;
+	}
+	.topics .topic-wrapper {
+		border-color: rgba(var(--color-button));
+	}
+    #shopify-section-{{ section.id }} .img-wrapper.media {
+      border: 1px solid {{ section.settings.img_border_color }};
+    }
+
+	@media only screen and (min-width: 768px) {
+		#shopify-section-{{ section.id }} .topics {
+			padding: {{ tablet_pad }}px 0;
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		#shopify-section-{{ section.id }} .topics {
+			padding: {{ laptop_pad }}px 0;
+		}
+	}
+	
+	@media only screen and (min-width: 1200px) {
+		#shopify-section-{{ section.id }} .topics {
+			padding: {{ desktop_pad }}px 0;
+		}
+	}
+{%- endstyle -%}
+
+<div class="topics color-{{ setting.section_colors }}">
+	<div class="page-width ts-max-w-[160rem]">
+		{%- if setting.title != blank -%}
+			<div class="title-area ts-text-center">
+				<h2 class="topics__heading inline-richtext {{ setting.heading_size }} ts-leading-[1.1] ts-uppercase ts-mt-0 lg:ts-mb-24 ts-mb-12">
+					{{ setting.title }}
+				</h2>
+			</div>
+		{%- endif -%}
+
+		{%- if section.blocks.size > 0 -%}
+			<div class="topics-grid ts-grid ts-items-center{% if setting.image != blank %} md:ts-grid-cols-2{% endif %} ts-grid-cols-1 md:ts-gap-[3.9vw] ts-gap-10">
+				{%- if setting.image != blank -%}
+					{% render 'image', image: setting.image, section: section, class: 'topics-ft-img' %}
+				{%- endif -%}
+				<div class="topics-wrapper">
+					{%- for block in section.blocks -%}
+						<div class="topic-wrapper">
+							{%- if block.settings.title != blank -%}
+								<h3 class="topic-name md:ts-text-[2rem] ts-text-[1.8rem] ts-leading-[1.2] ts-mt-0 ts-mb-4 ts-uppercase">
+									{{ block.settings.title }}
+								</h3>
+							{%- endif -%}
+
+							{%- if block.settings.body != blank -%}
+								<div class="topic-body rte">
+									{{ block.settings.body }}
+								</div>
+							{%- endif -%}
+						</div>
+					{%- endfor -%}
+
+					{%- if setting.btn_label != blank -%}
+						<a {% if setting.btn_url == blank %}role="link" aria-disabled="true"{% else %}href="{{ setting.btn_url }}"{% endif %} class="button button--primary lg:ts-mt-24 ts-mt-12"  style="border: 1px solid {% if section.settings.border_color != blank %} {{ section.settings.border_color }} {% else %} transparent {% endif %}">
+							{{- setting.btn_label | escape -}}
+						</a>
+					{%- endif -%}
+				</div>
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "[HIC] Topic",
+		"class": "hic-topics",
+		"tag": "section",
+		"settings": [
+			{
+        "type": "color_scheme",
+        "id": "section_colors",
+        "label": "Section Color Scheme",
+        "default": "background-1"
+      },
+			{
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Section Heading",
+				"default": "Topics"
+      },
+			{
+				"type": "select",
+				"id": "heading_size",
+				"options": [
+					{
+						"value": "h2",
+						"label": "t:sections.all.heading_size.options__1.label"
+					},
+					{
+						"value": "h1",
+						"label": "t:sections.all.heading_size.options__2.label"
+					},
+					{
+						"value": "ts-text-clamp_l",
+						"label": "t:sections.all.heading_size.options__3.label"
+					},
+					{
+						"value": "ts-text-clamp_xl",
+						"label": "t:sections.all.heading_size.options__4.label"
+					},
+					{
+						"value": "ts-text-clamp_xxl",
+						"label": "t:sections.all.heading_size.options__5.label"
+					}
+				],
+				"default": "h1",
+				"label": "t:sections.all.heading_size.label"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Featured Image"
+			},
+            {
+              "type": "color",
+              "id": "img_border_color",
+              "label": "Image Border Color"
+            },
+			{
+        "type": "header",
+        "content": "Button"
+      },
+			{
+				"type": "text",
+				"id": "btn_label",
+				"label": "Buton Label",
+				"default": "Button"
+			},
+			{
+				"type": "url",
+				"id": "btn_url",
+				"label": "Button Link"
+			},
+          {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border Color"
+        },
+			{
+        "type": "header",
+        "content": "Section spacing",
+        "info": "Top and bottom padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_desk",
+        "label": "Dektop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 100,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_lap",
+        "label": "Laptop",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 80,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_tab",
+        "label": "Tablet",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 60,
+				"info": "Padding"
+      },
+      {
+        "type": "range",
+        "id": "pad_mob",
+        "label": "Mobile",
+        "unit": "px",
+        "min": 10,
+        "max": 250,
+        "step": 10,
+        "default": 40,
+				"info": "Padding"
+      }
+		],
+		"blocks": [
+			{
+				"type": "topic",
+				"name": "Topic",
+				"settings": [
+					{
+						"type": "inline_richtext",
+						"id": "title",
+						"label": "Title",
+						"default": "Topic Name"
+					},
+					{
+						"type": "richtext",
+						"id": "body",
+						"label": "Body Text",
+						"default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>"
+					}
+				]
+			}
+		],
+		"presets": [
+      {
+        "name":"[HIC] Topic",
+        "blocks": [
+          { "type": "topic" },
+          { "type": "topic" },
+          { "type": "topic" }
+        ]
+      }
+    ]
+	}
+{% endschema %}

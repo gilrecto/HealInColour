@@ -1,0 +1,669 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bandages made for Black and Brown skin.",
+            "heading_size": "ts-text-clamp_xl"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify:\/\/collections\/frontpage",
+            "button_style_secondary_1": false,
+            "border_color_1": "#ffffff",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "border_color_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 750px) {.banner__media::before, .banner::before {padding-bottom: 56.25% !important; }}",
+        "@media screen and (max-width: 749px) {.banner__media::before, .banner__content::before {padding-bottom: 150% !important; } .banner__content {align-items: flex-end; } .banner__box.content-container {padding-bottom: 20vw; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HOMEPAGE_1.jpg",
+        "image_overlay_opacity": 20,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "animate": false,
+        "dir": "to-left",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-642c7cc4-83c3-459c-a724-d0bd12636e92",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "image_with_text_qicLyH": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Hd3krX": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Bandages<br> That Truly Blend In",
+            "heading_size": "ts-text-clamp_xl"
+          }
+        },
+        "text_keXReJ": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>We are revolutionizing the way people shop for bandages. We envision a world where black and brown bandages are the norm.<\/p>",
+            "text_style": "body",
+            "use_color": true,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Hd3krX",
+        "text_keXReJ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text__media {border: 0;}",
+        ".image-with-text__media.media > img {object-fit: contain;}",
+        "@media only screen and (min-width: 1200px) {.image-with-text__media-item {padding-right: 8.5vw; } .image-with-text__content {padding-left: 6.5vw; }}",
+        "@media only screen and (max-width: 749px) {.image-with-text__grid--reverse {flex-direction: column-reverse; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/img_txt.png",
+        "use_video": false,
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-3",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".media.media--hover-effect > img + img {object-fit: contain;}",
+        "@media screen and (min-width: 990px) {.grid--4-col-desktop .grid__item {width: 100%; max-width: 100%; flex: 1; } .grid--4-col-desktop .grid__item:last-of-type {max-width: 12%; }}"
+      ],
+      "settings": {
+        "title": "HEAL IN COLOUR PRODUCTS",
+        "heading_size": "ts-text-clamp_l",
+        "description": "<p>We're transforming the way people shop for bandages, striving for a future where black and brown bandages are the standard.<\/p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 3,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "btn_label": "SHOP ALL",
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_variants": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 100
+      }
+    },
+    "image_with_text_bx49qF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zgTFEb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who we are",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_QMpCCp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At HEAL In COLOUR, we believe in the power of representation and inclusivity in every aspect of life. Our mission is to provide high-quality bandages that blend seamlessly with Black and Brown skin tones, ensuring that everyone feels seen and valued. Founded with a passion for diversity and healing, we are dedicated to creating products that honor the unique beauty of all skin tones.<br\/><br\/><em>Join us in our journey to make the world a more inclusive place, one bandage at a time.<\/em><\/p>",
+            "text_style": "body",
+            "use_color": false,
+            "text_color": "rgba(0,0,0,0)"
+          }
+        },
+        "button_JEECiN": {
+          "type": "button",
+          "settings": {
+            "button_label": "ABOUT US",
+            "button_link": "shopify:\/\/pages\/about",
+            "button_style_secondary": false,
+            "border_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zgTFEb",
+        "text_QMpCCp",
+        "button_JEECiN"
+      ],
+      "custom_css": [
+        ".image-with-text__text {max-width: 60rem;}",
+        ".image-with-text__media-item {max-width: 72rem;}",
+        "@media only screen and (min-width: 1200px) {.image-with-text__content {padding-left: 6.5vw; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/whoweare_img.png",
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "hic_reviews_slider_hWcyEi": {
+      "type": "hic_reviews_slider",
+      "blocks": {
+        "review_8pfiGa": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "Jamila R.",
+            "review": "<p>Finally, bandages that blend perfectly with my skin tone! HEAL In COLOUR has made me feel seen and valued. These are a game-changer!<\/p>",
+            "image": "shopify:\/\/shop_images\/review_img-1.png"
+          }
+        },
+        "review_whqXzz": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "David K.",
+            "review": "<p>The quality of these bandages is fantastic. They stay on securely and don't irritate my sensitive skin. Plus, they look great!<\/p>"
+          }
+        },
+        "review_MPg6G3": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-2",
+            "name": "Ayesha M.",
+            "review": "<p>I love the mission behind HEAL In COLOUR. It's so important to have products that represent us, and these bandages do just that beautifully.<\/p>",
+            "image": "shopify:\/\/shop_images\/review_img-2.png"
+          }
+        },
+        "review_GM3JAK": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "Marcus T.",
+            "review": "<p>As a parent, it's wonderful to have bandages that match my children's skin tones. They feel more comfortable and confident wearing them.<\/p>"
+          }
+        },
+        "review_7fgApG": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-2",
+            "name": "Sophia L.",
+            "review": "<p>These bandages are a wonderful blend of function and representation. They’re breathable, durable, and blend in so well. I highly recommend them!<\/p>",
+            "image": "shopify:\/\/shop_images\/review_img-3.png"
+          }
+        },
+        "review_7LwrVm": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "David K.",
+            "review": "<p>The quality of these bandages is fantastic. They stay on securely and don't irritate my sensitive skin. Plus, they look great!<\/p>"
+          }
+        },
+        "review_3rM6TH": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "Jamila R.",
+            "review": "<p>Finally, bandages that blend perfectly with my skin tone! HEAL In COLOUR has made me feel seen and valued. These are a game-changer!<\/p>",
+            "image": "shopify:\/\/shop_images\/review_img-1.png"
+          }
+        },
+        "review_MWGUYU": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "Marcus T.",
+            "review": "<p>As a parent, it's wonderful to have bandages that match my children's skin tones. They feel more comfortable and confident wearing them.<\/p>"
+          }
+        },
+        "review_RCjihk": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-2",
+            "name": "Ayesha M.",
+            "review": "<p>I love the mission behind HEAL In COLOUR. It's so important to have products that represent us, and these bandages do just that beautifully.<\/p>",
+            "image": "shopify:\/\/shop_images\/review_img-2.png"
+          }
+        },
+        "review_kTLKhN": {
+          "type": "review",
+          "settings": {
+            "section_colors": "scheme-4",
+            "name": "Marcus T.",
+            "review": "<p>As a parent, it's wonderful to have bandages that match my children's skin tones. They feel more comfortable and confident wearing them.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "review_8pfiGa",
+        "review_whqXzz",
+        "review_MPg6G3",
+        "review_GM3JAK",
+        "review_7fgApG",
+        "review_7LwrVm",
+        "review_3rM6TH",
+        "review_MWGUYU",
+        "review_RCjihk",
+        "review_kTLKhN"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_colors": "scheme-1",
+        "use_parallax": true,
+        "bg_img": "shopify:\/\/shop_images\/reviews_section_bg.png",
+        "title": "What Our Customers Are Saying",
+        "body": "<p>See how HEAL In COLOUR is making a difference in the lives of our customers. Hear their stories and discover why our bandages are a must-have for Black and Brown skin.<\/p>",
+        "show_review_count": true,
+        "review_page_link": "https:\/\/judge.me\/reviews\/heal-in-colour-adhesive-bandages-for-black-and-brown-skin.myshopify.com",
+        "d_slides": 5,
+        "l_slides": 3,
+        "t_slides": 2,
+        "m_slides": 1,
+        "d_space": 25,
+        "l_space": 20,
+        "t_space": 15,
+        "m_space": 15,
+        "enable_loop": true,
+        "mousewheel": false,
+        "enable_autoplay": true,
+        "autoplay_speed": 5000,
+        "pad_desk": 130,
+        "pad_lap": 90,
+        "pad_tab": 70,
+        "pad_mob": 40
+      }
+    },
+    "hic_featured_in_raCTVn": {
+      "type": "hic_featured_in",
+      "blocks": {
+        "logo_img_KgrYxV": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ctvnews_500x500_a0af3540-5ae2-44df-bf59-1a6f6c8c6c93.jpg",
+            "link": "https:\/\/www.ctvnews.ca\/lifestyle\/canadian-startup-creates-bandages-for-black-and-brown-skin-tones-1.5411063",
+            "new_tab": true
+          }
+        },
+        "logo_img_LWdCm9": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/yorku_500x500_c3bf43e2-8678-40f3-a29f-8d09532461a0.jpg",
+            "link": "https:\/\/www.yorku.ca\/yfile\/2021\/04\/21\/york-staff-members-startup-heal-in-colour-promotes-inclusivity-in-healing\/?utm_source=YFile_Email&utm_medium=Email&utm_content=Top-Stories&utm_campaign=yfile",
+            "new_tab": true
+          }
+        },
+        "logo_img_yamnWP": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CBC.jpg",
+            "link": "https:\/\/www.cbc.ca\/news\/canada\/toronto\/toronto-entrepreneur-creates-startup-to-offer-bandages-for-black-and-brown-skin-tones-1.6014831",
+            "new_tab": true
+          }
+        },
+        "logo_img_MHYakQ": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Toronto_Star-Logo.wine.png",
+            "link": "https:\/\/www.thestar.com\/life\/together\/people\/she-couldn-t-find-bandages-to-match-her-skin-tone-so-she-launched-heal-in\/article_72b1c263-73f7-5f0c-83bf-eb0d8a1d6e9e.html",
+            "new_tab": false
+          }
+        },
+        "logo_img_WYmAV4": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bt.png",
+            "link": "https:\/\/www.breakfasttelevision.ca\/videos\/heal-in-colour\/",
+            "new_tab": false
+          }
+        },
+        "logo_img_KyKnaz": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cbcradio.png",
+            "link": "https:\/\/www.cbc.ca\/news\/canada\/toronto\/toronto-entrepreneur-creates-startup-to-offer-bandages-for-black-and-brown-skin-tones-1.6014831",
+            "new_tab": false
+          }
+        },
+        "logo_img_6mtmap": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/durham-college-vector-logo.png",
+            "link": "https:\/\/durhamcollege.ca\/new-notable\/dc-highlights\/dc-grad-launches-inclusive-bandage-brand-heal-in-colour",
+            "new_tab": false
+          }
+        },
+        "logo_img_d3dmxC": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/GLOBAL.png",
+            "link": "https:\/\/globalnews.ca\/news\/4352512\/living-in-colour\/",
+            "new_tab": false
+          }
+        },
+        "logo_img_9mCBDR": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Metrolandlogo.png",
+            "link": "https:\/\/www.toronto.com\/news\/north-york-woman-launches-line-of-bandages-to-match-skin-tone\/article_3a7e1f35-c366-55e7-a04d-33e38614d611.html?",
+            "new_tab": false
+          }
+        },
+        "logo_img_g9eWDd": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CITYNEWS.png",
+            "link": "https:\/\/toronto.citynews.ca\/video\/2021\/05\/06\/healing-diversity-one-bandage-at-a-time\/",
+            "new_tab": true
+          }
+        },
+        "logo_img_rCh43X": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ctvnewsottawa_logo_500x500_ab183670-f21f-4a30-852a-77fa256d0f56.jpg",
+            "link": "https:\/\/ottawa.ctvnews.ca\/video?clipId=2172395",
+            "new_tab": true
+          }
+        },
+        "logo_img_m4DT3w": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BLOGTO.png",
+            "link": "https:\/\/www.blogto.com\/city\/2021\/05\/toronto-woman-starts-company-sell-bandages-multiple-skin-tones\/",
+            "new_tab": true
+          }
+        },
+        "logo_img_AadP6z": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/680news_nav.png",
+            "link": "",
+            "new_tab": false
+          }
+        },
+        "logo_img_QCL93G": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SASKATOON_CTV.png",
+            "link": "https:\/\/www.ctvnews.ca\/lifestyle\/canadian-startup-creates-bandages-for-black-and-brown-skin-tones-1.5411063",
+            "new_tab": false
+          }
+        },
+        "logo_img_aKLzEF": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/logo-urbania.2f697f19.png",
+            "link": "https:\/\/urbania.ca\/article\/guerir-pour-toutes-les-teintes-de-peau",
+            "new_tab": false
+          }
+        },
+        "logo_img_dPGUqN": {
+          "type": "logo_img",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HerDefined-PodcastCoverGOOD.png",
+            "link": "",
+            "new_tab": false
+          }
+        },
+        "logo_img_GmBH4f": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Edge_Logo_B_web_1.png",
+            "link": "https:\/\/theedgeleaders.com\/tianna-mcfarlane\/",
+            "new_tab": false
+          }
+        },
+        "logo_img_pqTKEg": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Move_1003_Ottawa_Raspberry_600x600_72dpi_13f9f302-1fb8-4655-89b8-cac9893b8c7b.png",
+            "link": "https:\/\/omny.fm\/shows\/move-1003\/heal-in-colour-soon-in-a-store-near-you",
+            "new_tab": true
+          }
+        },
+        "logo_img_JBN9kH": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cp24_breakfast-logo-web_400x400_0e605bce-11a5-42ef-94c3-ce6ace110ee2.jpg",
+            "link": "https:\/\/www.breakfasttelevision.ca\/videos\/heal-in-colour\/",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_KgrYxV",
+        "logo_img_LWdCm9",
+        "logo_img_yamnWP",
+        "logo_img_MHYakQ",
+        "logo_img_WYmAV4",
+        "logo_img_KyKnaz",
+        "logo_img_6mtmap",
+        "logo_img_d3dmxC",
+        "logo_img_9mCBDR",
+        "logo_img_g9eWDd",
+        "logo_img_rCh43X",
+        "logo_img_m4DT3w",
+        "logo_img_AadP6z",
+        "logo_img_QCL93G",
+        "logo_img_aKLzEF",
+        "logo_img_dPGUqN",
+        "logo_img_GmBH4f",
+        "logo_img_pqTKEg",
+        "logo_img_JBN9kH"
+      ],
+      "settings": {
+        "section_colors": "",
+        "heading": "IN THE NEWS",
+        "heading_size": "ts-text-clamp_l",
+        "subheading": "",
+        "alignment": "ts-text-center",
+        "pad_desk": 80,
+        "pad_lap": 80,
+        "pad_tab": 60,
+        "pad_mob": 40
+      }
+    },
+    "image_banner_7UU9ez": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_CD6RNf": {
+          "type": "heading",
+          "settings": {
+            "heading": "MAKE A DONATION",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_8Gq9gd": {
+          "type": "text",
+          "settings": {
+            "text": "Donations will directly support and advance our #NotJustABandage initiative, helping us provide essential resources and expand our impact.",
+            "text_style": "body"
+          }
+        },
+        "buttons_BkHY4V": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "DONATE NOW",
+            "button_link_1": "https:\/\/www.paypal.com\/donate\/?hosted_button_id=R359VAX7ZYR3A",
+            "button_style_secondary_1": false,
+            "border_color_1": "#ffffff",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "border_color_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_CD6RNf",
+        "text_8Gq9gd",
+        "buttons_BkHY4V"
+      ],
+      "custom_css": [
+        ".banner__media-half {width: 100%;}",
+        ".banner__text {max-width: 63rem;}",
+        "@media only screen and (min-width: 750px) {.banner__media-half + .banner__media-half {display: none; }}",
+        "@media screen and (max-width: 749px) {.banner__media-half:first-of-type {display: none; } .banner__media::before, .banner__content::before {padding-bottom: 150% !important; } .banner__content {align-items: flex-end; } .banner__box.content-container {padding-bottom: 16vw; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Make-Donation-Banner-Desktop.jpg",
+        "image_2": "shopify:\/\/shop_images\/Make-Donation-Banner-Mobile.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "animate": false,
+        "dir": "to-left",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-642c7cc4-83c3-459c-a724-d0bd12636e92",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "hic_instagram_post_ErVMQE": {
+      "type": "hic__instagram_post",
+      "blocks": {
+        "post_j7cMKF": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_3362.jpg",
+            "insta_link": ""
+          }
+        },
+        "post_H8tDeg": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_1.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/C8FJAycMIu_\/"
+          }
+        },
+        "post_CgNFnY": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_2.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/C2keXf9rKYD\/"
+          }
+        },
+        "post_DFxVXV": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_3.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/healincolour\/reel\/C3VpxpgxJk2\/"
+          }
+        },
+        "post_wYeHh7": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_4.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/CuUhHxExuX5\/"
+          }
+        },
+        "post_pirJnE": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_5.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/CmE67SApVTW\/"
+          }
+        },
+        "post_RhQFCk": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/insta_post_6.jpg",
+            "insta_link": "https:\/\/www.instagram.com\/reel\/CsOxEGOAlKv\/"
+          }
+        }
+      },
+      "block_order": [
+        "post_j7cMKF",
+        "post_H8tDeg",
+        "post_CgNFnY",
+        "post_DFxVXV",
+        "post_wYeHh7",
+        "post_pirJnE",
+        "post_RhQFCk"
+      ],
+      "settings": {
+        "section_colors": "scheme-5",
+        "title": "",
+        "body": "",
+        "btn_label": "",
+        "btn_url": "",
+        "show_social": true,
+        "alignment": "ts-text-center",
+        "d_slides": 4,
+        "l_slides": 4,
+        "t_slides": 3,
+        "m_slides": 2,
+        "d_space": 32,
+        "l_space": 30,
+        "t_space": 20,
+        "m_space": 20,
+        "enable_loop": true,
+        "mousewheel": false,
+        "enable_autoplay": true,
+        "autoplay_speed": 5000,
+        "enable_navigation": false,
+        "enable_pagination": false,
+        "pad_desk": 80,
+        "pad_lap": 70,
+        "pad_tab": 60,
+        "pad_mob": 40
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "image_with_text_qicLyH",
+    "featured_collection",
+    "image_with_text_bx49qF",
+    "hic_reviews_slider_hWcyEi",
+    "hic_featured_in_raCTVn",
+    "image_banner_7UU9ez",
+    "hic_instagram_post_ErVMQE"
+  ]
+}

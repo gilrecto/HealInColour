@@ -1,0 +1,76 @@
+<script type="lazyload2">
+	{%- assign setting = section.settings -%}
+	{%- assign section_id = 'shopify-section-' | append: section.id -%}
+
+	const swiper_init__{{ section.id | remove: '-' }} = (selector) => {
+		let slider = selector,
+				mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)'),
+				init = false,
+				swiper = Swiper;
+
+		let options = {
+			{%- if setting.mousewheel -%}
+				mousewheel: {
+					releaseOnEdges: true,
+					forceToAxis: true
+				},
+			{%- endif %}
+			slidesPerView: {{ setting.m_slides }},
+			spaceBetween: {{ setting.m_space }},
+			loop: {{ setting.enable_loop }},
+			freeMode: true,
+			{%- if setting.enable_autoplay -%}
+				autoplay: {
+					delay: {{ setting.autoplay_speed }},
+				},
+			{%- endif %}
+			{%- if setting.enable_pagination -%}
+				pagination: {
+					el: "#{{ section_id }} .swiper-pagination",
+					dynamicBullets: true,
+					clickable: true,
+				},
+			{%- endif -%}
+			{%- if setting.enable_navigation -%}
+				navigation: {
+					nextEl: "#{{ section_id }} .swiper-button-next",
+					prevEl: "#{{ section_id }} .swiper-button-prev",
+				},
+			{%- endif -%}
+			breakpoints: {
+				768: {
+					slidesPerView: {{ setting.t_slides }}.2,
+					spaceBetween: {{ setting.t_space }}
+				},
+				992: {
+					slidesPerView: {{ setting.l_slides }}.4,
+					spaceBetween: {{ setting.l_space }},
+				},
+				1200: {
+					slidesPerView: {{ setting.d_slides }}.5,
+					spaceBetween: {{ setting.d_space }}
+				}
+			}
+		}
+
+		const init_slider = () => {
+			if(!mobile.matches) {
+				if (!init) {
+					init = true;
+		
+					swiper = new Swiper(slider, options);
+				}
+			} else {
+				init = false;
+				if(swiper.__swiper__) {
+					swiper.destroy(true, true);
+				}
+			}
+		}
+
+		window.addEventListener('load', init_slider);
+		window.addEventListener('resize', init_slider);
+	}
+
+	swiper_init__{{ section.id | remove: '-' }}('#shopify-section-{{ section.id }} .{{ selector }}');
+</script>

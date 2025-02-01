@@ -1,0 +1,362 @@
+{
+  "sections": {
+    "image_banner_gQWEWy": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_xmeTK8": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "ts-text-clamp_xl"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xmeTK8"
+      ],
+      "custom_css": [
+        ".banner__media-half {width: 100%;}",
+        ".banner__heading {text-align: left;}",
+        "@media only screen and (min-width: 750px) {.banner__media-half + .banner__media-half {display: none; }}",
+        "@media screen and (max-width: 749px) {.banner__media-half:first-of-type {display: none; } .banner__media::before, .banner__content::before {padding-bottom: 100% !important; } .banner__heading {text-align: center; } .banner__content {align-items: flex-end; } .banner__box {margin-bottom: 10vw; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Heal_in_Colour-156_1_f3694cba-73de-4b2b-a4a1-bdeba9aa7e55.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "animate": false,
+        "dir": "to-left",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "rich_text_9YiCde": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_7heq7T": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR MISSION",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_fNegBJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At HEAL In COLOUR, our mission is to promote inclusivity and representation in everyday essentials. We believe everyone deserves to feel seen, valued, and confident in their healing journey. Our bandages are designed to blend seamlessly with Black and Brown skin tones, honoring the unique beauty of all individuals.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_7heq7T",
+        "text_fNegBJ"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 95rem;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_EEVWrw": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_UadxbW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_PezwrJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>HEAL In COLOUR was founded with a simple yet powerful idea: to create bandages that truly reflect the diversity of our world. We noticed a lack of representation in wound care products and decided to take action. Our journey began with a passion for diversity and a commitment to providing high-quality, inclusive care solutions. Today, we are proud to offer products that make a difference in the lives of our customers.<\/p>",
+            "text_style": "body",
+            "use_color": true,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UadxbW",
+        "text_PezwrJ"
+      ],
+      "custom_css": [
+        ".color-scheme-1 > div {padding: 0 !important;}",
+        ".global-media-settings {border: 0;}",
+        ".image-with-text__content {padding: 4rem 2.4rem 6.5rem !important;}",
+        "@media only screen and (min-width: 750px) {.image-with-text__content {padding: 5vw 8.8vw !important; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/MAN_AND_TWO_SONS.png",
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_ETKdAG": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ULQMAJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Inclusivity.jpg",
+            "title": "Inclusivity",
+            "text": "<p>We celebrate and honor the diversity of all skin tones.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_f6BRQh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/624b6feb17e674a8137842c8-9.png",
+            "title": "Quality",
+            "text": "<p>We use premium materials to ensure our bandages are breathable, flexible, and durable.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EUqj9j": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Community.jpg",
+            "title": "Community",
+            "text": "<p>We are dedicated to supporting initiatives and organizations that promote health and wellness for people of color.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_dKzTFJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/QfmzLZj8.jpg",
+            "title": "Empowerment",
+            "text": "<p>We aim to empower individuals by providing products that make them feel seen and valued.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_ULQMAJ",
+        "column_f6BRQh",
+        "column_EUqj9j",
+        "column_dKzTFJ"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info .rte {color: #000000;}",
+        ".multicolumn > div {max-width: 158rem;}",
+        ".multicolumn-list {--grid-desktop-horizontal-spacing: 3vw; padding: 0 !important;}",
+        ".multicolumn-card__image-wrapper {margin: 0 !important;}",
+        ".multicolumn-card__info {padding-left: 0; padding-right: 0;}",
+        ".multicolumn-list h3 {font-size: 2rem;}"
+      ],
+      "settings": {
+        "title": "OUR VALUES",
+        "heading_size": "ts-text-clamp_l",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "img_border_color": "#000000",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-3",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 68,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_9i6gHq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wwiq9D": {
+          "type": "heading",
+          "settings": {
+            "heading": "HEAL IN COLOUR BRAND",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_bfUx6A": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We are revolutionizing the way people shop for bandages.  We want to create a world where black and brown bandages are the norm.  We will build long-term relationships with customers based on integrity and a dedication to excellence by offering the highest quality brown and black bandages, made from premium materials, at a competitive price.\u2028<\/p><p>Our main focus is to find opportunities to create a superior experience for all households, schools and health care.  We will accomplish this by continually being trailblazers in the industry with innovation and strategic planning.  <\/p>",
+            "text_style": "body",
+            "use_color": true,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wwiq9D",
+        "text_bfUx6A"
+      ],
+      "custom_css": [
+        ".image-with-text__media-item {padding-bottom: 4rem;}",
+        "@media only screen and (min-width: 750px) {.image-with-text__media-item {padding: 4vw 8vw; }}",
+        "@media only screen and (min-width: 990px) {.image-with-text__content {padding-top: 4.427vw; padding-left: 12vw; padding-right: 3vw; }}",
+        "@media only screen and (max-width: 749px) {.image-with-text .grid {flex-direction: column-reverse; }}"
+      ],
+      "settings": {
+        "use_video": true,
+        "video": "shopify:\/\/files\/videos\/about_video.mp4",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_TEjFMB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zdD9k9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tianna McFarlane",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_YzYBYF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>is a pioneering entrepreneur and the visionary founder of Heal In Colour, a groundbreaking Canadian company that creates adhesive bandages specifically designed for black and brown skin tones. Through this innovative venture, she has not only transformed the bandage industry but also championed greater representation of diverse skin tones in everyday products.<\/p><p>With a diploma in Business Operations Management from Durham College, Tianna's entrepreneurial journey has been driven by a deep commitment to effecting positive change. Her mission is clear: to make bandages for black and brown skin tones the norm, not the exception, challenging and reshaping societal norms along the way.<\/p><p>Tianna's work has garnered significant recognition, including being named a Changemaker by the Toronto Star, an acknowledgment of her dedication to inclusivity, innovation, and empowerment. Her influence extends beyond revolutionizing the bandage market; she is also passionate about inspiring and uplifting Black women entrepreneurs, serving as a powerful role model for those striving to carve out their own paths in the business world.<\/p><p>Tianna McFarlane embodies the spirit of a true changemaker, leaving a lasting impact on her industry and paving the way for a future where diversity and representation are not just goals but fundamental elements of everyday life.<\/p>",
+            "text_style": "body",
+            "use_color": false,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zdD9k9",
+        "text_YzYBYF"
+      ],
+      "custom_css": [
+        ".global-media-settings {border: 0;}",
+        ".image-with-text__text.rte {max-width: 90rem;}",
+        "@media only screen and (min-width: 750px) {.gradient > div {padding: 0 !important; } .image-with-text__content {padding-top: 7vw; padding-bottom: 7vw; }}",
+        "@media only screen and (max-width: 991px) {.image-with-text__content {padding-left: 1.5rem !important; padding-right: 1.5rem !important; }}",
+        "@media only screen and (max-width: 749px) {.image-with-text__media--medium {height: 85vw; } .image-with-text__content {padding-left: 0 !important; padding-right: 0 !important; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/tianna.jpg",
+        "use_video": false,
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hic_marquee_slide_ea7RWT": {
+      "type": "hic_marquee_slide",
+      "blocks": {
+        "marq_item_h4YUrY": {
+          "type": "marq_item",
+          "settings": {
+            "text": "High-Quality Materials",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_VRBxRV": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Confidence in Healing",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_6dV6DY": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Hypoallergenic and Gentle",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_Pam7xG": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Perfect Skin Tone Match",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_ziH3ya": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Community Support",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        }
+      },
+      "block_order": [
+        "marq_item_h4YUrY",
+        "marq_item_VRBxRV",
+        "marq_item_6dV6DY",
+        "marq_item_Pam7xG",
+        "marq_item_ziH3ya"
+      ],
+      "settings": {
+        "section_colors": "scheme-1",
+        "enable_marq": true,
+        "dir": "to-left",
+        "text_alignment": "center",
+        "pad_desk": 10,
+        "pad_lap": 10,
+        "pad_tab": 10,
+        "pad_mob": 10
+      }
+    }
+  },
+  "order": [
+    "image_banner_gQWEWy",
+    "rich_text_9YiCde",
+    "image_with_text_EEVWrw",
+    "multicolumn_ETKdAG",
+    "image_with_text_9i6gHq",
+    "image_with_text_TEjFMB",
+    "hic_marquee_slide_ea7RWT"
+  ]
+}

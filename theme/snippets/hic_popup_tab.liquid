@@ -1,0 +1,29 @@
+{{ 'hic_popup_tab.css' | asset_url | stylesheet_tag: preload: true }}
+<popup-tab class="color-{{ settings.popup_colors }}">
+  <div class="modal--trigger-btn">
+    <button id="ModalOpen__widget" type="button" class="modal__toggle" aria-label="Open">
+      {{ settings.popup_title }}
+    </button>
+  </div>
+  <modal>
+    <div class="modal--overlay"></div>
+    <div class="widget-modal__dialog" role="dialog" aria-label="Popup Widget" aria-modal="true" tabindex="-1">
+      <button id="ModalClose__widget" type="button" class="modal__toggle ts-bg-accent ts-text-light" aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon-close' %}
+      </button>
+  
+      <div class="widget-modal__content gradient" role="document" aria-label="Popup Widget" tabindex="0">
+        {%- if settings.popup_btn_label != blank -%}
+					<a href="{{ settings.popup_btn_url | default: '#' }}" class="link link-text ts-block ts-uppercase ts-font-bold ts-no-underline ts-text-center ts-mb-5">{{ settings.popup_btn_label }}</a>
+				{%- endif -%}
+
+        {%- if settings.popup_body != blank -%}
+          <div class="rte popup-body ts-text-[1.3rem] ts-leading-[1.6]">
+            {{ settings.popup_body }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </modal>
+</popup-tab>
+<script type="lazyload2" data-src="{{ 'hic_popup_tab.js' | asset_url }}"></script>

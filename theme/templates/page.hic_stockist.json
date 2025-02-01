@@ -1,0 +1,127 @@
+{
+  "wrapper": "div.hic--main-stokist",
+  "sections": {
+    "image_with_text_VFmANd": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_gFWFx6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Visit Us",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_YAnH6K": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We would be happy to assist with your wholesale needs, please send us an email to <a href=\"mailto:nfo@healincolour.ca\" title=\"mailto:nfo@healincolour.ca\">info@healincolour.ca<\/a> for our price list and vendor information form.<\/p>",
+            "text_style": "body",
+            "use_color": true,
+            "text_color": "#000000"
+          }
+        },
+        "button_Mxfi3N": {
+          "type": "button",
+          "settings": {
+            "button_label": "SEE MORE",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "border_color": "#4b2d20"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gFWFx6",
+        "text_YAnH6K",
+        "button_Mxfi3N"
+      ],
+      "custom_css": [
+        ".image-with-text__media {border: 1px solid #000000;}",
+        "@media only screen and (min-width: 992px) {.image-with-text {padding-top: 6rem; }}",
+        "@media only screen and (min-width: 750px) {.image-with-text__text-item.grid__item {width: calc(40% - var(--grid-desktop-horizontal-spacing) \/ 2); } .image-with-text__text-item.grid__item .image-with-text__content {padding-left: 4.8vw !important; padding-top: 0; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/stokist_img.jpg",
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
+        "color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 96,
+        "padding_bottom": 0
+      }
+    },
+    "hic_locations_GKMj87": {
+      "type": "hic_locations",
+      "blocks": {
+        "location_j378YW": {
+          "type": "location",
+          "settings": {
+            "name": "SOBEYS",
+            "address": "Ontario, Canada",
+            "phone": ""
+          }
+        },
+        "location_UFm4qc": {
+          "type": "location",
+          "settings": {
+            "name": "YORK UNIVERSITY BOOKSTORE",
+            "address": "4700 Keele St, North York, ON M3J 1P3,<br> Canada",
+            "phone": "(416) 736-5701"
+          }
+        },
+        "location_MwFCKA": {
+          "type": "location",
+          "settings": {
+            "name": "SELECT CLORE BEAUTY SUPPLY STORES",
+            "address": "Ontario, Canada",
+            "phone": ""
+          }
+        },
+        "location_GQCCqa": {
+          "type": "location",
+          "settings": {
+            "name": "DURHAM COLLEGE BOOKSTORE",
+            "address": "2000 Simcoe St N, Oshawa, ON L1G 0C5,<br> Canada",
+            "phone": "(905) 721-3026"
+          }
+        },
+        "location_J7QG7c": {
+          "type": "location",
+          "settings": {
+            "name": "PHARMASAVE AJAX",
+            "address": "300 Rossland Rd E #104, Ajax, ON L1Z 0M1,<br> Canada",
+            "phone": "(905) 239 - 0663"
+          }
+        }
+      },
+      "block_order": [
+        "location_j378YW",
+        "location_UFm4qc",
+        "location_MwFCKA",
+        "location_GQCCqa",
+        "location_J7QG7c"
+      ],
+      "settings": {
+        "section_colors": "",
+        "title": "ALL",
+        "text_alignment": "ts-text-center",
+        "region": "CANADA",
+        "pad_desk": 80,
+        "pad_lap": 70,
+        "pad_tab": 50,
+        "pad_mob": 40
+      }
+    }
+  },
+  "order": [
+    "image_with_text_VFmANd",
+    "hic_locations_GKMj87"
+  ]
+}

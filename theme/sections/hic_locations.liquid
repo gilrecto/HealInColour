@@ -1,0 +1,216 @@
+{% assign setting = section.settings %}
+{% liquid
+	assign desktop_pad = setting.pad_desk
+	assign laptop_pad = setting.pad_lap
+	assign tablet_pad = setting.pad_tab
+	assign mobile_pad = setting.pad_mob
+%}
+
+{%- style -%}
+	#shopify-section-{{ section.id }} .main-locations {
+		padding: {{ mobile_pad }}px 0;
+	}
+    #shopify-section-{{ section.id }} .location-block {
+      border: 1px solid rgba(var(--color-button));
+      border-radius: 1.5rem;
+      padding: 2rem;
+    }
+    #shopify-section-{{ section.id }} .location-blocks {
+      column-gap: 2rem;
+    }
+
+	@media only screen and (min-width: 768px) {
+		#shopify-section-{{ section.id }} .main-locations {
+			padding: {{ tablet_pad }}px 0;
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		#shopify-section-{{ section.id }} .main-locations {
+			padding: {{ laptop_pad }}px 0;
+		}
+	}
+	
+	@media only screen and (min-width: 1200px) {
+		#shopify-section-{{ section.id }} .main-locations {
+			padding: {{ desktop_pad }}px 0;
+		}
+	}
+{%- endstyle -%}
+
+<div class="main-locations color-{{ setting.section_colors }}">
+	<div class="page-width">
+		{%- if setting.title != blank -%}
+			<div class="title-area {{ setting.text_alignment }} ts-border-0 ts-border-b-[1px] ts-border-solid ts-border-[#B59D83] ts-pb-7 lg:ts-mb-28 md:ts-mb-20 ts-mb-[4.5rem]">
+				<h2 class="ts-m-0 ts-text-clamp_xl">
+					{{ setting.title }}
+				</h2>
+			</div>
+		{%- endif -%}
+		<div class="locations-wrapper ts-w-full ts-max-w-[130rem]">
+			{%- if setting.region != blank -%}
+				<h3 class="ts-text-clamp_l ts-mt-0 ts-mb-12">
+					{{ setting.region }}
+				</h3>
+			{%- endif -%}
+			{%- if section.blocks.size > 0 -%}
+				<div class="location-blocks ts-grid lg:ts-grid-cols-3 md:ts-grid-cols-2 ts-grid-cols-1 ts-gap-y-12">
+					{%- for block in section.blocks -%}
+						{%- assign b_setting = block.settings -%}
+
+						<div class="location-block">
+							{%- if b_setting.name != blank -%}
+								<h4 class="ts-text-[2rem] ts-leading-[1.25] ts-mt-0 ts-mb-4">
+									{{ b_setting.name }}
+								</h4>
+							{%- endif -%}
+							{%- if b_setting.address != blank -%}
+								<p class="location-meta location-meta-address ts-text-dark">
+									{{ b_setting.address }}
+								</p>
+							{%- endif -%}
+							{%- if b_setting.phone != blank -%}
+								<a href="tel:{{ b_setting.phone | escape | remove: '(' | remove: ')' | remove: '-' | remove: ' ' }}" class="location-meta location-meta-phone full-unstyled-link ts-no-underline hover:ts-text-brown">
+									{{ b_setting.phone | escape }}
+								</a>
+							{%- endif -%}
+						</div>
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "[HIC] Locations",
+		"class": "hic-locations",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "color_scheme",
+				"id": "section_colors",
+				"label": "Section Color Scheme",
+				"default": "scheme-1"
+			},
+			{
+				"type": "inline_richtext",
+				"id": "title",
+				"label": "Title",
+				"default": "Locations"
+			},
+			{
+				"type": "header",
+				"content": "Section spacing",
+				"info": "Top and bottom padding"
+			},
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"options": [
+					{
+						"value": "ts-text-left",
+						"label": "Left"
+					},
+					{
+						"value": "ts-text-center",
+						"label": "Center"
+					},
+					{
+						"value": "ts-text-right",
+						"label": "Right"
+					}
+				],
+				"default": "ts-text-center",
+				"label": "Alignment"
+			},
+			{
+				"type": "inline_richtext",
+				"id": "region",
+				"label": "Area",
+				"default": "Canada"
+			},
+			{
+				"type": "range",
+				"id": "pad_desk",
+				"label": "Dektop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 100,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_lap",
+				"label": "Laptop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 100,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_tab",
+				"label": "Tablet",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 80,
+				"info": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "pad_mob",
+				"label": "Mobile",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 50,
+				"info": "Padding"
+			}
+		],
+		"blocks": [
+			{
+				"type": "location",
+				"name": "Store Location",
+				"settings": [
+					{
+						"type": "inline_richtext",
+						"id": "name",
+						"label": "Store Name",
+						"default": "Some Store"
+					},
+					{
+						"type": "textarea",
+						"id": "address",
+						"label": "Store Address",
+						"default": "Your Complete Address Details here,<br> Canada"
+					},
+					{
+						"type": "text",
+						"id": "phone",
+						"label": "Phone Number",
+						"default": "(012) 345 - 6789"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name":"[HIC] Locations",
+				"blocks": [
+					{ "type": "location" },
+					{ "type": "location" },
+					{ "type": "location" }
+				]
+			}
+		]
+	}
+{% endschema %}

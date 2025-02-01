@@ -1,0 +1,211 @@
+{
+  "sections": {
+    "hic_topic_yQbFBW": {
+      "type": "hic_topic",
+      "blocks": {
+        "topic_BWzYng": {
+          "type": "topic",
+          "settings": {
+            "title": "Building Inclusive Products",
+            "body": "<p>Discover why inclusivity is essential in today’s market and how inclusive products can help transform lives.<\/p>"
+          }
+        },
+        "topic_eE9qRW": {
+          "type": "topic",
+          "settings": {
+            "title": "Starting a Purpose-Driven Business",
+            "body": "<p>Gain insight into the highs and lows of entrepreneurship, from idea to execution.<\/p>"
+          }
+        },
+        "topic_AcyXBB": {
+          "type": "topic",
+          "settings": {
+            "title": "Becoming a Changemaker",
+            "body": "<p>Learn practical ways to create positive change, no matter where you are on your journey.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "topic_BWzYng",
+        "topic_eE9qRW",
+        "topic_AcyXBB"
+      ],
+      "custom_css": [
+        ".topics {padding-top: 7.813vw;}"
+      ],
+      "settings": {
+        "section_colors": "scheme-4efb9cd3-608a-438d-9d46-5808b1ae8bf5",
+        "title": "Topics I Speak On",
+        "heading_size": "ts-text-clamp_xl",
+        "image": "shopify:\/\/shop_images\/topic_img1.jpg",
+        "img_border_color": "#000000",
+        "btn_label": "BOOK TODAY",
+        "btn_url": "#",
+        "border_color": "#b7703f",
+        "pad_desk": 80,
+        "pad_lap": 70,
+        "pad_tab": 70,
+        "pad_mob": 40
+      }
+    },
+    "rich_text_nAKY9r": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_U3ber3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Engagement &Public Speaking with Tianna Mcfarlane",
+            "heading_size": "ts-text-clamp_xl"
+          }
+        },
+        "caption_X4nrNw": {
+          "type": "caption",
+          "settings": {
+            "caption": "Welcome!",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large"
+          }
+        },
+        "text_mhNpRf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I’m Tianna Mcfarlane, founder of Heal in Colour, a movement dedicated to inclusivity, healing, and empowerment through thoughtfully designed, inclusive products. I’m passionate about breaking down barriers in the industry and empowering communities with practical insights and inspiration.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_U3ber3",
+        "caption_X4nrNw",
+        "text_mhNpRf"
+      ],
+      "custom_css": [
+        ".rich-text__blocks {max-width: 98rem;}",
+        "h2.rich-text__heading {text-transform: uppercase;}",
+        ".ts-text-clamp_xl {font-size: clamp(3rem, 5vw, 5.2rem);}",
+        "p.rich-text__caption {font-size: clamp(1.6rem, 1.087rem + 1.4275vw, 2.8rem); margin: 3vw 0 1.2vw;}",
+        "@media only screen and (max-width: 767px) {.rich-text__wrapper {width: 100%; } h2.rich-text__heading {font-size: 2.3rem; } .rich-text__text.rte {margin-top: 1rem; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_VrPqjq": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BjeABm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Book Me to Speak at Your School or Organization",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_LAract": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.<\/p>"
+          }
+        },
+        "button_UC3gww": {
+          "type": "button",
+          "settings": {
+            "button_label": "BOOK TODAY",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BjeABm",
+        "text_LAract",
+        "button_UC3gww"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2.rich-text__heading {text-transform: uppercase;}",
+        ".rich-text__blocks {max-width: 90rem;}",
+        ".content-container--full-width:after {border-top: 1px solid #b59d83; max-width: 95%; margin: 0 auto;}",
+        ".rich-text__buttons {margin-top: 3vw;}",
+        ".rich-text__text.rte {color: #000000;}",
+        "@media only screen and (max-width: 767px) {h2.rich-text__heading {font-size: 2.5rem; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
+        "full_width": true,
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "image_with_text_9i6gHq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wwiq9D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Book Me to Speak<br>\nat Your School or Organization",
+            "heading_size": "ts-text-clamp_l"
+          }
+        },
+        "text_bfUx6A": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.<\/p>",
+            "text_style": "body",
+            "use_color": true,
+            "text_color": "#000000"
+          }
+        },
+        "button_mQtckW": {
+          "type": "button",
+          "settings": {
+            "button_label": "BOOK TODAY",
+            "button_link": "#",
+            "button_style_secondary": false,
+            "border_color": "#4b2d20"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wwiq9D",
+        "text_bfUx6A",
+        "button_mQtckW"
+      ],
+      "custom_css": [
+        ".image-with-text .grid {gap: 1.1vw;}",
+        "@media screen and (min-width: 750px) {.image-with-text__text-item {width: calc(60% - var(--grid-desktop-horizontal-spacing) \/ 2); } .image-with-text__media-item {width: calc(40% - var(--grid-desktop-horizontal-spacing) \/ 2); }}",
+        "@media screen and (max-width: 749px) {.image-with-text .grid {gap: 2rem; } .image-with-text__text-item .image-with-text__content {padding-left: 2.5rem !important; padding-right: 2.5rem !important; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ft_img_book_me.jpg",
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "hic_topic_yQbFBW",
+    "rich_text_nAKY9r",
+    "rich_text_VrPqjq",
+    "image_with_text_9i6gHq"
+  ]
+}

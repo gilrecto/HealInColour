@@ -1,0 +1,39 @@
+<div class="app-section-wrapper color-{{ section.settings.section_colors }} md:ts-py-[5.729vw] ts-py-28">
+  <div class="{% if section.settings.include_margins %}page-width ts-max-w-[108.5rem]{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_colors",
+      "label": "Section Color Scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "form": {
+      "type": "contact-form",
+      "custom_css": [
+        ".contact-img-colmn > .media {border: 1px solid #000000;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
+        "heading": "{{ page.title }}",
+        "heading_size": "ts-text-clamp_l",
+        "body_text": "<p>Do you have a question or concern? Get in touch with us by filling out the form below.\u2028You can expect a response within 48 hours. <\/p>",
+        "image": "shopify:\/\/shop_images\/Heal_in_Colour-49_1.jpg",
+        "padding_top": 100,
+        "padding_bottom": 92
+      }
+    },
+    "hic_marquee_slide_ea7RWT": {
+      "type": "hic_marquee_slide",
+      "blocks": {
+        "marq_item_h4YUrY": {
+          "type": "marq_item",
+          "settings": {
+            "text": "High-Quality Materials",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_VRBxRV": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Confidence in Healing",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_6dV6DY": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Hypoallergenic and Gentle",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_Pam7xG": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Perfect Skin Tone Match",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        },
+        "marq_item_ziH3ya": {
+          "type": "marq_item",
+          "settings": {
+            "text": "Community Support",
+            "show_ico": false,
+            "svg_ico": "SVG code"
+          }
+        }
+      },
+      "block_order": [
+        "marq_item_h4YUrY",
+        "marq_item_VRBxRV",
+        "marq_item_6dV6DY",
+        "marq_item_Pam7xG",
+        "marq_item_ziH3ya"
+      ],
+      "settings": {
+        "section_colors": "scheme-1",
+        "enable_marq": true,
+        "dir": "to-left",
+        "text_alignment": "center",
+        "pad_desk": 10,
+        "pad_lap": 10,
+        "pad_tab": 10,
+        "pad_mob": 10
+      }
+    }
+  },
+  "order": [
+    "form",
+    "hic_marquee_slide_ea7RWT"
+  ]
+}
