@@ -4,6 +4,8 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
+{{ 'global.css' | asset_url | stylesheet_tag }}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
@@ -66,7 +68,7 @@
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
-    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %} lg:!ts-mb-[4.5rem] !ts-mb-12 xl:!ts-px-[9.635vw]">
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %} lg:!ts-mb-[4.5rem] !ts-mb-12 xl:!ts-px-[9.635vw] mb-{{ section.settings.text_alignment_mobile }}">
       {%- if section.settings.title != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }} ts-leading-[1.1]{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
@@ -474,6 +476,26 @@
         }
       ]
     },
+    {
+    	"type": "select",
+    	"id": "text_alignment_mobile",
+		"options": [
+			{
+				"value": "left",
+				"label": "Left"
+			},
+			{
+				"value": "center",
+				"label": "Center"
+			},
+			{
+				"value": "right",
+				"label": "Right"
+			}
+		],
+			"default": "center",
+			"label": "Alignment"
+	},
     {
       "type": "checkbox",
       "id": "swipe_on_mobile",

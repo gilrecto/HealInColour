@@ -1,0 +1,379 @@
+{%- liquid
+  assign desktop_columns = section.settings.columns_desktop | plus: 0
+  assign mobile_columns = section.settings.columns_mobile | plus: 0
+  assign desktop_gaps = desktop_columns | minus: 1 | times: section.settings.card_spacing
+  assign mobile_gaps = mobile_columns | minus: 1 | times: section.settings.card_spacing_mobile
+-%}
+
+{%- capture image_sizes -%}
+  {%- unless settings.fluid -%}
+    (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - 120px - {{ desktop_gaps }}px) / {{ desktop_columns }}),
+  {%- endunless -%}
+  (min-width: 1200px) calc((100vw - 120px - {{ desktop_gaps }}px) / {{ desktop_columns }}),
+  (min-width: 990px) calc((100vw - 60px - {{ desktop_gaps }}px) / {{ desktop_columns }}),
+  (min-width: 750px) calc((100vw - 40px - {{ section.settings.card_spacing }}px) / 2),
+  calc((100vw - 30px - {{ mobile_gaps }}px) / {{ mobile_columns }})
+{%- endcapture -%}
+
+{%- style -%}
+  #EveryShade-{{ section.id }} {
+    --page-width: {% if settings.fluid %}100%{% else %}{{ settings.page_width | divided_by: 10.0 }}rem{% endif %};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }};
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }}, {{ section.settings.text_color.blue }};
+    --color-link: {{ section.settings.heading_color.red }}, {{ section.settings.heading_color.green }}, {{ section.settings.heading_color.blue }};
+    --shade-heading-color: {{ section.settings.heading_color }};
+    --shade-accent-color: {{ section.settings.accent_color }};
+    --shade-card-color: {{ section.settings.card_color }};
+    --shade-radius: {{ section.settings.border_radius }}px;
+    --shade-image-ratio: {{ section.settings.image_ratio }};
+    --shade-gap: {{ section.settings.card_spacing }}px;
+    --shade-mobile-gap: {{ section.settings.card_spacing_mobile }}px;
+    --shade-columns: {{ desktop_columns }};
+    --shade-mobile-columns: {{ mobile_columns }};
+    --shade-align: {{ section.settings.text_alignment }};
+    --shade-mobile-align: {{ section.settings.text_alignment_mobile }};
+    --shade-align-self: {{ section.settings.text_alignment | replace: 'left', 'flex-start' | replace: 'right', 'flex-end' }};
+    --shade-mobile-align-self: {{ section.settings.text_alignment_mobile | replace: 'left', 'flex-start' | replace: 'right', 'flex-end' }};
+    --shade-heading-size: {{ section.settings.heading_size | divided_by: 10.0 }}rem;
+    --shade-mobile-heading-size: {{ section.settings.heading_size_mobile | divided_by: 10.0 }}rem;
+    --shade-card-heading-size: {{ section.settings.card_heading_size | divided_by: 10.0 }}rem;
+    --shade-subheading-size: {{ section.settings.subheading_size | divided_by: 10.0 }}rem;
+    --shade-padding-top: {{ section.settings.padding_top }}px;
+    --shade-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --shade-mobile-padding-top: {{ section.settings.padding_top_mobile }}px;
+    --shade-mobile-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  #EveryShade-{{ section.id }} .hic-every-shade__card {
+    --color-background: {{ section.settings.card_color.red }}, {{ section.settings.card_color.green }}, {{ section.settings.card_color.blue }};
+    --color-secondary-button: var(--color-background);
+    --color-secondary-button-text: {{ section.settings.heading_color.red }}, {{ section.settings.heading_color.green }}, {{ section.settings.heading_color.blue }};
+  }
+{%- endstyle -%}
+
+<div id="EveryShade-{{ section.id }}" class="hic-every-shade{% if section.settings.image_ratio == 'auto' %} hic-every-shade--adapt{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank or section.settings.description != blank -%}
+      <div class="hic-every-shade__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="hic-every-shade__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="hic-every-shade__heading ts-font-header">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="hic-every-shade__subheading ts-font-header">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="hic-every-shade__description rte">{{ section.settings.description }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="hic-every-shade__grid" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign show_button = false
+            if block.settings.button_label != blank and block.settings.button_link != blank
+              assign show_button = true
+            endif
+          -%}
+          <li class="hic-every-shade__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {%- assign image_alt = block.settings.image_alt | default: block.settings.image.alt | default: block.settings.title -%}
+              <div class="hic-every-shade__media">
+                {{
+                  block.settings.image
+                  | image_url: width: 2000
+                  | image_tag:
+                    widths: '180, 240, 360, 480, 600, 750, 900, 1200, 1500, 1800, 2000',
+                    sizes: image_sizes,
+                    alt: image_alt,
+                    class: 'hic-every-shade__image'
+                }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.swatch_color != blank or block.settings.title != blank or block.settings.description != blank or show_button -%}
+              <div class="hic-every-shade__content">
+                {%- if block.settings.swatch_color != blank or block.settings.title != blank or block.settings.description != blank -%}
+                  <div class="hic-every-shade__details">
+                    {%- if block.settings.swatch_color != blank -%}
+                      <span class="hic-every-shade__swatch" style="background-color: {{ block.settings.swatch_color }};" aria-hidden="true"></span>
+                    {%- endif -%}
+                    {%- if block.settings.title != blank or block.settings.description != blank -%}
+                      <div class="hic-every-shade__copy">
+                        {%- if block.settings.title != blank -%}
+                          <h3 class="hic-every-shade__name ts-font-header">{{ block.settings.title | escape }}</h3>
+                        {%- endif -%}
+                        {%- if block.settings.description != blank -%}
+                          <div class="hic-every-shade__card-description rte">{{ block.settings.description }}</div>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+                {%- if show_button -%}
+                  <a class="hic-every-shade__button button button--secondary" href="{{ block.settings.button_link | escape }}">
+                    {{- block.settings.button_label | escape -}}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .hic-every-shade {
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    padding-block: var(--shade-mobile-padding-top) var(--shade-mobile-padding-bottom);
+  }
+
+  .hic-every-shade .hic-every-shade__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: var(--shade-mobile-align);
+    margin-bottom: 4rem;
+  }
+
+  .hic-every-shade .hic-every-shade__header > *,
+  .hic-every-shade .hic-every-shade__name,
+  .hic-every-shade .rte > :first-child {
+    margin-top: 0;
+  }
+
+  .hic-every-shade .hic-every-shade__header > *,
+  .hic-every-shade .hic-every-shade__name,
+  .hic-every-shade .rte > :last-child {
+    margin-bottom: 0;
+  }
+
+  .hic-every-shade .hic-every-shade__eyebrow {
+    color: var(--shade-accent-color);
+    font-size: 1.3rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .hic-every-shade .hic-every-shade__heading {
+    color: var(--shade-heading-color);
+    font-size: calc(var(--shade-mobile-heading-size) * var(--font-heading-scale));
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .hic-every-shade .hic-every-shade__subheading {
+    color: var(--shade-accent-color);
+    font-size: calc(var(--shade-subheading-size) * var(--font-heading-scale));
+    line-height: 1.3;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .hic-every-shade .hic-every-shade__description {
+    max-width: 52rem;
+    align-self: var(--shade-mobile-align-self);
+  }
+
+  .hic-every-shade .hic-every-shade__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--shade-mobile-columns), minmax(0, 1fr));
+    gap: var(--shade-mobile-gap);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .hic-every-shade .hic-every-shade__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border-radius: var(--shade-radius);
+    background: var(--shade-card-color);
+  }
+
+  .hic-every-shade .hic-every-shade__media {
+    aspect-ratio: var(--shade-image-ratio);
+    overflow: hidden;
+    border-radius: var(--shade-radius) var(--shade-radius) 0 0;
+  }
+
+  .hic-every-shade .hic-every-shade__media:only-child {
+    border-radius: var(--shade-radius);
+  }
+
+  .hic-every-shade .hic-every-shade__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hic-every-shade--adapt .hic-every-shade__image {
+    height: auto;
+  }
+
+  .hic-every-shade .hic-every-shade__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1.5rem;
+    padding: clamp(1rem, 2vw, 2rem);
+  }
+
+  .hic-every-shade .hic-every-shade__details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hic-every-shade .hic-every-shade__swatch {
+    width: 3.6rem;
+    height: 3.6rem;
+    flex-shrink: 0;
+    border: 0.2rem solid rgb(var(--color-background));
+    box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+    border-radius: 50%;
+  }
+
+  .hic-every-shade .hic-every-shade__copy {
+    flex: 1 1 10rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .hic-every-shade .hic-every-shade__name {
+    color: var(--shade-heading-color);
+    font-size: calc(var(--shade-card-heading-size) * var(--font-heading-scale));
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .hic-every-shade .hic-every-shade__card-description {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .hic-every-shade .hic-every-shade__button {
+    --buttons-radius: 4rem;
+    --buttons-radius-outset: 4rem;
+    --buttons-border-width: 1px;
+    --buttons-border-opacity: 1;
+    --alpha-button-background: 0;
+    width: 100%;
+    min-width: 0;
+    margin-top: auto;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  @media screen and (min-width: 750px) {
+    .hic-every-shade {
+      padding-block: var(--shade-padding-top) var(--shade-padding-bottom);
+    }
+
+    .hic-every-shade .hic-every-shade__header {
+      text-align: var(--shade-align);
+    }
+
+    .hic-every-shade .hic-every-shade__heading {
+      font-size: calc(var(--shade-heading-size) * var(--font-heading-scale));
+    }
+
+    .hic-every-shade .hic-every-shade__description {
+      align-self: var(--shade-align-self);
+    }
+
+    .hic-every-shade .hic-every-shade__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--shade-gap);
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .hic-every-shade .hic-every-shade__grid {
+      grid-template-columns: repeat(var(--shade-columns), minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Made For Every Shade",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find your shade" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made For Everyone, Every Shade" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Heal your way" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Find your shade. Every box is latex-free, sterile and made with flexible elastic fabric.</p>" },
+    { "type": "select", "id": "text_alignment", "label": "Desktop text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "select", "id": "text_alignment_mobile", "label": "Mobile text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "heading_size", "label": "Desktop heading size", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 52 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Mobile heading size", "min": 20, "max": 56, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "subheading_size", "label": "Subheading size", "min": 18, "max": 40, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_heading_size", "label": "Shade name size", "min": 18, "max": 40, "step": 2, "unit": "px", "default": 28 },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "background_color", "label": "Background colour", "default": "#FFFBF7" },
+    { "type": "color", "id": "card_color", "label": "Card background colour", "default": "#F3E7DA" },
+    { "type": "color", "id": "heading_color", "label": "Heading, shade name and button colour", "default": "#3E2518" },
+    { "type": "color", "id": "text_color", "label": "Description colour", "default": "#755A49" },
+    { "type": "color", "id": "accent_color", "label": "Eyebrow and subheading colour", "default": "#AD541B" },
+    { "type": "header", "content": "Card layout" },
+    { "type": "select", "id": "columns_desktop", "label": "Desktop columns", "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "3", "info": "Tablet displays two columns." },
+    { "type": "select", "id": "columns_mobile", "label": "Mobile columns", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "1" },
+    { "type": "select", "id": "image_ratio", "label": "Image aspect ratio", "options": [{ "value": "3 / 4", "label": "Portrait (3:4)" }, { "value": "1 / 1", "label": "Square (1:1)" }, { "value": "4 / 3", "label": "Landscape (4:3)" }, { "value": "auto", "label": "Adapt to image" }], "default": "3 / 4" },
+    { "type": "range", "id": "border_radius", "label": "Card border radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "card_spacing", "label": "Desktop and tablet card spacing", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_spacing_mobile", "label": "Mobile card spacing", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 20 },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "label": "Desktop top padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Desktop bottom padding", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Mobile top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Mobile bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "shade",
+      "name": "Shade card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "info": "Describe the image. If blank, the image's saved alt text or shade name is used." },
+        { "type": "text", "id": "title", "label": "Shade name", "default": "Shade name" },
+        { "type": "richtext", "id": "description", "label": "Description" },
+        { "type": "color", "id": "swatch_color", "label": "Swatch colour", "default": "#DAA063" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop shade" },
+        { "type": "url", "id": "button_link", "label": "Button destination", "info": "Select a product or collection, or paste a custom URL. The button is hidden until both its label and destination are set." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Made For Everyone, Every Shade",
+      "blocks": [
+        { "type": "shade", "settings": { "title": "Honey", "description": "<p>For lighter skin tones</p>", "swatch_color": "#DAA063", "button_label": "Shop Honey" } },
+        { "type": "shade", "settings": { "title": "Almond", "description": "<p>For medium skin tones</p>", "swatch_color": "#A96938", "button_label": "Shop Almond" } },
+        { "type": "shade", "settings": { "title": "Chestnut", "description": "<p>For deeper skin tones</p>", "swatch_color": "#603A24", "button_label": "Shop Chestnut" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "form": {
@@ -9,8 +18,8 @@
         "color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
         "heading": "{{ page.title }}",
         "heading_size": "ts-text-clamp_l",
-        "body_text": "<p>Do you have a question or concern? Get in touch with us by filling out the form below.\u2028You can expect a response within 48 hours. <\/p>",
-        "image": "shopify:\/\/shop_images\/Heal_in_Colour-49_1.jpg",
+        "body_text": "<p>Do you have a question or concern? Get in touch with us by filling out the form below. You can expect a response within 48 hours. </p>",
+        "image": "shopify://shop_images/Heal_in_Colour-49_1.jpg",
         "padding_top": 100,
         "padding_bottom": 92
       }

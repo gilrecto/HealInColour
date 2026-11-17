@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -45,7 +54,7 @@
         "color_scheme": "scheme-4",
         "newsletter_enable": true,
         "newsletter_heading": "JOIN US TODAY!",
-        "newsletter_desc": "<p>Subscribe now and become part of a movement that celebrates diversity and empowers every shade of beautiful. Your journey to inclusive healing starts here.<\/p>",
+        "newsletter_desc": "<p>Subscribe now and become part of a movement that celebrates diversity and empowers every shade of beautiful. Your journey to inclusive healing starts here.</p>",
         "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": false,

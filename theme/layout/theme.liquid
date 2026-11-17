@@ -50,6 +50,13 @@
   <script type="lazyload2" data-src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
   
   {{ 'ts-styles.css' | asset_url | stylesheet_tag: preload: true }}
+
+  {{ 'global.css' | asset_url | stylesheet_tag: preload: true }}
+
+  <!-- Calendly link widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- Calendly link widget end -->
   </head>
 
   <body class="{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {% if request.page_type == 'policy' %} policy-page--template color-scheme-1{% else %} color-scheme-2{% endif %}">

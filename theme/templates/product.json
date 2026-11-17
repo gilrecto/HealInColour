@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -13,6 +22,7 @@
         },
         "rating_anYTRp": {
           "type": "rating",
+          "disabled": true,
           "settings": {}
         },
         "quantity_selector": {
@@ -35,7 +45,7 @@
           "type": "share",
           "settings": {
             "share_label": "Share",
-            "share_img": "shopify:\/\/shop_images\/social_share.png"
+            "share_img": "shopify://shop_images/social_share.png"
           }
         }
       },
@@ -73,8 +83,8 @@
         "@media screen and (max-width: 749px) {.banner__media-half:first-of-type {display: none; } .banner__media::before, .banner__content::before {padding-bottom: 165% !important; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/We_ve-Got-You-Covered.jpg",
-        "image_2": "shopify:\/\/shop_images\/POSTER_2.jpg",
+        "image": "shopify://shop_images/We_ve-Got-You-Covered.jpg",
+        "image_2": "shopify://shop_images/POSTER_2.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
@@ -95,43 +105,43 @@
         "post_H8tDeg": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_1.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/C8FJAycMIu_\/"
+            "image": "shopify://shop_images/insta_post_1.jpg",
+            "insta_link": "https://www.instagram.com/healincolour/p/C8FJAycMIu_/"
           }
         },
         "post_CgNFnY": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_2.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/C2keXf9rKYD\/"
+            "image": "shopify://shop_images/insta_post_2.jpg",
+            "insta_link": "https://www.instagram.com/healincolour/p/C2keXf9rKYD/"
           }
         },
         "post_DFxVXV": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_3.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/healincolour\/reel\/C3VpxpgxJk2\/"
+            "image": "shopify://shop_images/insta_post_3.jpg",
+            "insta_link": "https://www.instagram.com/healincolour/reel/C3VpxpgxJk2/"
           }
         },
         "post_wYeHh7": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_4.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/CuUhHxExuX5\/"
+            "image": "shopify://shop_images/insta_post_4.jpg",
+            "insta_link": "https://www.instagram.com/healincolour/p/CuUhHxExuX5/"
           }
         },
         "post_pirJnE": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_5.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/healincolour\/p\/CmE67SApVTW\/"
+            "image": "shopify://shop_images/insta_post_5.jpg",
+            "insta_link": "https://www.instagram.com/healincolour/p/CmE67SApVTW/"
           }
         },
         "post_RhQFCk": {
           "type": "post",
           "settings": {
-            "image": "shopify:\/\/shop_images\/insta_post_6.jpg",
-            "insta_link": "https:\/\/www.instagram.com\/reel\/CsOxEGOAlKv\/"
+            "image": "shopify://shop_images/insta_post_6.jpg",
+            "insta_link": "https://www.instagram.com/reel/CsOxEGOAlKv/"
           }
         }
       },
@@ -175,8 +185,13 @@
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_jgywXf": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
@@ -206,65 +221,6 @@
         "columns_mobile": "2",
         "padding_top": 80,
         "padding_bottom": 100
-      }
-    },
-    "image_banner_7UU9ez": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_CD6RNf": {
-          "type": "heading",
-          "settings": {
-            "heading": "MAKE A DONATION",
-            "heading_size": "ts-text-clamp_l"
-          }
-        },
-        "text_8Gq9gd": {
-          "type": "text",
-          "settings": {
-            "text": "Donations will directly support and advance our #NotJustABandage initiative, helping us provide essential resources and expand our impact.",
-            "text_style": "body"
-          }
-        },
-        "buttons_BkHY4V": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "DONATE NOW",
-            "button_link_1": "https:\/\/www.paypal.com\/donate\/?hosted_button_id=R359VAX7ZYR3A",
-            "button_style_secondary_1": false,
-            "border_color_1": "#ffffff",
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false,
-            "border_color_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_CD6RNf",
-        "text_8Gq9gd",
-        "buttons_BkHY4V"
-      ],
-      "custom_css": [
-        ".banner__media-half {width: 100%;}",
-        ".banner__text {max-width: 63rem;}",
-        "@media only screen and (min-width: 750px) {.banner__media-half + .banner__media-half {display: none; }}",
-        "@media screen and (max-width: 749px) {.banner__media-half:first-of-type {display: none; } .banner__media::before, .banner__content::before {padding-bottom: 150% !important; } .banner__content {align-items: flex-end; } .banner__box.content-container {padding-bottom: 16vw; }}"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Make-Donation-Banner-Desktop.jpg",
-        "image_2": "shopify:\/\/shop_images\/Make-Donation-Banner-Mobile.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "adapt",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "animate": false,
-        "dir": "to-left",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-642c7cc4-83c3-459c-a724-d0bd12636e92",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
       }
     },
     "hic_marquee_slide_ea7RWT": {
@@ -336,7 +292,6 @@
     "hic_instagram_post_ErVMQE",
     "172568112815ece39a",
     "related-products",
-    "image_banner_7UU9ez",
     "hic_marquee_slide_ea7RWT"
   ]
 }

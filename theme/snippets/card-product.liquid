@@ -167,7 +167,12 @@
             {%- endif -%}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
+<!-- Start of Judge.me code -->
+      <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ card_product.id }}' data-auto-install='false'>
+        {{ card_product.metafields.judgeme.badge }}
+      </div>
+      <!-- End of Judge.me code -->
+      {% comment %}
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
                 assign rating_decimal = 0
@@ -203,7 +208,7 @@
                 </span>
               </p>
             {%- endif -%}
-
+{% endcomment %}
             <div class="card-product-meta ts-flex ts-items-center ts-justify-between sm-mobile:ts-flex-col sm-mobile:ts-items-start">
               {%- if show_variants -%}
                 <div class="card-product-variants">

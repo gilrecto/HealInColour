@@ -1,31 +1,39 @@
 {% assign setting = section.settings %}
 {% liquid
-	assign desktop_pad = setting.pad_desk
-	assign laptop_pad = setting.pad_lap
-	assign tablet_pad = setting.pad_tab
-	assign mobile_pad = setting.pad_mob
+	assign desktop_pad_top = setting.pad_desk_top
+    assign desktop_pad_btm = setting.pad_desk_btm
+	assign laptop_pad_top = setting.pad_lap_top
+	assign laptop_pad_btm = setting.pad_lap_btm
+	assign tablet_pad_top = setting.pad_tab_top
+	assign tablet_pad_btm = setting.pad_tab_btm
+	assign mobile_pad_top = setting.pad_mob_top
+	assign mobile_pad_btm = setting.pad_mob_btm
 %}
 
 {%- style -%}
 	#shopify-section-{{ section.id }} .featured-in {
-		padding: {{ mobile_pad }}px 0;
+		padding-top: {{ mobile_pad_top | append: 'px'}};
+        padding-bottom: {{ mobile_pad_btm | append: 'px'}};
 	}
 
 	@media only screen and (min-width: 768px) {
 		#shopify-section-{{ section.id }} .featured-in {
-			padding: {{ tablet_pad }}px 0;
+    		padding-top: {{ tablet_pad_top | append: 'px'}};
+            padding-bottom: {{ tablet_pad_btm | append: 'px'}};
 		}
 	}
 
 	@media only screen and (min-width: 992px) {
 		#shopify-section-{{ section.id }} .featured-in {
-			padding: {{ laptop_pad }}px 0;
+            padding-top: {{ laptop_pad_top | append: 'px'}};
+            padding-bottom: {{ laptop_pad_btm | append: 'px'}};
 		}
 	}
 	
 	@media only screen and (min-width: 1200px) {
 		#shopify-section-{{ section.id }} .featured-in {
-			padding: {{ desktop_pad }}px 0;
+            padding-top: {{ desktop_pad_top | append: 'px'}};
+            padding-bottom: {{ desktop_pad_btm | append: 'px'}};
 		}
 	}
 {%- endstyle -%}
@@ -138,47 +146,91 @@
 			},
 			{
 				"type": "range",
-				"id": "pad_desk",
+				"id": "pad_desk_top",
 				"label": "Dektop",
 				"unit": "px",
 				"min": 10,
 				"max": 250,
 				"step": 10,
 				"default": 10,
-				"info": "Padding"
+				"info": "Padding Top"
 			},
 			{
 				"type": "range",
-				"id": "pad_lap",
+				"id": "pad_desk_btm",
+				"label": "Dektop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding Bottom"
+			},
+			{
+				"type": "range",
+				"id": "pad_lap_top",
 				"label": "Laptop",
 				"unit": "px",
 				"min": 10,
 				"max": 250,
 				"step": 10,
 				"default": 10,
-				"info": "Padding"
+				"info": "Padding Top"
 			},
 			{
 				"type": "range",
-				"id": "pad_tab",
+				"id": "pad_lap_btm",
+				"label": "Laptop",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding Bottom"
+			},
+			{
+				"type": "range",
+				"id": "pad_tab_top",
 				"label": "Tablet",
 				"unit": "px",
 				"min": 10,
 				"max": 250,
 				"step": 10,
 				"default": 10,
-				"info": "Padding"
+				"info": "Padding Top"
 			},
 			{
 				"type": "range",
-				"id": "pad_mob",
+				"id": "pad_tab_btm",
+				"label": "Tablet",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding Bottom"
+			},
+			{
+				"type": "range",
+				"id": "pad_mob_top",
 				"label": "Mobile",
 				"unit": "px",
 				"min": 10,
 				"max": 250,
 				"step": 10,
 				"default": 10,
-				"info": "Padding"
+				"info": "Padding Top"
+			},
+            {
+				"type": "range",
+				"id": "pad_mob_btm",
+				"label": "Mobile",
+				"unit": "px",
+				"min": 10,
+				"max": 250,
+				"step": 10,
+				"default": 10,
+				"info": "Padding Bottom"
 			}
 		],
 		"blocks": [

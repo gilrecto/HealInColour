@@ -1,3 +1,5 @@
+{{ 'global.css' | asset_url | stylesheet_tag }}
+
 {% assign setting = section.settings %}
 {% liquid
 	assign desktop_pad = setting.pad_desk
@@ -7,6 +9,7 @@
 %}
 
 {%- style -%}
+
 	#shopify-section-{{ section.id }} .topics {
 		padding: {{ mobile_pad }}px 0;
 	}
@@ -16,7 +19,6 @@
     #shopify-section-{{ section.id }} .img-wrapper.media {
       border: 1px solid {{ section.settings.img_border_color }};
     }
-
 	@media only screen and (min-width: 768px) {
 		#shopify-section-{{ section.id }} .topics {
 			padding: {{ tablet_pad }}px 0;
@@ -47,7 +49,7 @@
 		{%- endif -%}
 
 		{%- if section.blocks.size > 0 -%}
-			<div class="topics-grid ts-grid ts-items-center{% if setting.image != blank %} md:ts-grid-cols-2{% endif %} ts-grid-cols-1 md:ts-gap-[3.9vw] ts-gap-10">
+			<div class="topics-grid ts-grid ts-items-center{% if setting.image != blank %} md:ts-grid-cols-2{% endif %} ts-grid-cols-1 md:ts-gap-[3.9vw] ts-gap-10 mb-{{ section.settings.text_alignment_mobile }}">
 				{%- if setting.image != blank -%}
 					{% render 'image', image: setting.image, section: section, class: 'topics-ft-img' %}
 				{%- endif -%}
@@ -69,7 +71,17 @@
 					{%- endfor -%}
 
 					{%- if setting.btn_label != blank -%}
-						<a {% if setting.btn_url == blank %}role="link" aria-disabled="true"{% else %}href="{{ setting.btn_url }}"{% endif %} class="button button--primary lg:ts-mt-24 ts-mt-12"  style="border: 1px solid {% if section.settings.border_color != blank %} {{ section.settings.border_color }} {% else %} transparent {% endif %}">
+						<a 
+                          {% if setting.btn_url == blank %}
+                            role="link" aria-disabled="true"
+                          {% else %}
+                            {% if setting.calendly_popup %}
+                              onclick="Calendly.initPopupWidget({url: '{{ setting.btn_url }}'});return false;"
+                              href=""
+                            {% else %}
+                              href="{{ setting.btn_url }}"
+                            {% endif %}
+                          {% endif %} class="button button--primary lg:ts-mt-24 ts-mt-12"  style="border: 1px solid {% if section.settings.border_color != blank %} {{ section.settings.border_color }} {% else %} transparent {% endif %}">
 							{{- setting.btn_label | escape -}}
 						</a>
 					{%- endif -%}
@@ -150,6 +162,13 @@
 				"id": "btn_url",
 				"label": "Button Link"
 			},
+            {
+              "type": "checkbox",
+              "id": "calendly_popup",
+              "label": "Enable Popup",
+              "info": "This will only activate for a Calendly link.",
+              "default": false
+            },
           {
           "type": "color",
           "id": "border_color",
@@ -203,7 +222,31 @@
         "step": 10,
         "default": 40,
 				"info": "Padding"
-      }
+      },
+      {
+		"type": "header",
+		"content": "Mobile"
+      },
+	  {
+		"type": "select",
+		"id": "text_alignment_mobile",
+		"options": [
+			{
+				"value": "left",
+				"label": "Left"
+			},
+			{
+				"value": "center",
+				"label": "Center"
+			},
+			{
+				"value": "right",
+				"label": "Right"
+			}
+		],
+		"default": "center",
+		"label": "Alignment"
+		}
 		],
 		"blocks": [
 			{

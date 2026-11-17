@@ -338,40 +338,59 @@
 
 <script type="lazyload2" data-src="{{ 'hic_accordion.js' | asset_url }}"></script>
 <script type="lazyload2">
-  const acc_selector = '.footer__blocks-wrapper.accordion .accordion-item';
-  const mobile_view = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
-  const accordion = document.querySelector('.footer__blocks-wrapper.accordion');
+const acc_selector = '.footer__blocks-wrapper.accordion .accordion-item';
+const mobile_view = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
+const accordion = document.querySelector('.footer__blocks-wrapper.accordion');
+
+// Initialize accordion logic
+const init_accordion = () => {
+  if (!accordion) return; // Ensure the accordion exists
+
   const accordion_header = accordion.querySelectorAll('.accordion-header');
   const accordion_item = accordion.querySelectorAll('.accordion-content');
 
-  const init_accordion = () => {
-    if(mobile_view.matches) {
-      accordion.children[0].classList.add('active');
-      accordion_header.forEach(header => {
-        header.style.removeProperty('pointer-events');
-      });
-      accordion_item.forEach(item => {
-        if(!item.parentElement.classList.contains('active')) {
-          item.style.height = 0;
-        }
-      });
-  
-      const footerAccordion = new Accordion(acc_selector);
-    } else {
-      for (const child of accordion.children) {
-        child.classList.remove('active');
-      }
-      accordion_header.forEach(header => {
-        header.style.pointerEvents = 'none';
-      });
-      accordion_item.forEach(item => {
-        item.style.removeProperty('height');
-      });
-    }
-  }
+  if (mobile_view.matches) {
+    // Mobile view setup
+    accordion.children[0]?.classList.add('active');
 
-  window.addEventListener('load', init_accordion);
-  window.addEventListener('resize', init_accordion);
+    accordion_header.forEach(header => {
+      header.style.removeProperty('pointer-events'); // Enable interactions
+    });
+
+    accordion_item.forEach(item => {
+      if (!item.parentElement.classList.contains('active')) {
+        item.style.height = '0'; // Collapse inactive items
+      }
+    });
+
+    // Initialize Accordion only if not already initialized
+    if (!accordion.dataset.initialized) {
+      new Accordion(acc_selector); // Assuming Accordion is a defined class
+      accordion.dataset.initialized = 'true'; // Mark as initialized
+    }
+  } else {
+    // Non-mobile view setup
+    Array.from(accordion.children).forEach(child => {
+      child.classList.remove('active'); // Clear active classes
+    });
+
+    accordion_header.forEach(header => {
+      header.style.pointerEvents = 'none'; // Disable interactions
+    });
+
+    accordion_item.forEach(item => {
+      item.style.removeProperty('height'); // Reset height
+    });
+
+    // Remove the initialization marker for desktop behavior
+    accordion.dataset.initialized = '';
+  }
+};
+
+// Add event listeners for load and resize
+window.addEventListener('load', init_accordion);
+window.addEventListener('resize', init_accordion);
+
 </script>
 
 {% schema %}

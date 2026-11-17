@@ -1,8 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "logo": "shopify:\/\/shop_images\/heal_in_colour_logo_trimed.svg",
+    "logo": "shopify://shop_images/heal_in_colour_logo_trimed.svg",
     "logo_width": 90,
-    "favicon": "shopify:\/\/shop_images\/HIC_bandaidicon.png",
+    "favicon": "shopify://shop_images/HIC_bandaidicon.png",
     "type_header_font": "karla_n7",
     "heading_scale": 100,
     "type_body_font": "karla_n4",
@@ -15,9 +24,9 @@
     "show_popup": true,
     "popup_colors": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
     "popup_title": "Free Shipping",
-    "popup_body": "<p>Enjoy free shipping when you select our eco-friendly poly mailer option! Your bandages will arrive deconstructed (flat) in a 6x10\" poly mailer, saving on packaging and environmental impact. This offer applies to orders of 1-3 boxes, with no tracking included. Simply choose the ‘Poly Mailer’ option at checkout!<\/p>",
+    "popup_body": "<p>Enjoy free shipping when you select our eco-friendly poly mailer option! Your bandages will arrive deconstructed (flat) in a 6x10\" poly mailer, saving on packaging and environmental impact. This offer applies to orders of 1-3 boxes, with no tracking included. Simply choose the ‘Poly Mailer’ option at checkout!</p>",
     "popup_btn_label": "I WANT FREE SHIPPING",
-    "popup_btn_url": "shopify:\/\/pages\/policies",
+    "popup_btn_url": "shopify://pages/policies",
     "animations_reveal_on_scroll": true,
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
@@ -106,13 +115,13 @@
     "sale_badge_color_scheme": "scheme-4",
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "",
-    "brand_description": "<p><\/p>",
+    "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_facebook_link": "https:\/\/facebook.com\/healincolour",
-    "social_instagram_link": "https:\/\/www.instagram.com\/healincolour\/",
+    "social_facebook_link": "https://facebook.com/healincolour",
+    "social_instagram_link": "https://www.instagram.com/healincolour/",
     "social_youtube_link": "",
     "social_tiktok_link": "",
-    "social_twitter_link": "https:\/\/twitter.com\/healincolour",
+    "social_twitter_link": "https://twitter.com/healincolour",
     "social_snapchat_link": "",
     "social_pinterest_link": "",
     "social_tumblr_link": "",
@@ -143,7 +152,7 @@
     "content_for_index": [],
     "blocks": {
       "14060646107696862457": {
-        "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
       }
@@ -232,6 +241,17 @@
           "background_gradient": "",
           "text": "#4b2d20",
           "button": "#4b2d20",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#4b2d20",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260": {
+        "settings": {
+          "background": "#f4e8d2",
+          "background_gradient": "",
+          "text": "#4b2d20",
+          "button": "#b7703f",
           "button_label": "#ffffff",
           "secondary_button_label": "#4b2d20",
           "shadow": "#121212"
@@ -395,7 +415,7 @@
       "sale_badge_color_scheme": "scheme-4",
       "sold_out_badge_color_scheme": "scheme-3",
       "brand_headline": "",
-      "brand_description": "<p><\/p>",
+      "brand_description": "<p></p>",
       "brand_image_width": 100,
       "social_twitter_link": "",
       "social_facebook_link": "",

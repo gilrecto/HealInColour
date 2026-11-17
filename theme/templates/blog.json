@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_with_text_EEVWrw": {
@@ -7,13 +16,14 @@
           "type": "heading",
           "settings": {
             "heading": "Making Healing Visible",
-            "heading_size": "ts-text-clamp_l"
+            "heading_size": "ts-text-clamp_l",
+            "text_alignment": false
           }
         },
         "text_PezwrJ": {
           "type": "text",
           "settings": {
-            "text": "<p>Discover how Heal In Colour is reshaping the world of wound care with inclusivity and innovation. Explore press features, media highlights, and stories that spotlight our mission to bring colour-matching solutions to bandages for all skin tones.<\/p>",
+            "text": "<p>Discover how Heal In Colour is reshaping the world of wound care with inclusivity and innovation. Explore press features, media highlights, and stories that spotlight our mission to bring colour-matching solutions to bandages for all skin tones.</p>",
             "text_style": "body",
             "use_color": false,
             "text_color": "#000000"
@@ -24,6 +34,7 @@
         "heading_UadxbW",
         "text_PezwrJ"
       ],
+      "disabled": true,
       "custom_css": [
         ".color-scheme-2 > div {padding: 0 !important;}",
         ".global-media-settings {border: 0;}",
@@ -32,7 +43,8 @@
         "@media only screen and (min-width: 750px) {.image-with-text__content {padding: 5vw 8.4vw !important; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/blog_page_img.jpg",
+        "image": "shopify://shop_images/blog_page_img.jpg",
+        "header_left": false,
         "use_video": false,
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -58,19 +70,23 @@
       "settings": {
         "section_colors": "scheme-3",
         "heading": "ARTICLES",
-        "heading_size": "ts-text-clamp_xl",
-        "subheading": "<p>We've been in the news! Check out some of our feature stories.<\/p>",
+        "heading_size": "ts-text-clamp_l",
+        "subheading": "",
         "alignment": "ts-text-center",
-        "pad_desk": 70,
-        "pad_lap": 50,
-        "pad_tab": 40,
-        "pad_mob": 20
+        "pad_desk_top": 150,
+        "pad_desk_btm": 10,
+        "pad_lap_top": 150,
+        "pad_lap_btm": 10,
+        "pad_tab_top": 60,
+        "pad_tab_btm": 10,
+        "pad_mob_top": 40,
+        "pad_mob_btm": 10
       }
     },
     "main": {
       "type": "main-blog",
       "custom_css": [
-        ".main-blog {background: #F4E8D2;}"
+        ".main-blog {background: #f4e8d2;}"
       ],
       "settings": {
         "section_color_scheme": "scheme-1",

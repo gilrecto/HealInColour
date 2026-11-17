@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "wrapper": "div.hic--main-stokist",
   "sections": {
@@ -8,13 +17,14 @@
           "type": "heading",
           "settings": {
             "heading": "Visit Us",
-            "heading_size": "ts-text-clamp_l"
+            "heading_size": "ts-text-clamp_l",
+            "text_alignment": false
           }
         },
         "text_YAnH6K": {
           "type": "text",
           "settings": {
-            "text": "<p>We would be happy to assist with your wholesale needs, please send us an email to <a href=\"mailto:nfo@healincolour.ca\" title=\"mailto:nfo@healincolour.ca\">info@healincolour.ca<\/a> for our price list and vendor information form.<\/p>",
+            "text": "<p>We would be happy to assist with your wholesale needs, please send us an email to <a href=\"mailto:info@healincolour.ca\" title=\"mailto:info@healincolour.ca\">info@healincolour.ca</a> for our price list and vendor information form.</p>",
             "text_style": "body",
             "use_color": true,
             "text_color": "#000000"
@@ -26,7 +36,8 @@
             "button_label": "SEE MORE",
             "button_link": "#",
             "button_style_secondary": false,
-            "border_color": "#4b2d20"
+            "border_color": "#4b2d20",
+            "calendly_popup": false
           }
         }
       },
@@ -38,10 +49,11 @@
       "custom_css": [
         ".image-with-text__media {border: 1px solid #000000;}",
         "@media only screen and (min-width: 992px) {.image-with-text {padding-top: 6rem; }}",
-        "@media only screen and (min-width: 750px) {.image-with-text__text-item.grid__item {width: calc(40% - var(--grid-desktop-horizontal-spacing) \/ 2); } .image-with-text__text-item.grid__item .image-with-text__content {padding-left: 4.8vw !important; padding-top: 0; }}"
+        "@media only screen and (min-width: 750px) {.image-with-text__text-item.grid__item {width: calc(40% - var(--grid-desktop-horizontal-spacing) / 2); } .image-with-text__text-item.grid__item .image-with-text__content {padding-left: 4.8vw !important; padding-top: 0; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/stokist_img.jpg",
+        "image": "shopify://shop_images/DSC08578-Edit.jpg",
+        "header_left": false,
         "use_video": false,
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -49,10 +61,10 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
-        "color_scheme": "scheme-161c2eda-5e10-4b79-91e9-5d6cb71ae89e",
+        "section_color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
+        "color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
         "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "mobile_content_alignment": "center",
         "padding_top": 96,
         "padding_bottom": 0
       }
@@ -60,26 +72,34 @@
     "hic_locations_GKMj87": {
       "type": "hic_locations",
       "blocks": {
+        "location_tr9FMq": {
+          "type": "location",
+          "settings": {
+            "name": "LOBLAWS",
+            "address": "Ontario and Atlantic Canada",
+            "phone": ""
+          }
+        },
         "location_j378YW": {
           "type": "location",
           "settings": {
-            "name": "SOBEYS",
-            "address": "Ontario, Canada",
+            "name": "SUPERSTORE",
+            "address": "Ontario, Western & Atlantic Canada",
             "phone": ""
           }
         },
         "location_UFm4qc": {
           "type": "location",
           "settings": {
-            "name": "YORK UNIVERSITY BOOKSTORE",
-            "address": "4700 Keele St, North York, ON M3J 1P3,<br> Canada",
-            "phone": "(416) 736-5701"
+            "name": "FORTINOS",
+            "address": "Ontario, Canada",
+            "phone": ""
           }
         },
         "location_MwFCKA": {
           "type": "location",
           "settings": {
-            "name": "SELECT CLORE BEAUTY SUPPLY STORES",
+            "name": "VALU-MART",
             "address": "Ontario, Canada",
             "phone": ""
           }
@@ -87,21 +107,22 @@
         "location_GQCCqa": {
           "type": "location",
           "settings": {
-            "name": "DURHAM COLLEGE BOOKSTORE",
-            "address": "2000 Simcoe St N, Oshawa, ON L1G 0C5,<br> Canada",
-            "phone": "(905) 721-3026"
+            "name": "YOUR INDEPENDENT GROCER",
+            "address": "Ontario, Western & Atlantic Canada",
+            "phone": ""
           }
         },
         "location_J7QG7c": {
           "type": "location",
           "settings": {
-            "name": "PHARMASAVE AJAX",
-            "address": "300 Rossland Rd E #104, Ajax, ON L1Z 0M1,<br> Canada",
-            "phone": "(905) 239 - 0663"
+            "name": "ZEHRS",
+            "address": "Ontario, Canada",
+            "phone": ""
           }
         }
       },
       "block_order": [
+        "location_tr9FMq",
         "location_j378YW",
         "location_UFm4qc",
         "location_MwFCKA",
@@ -109,14 +130,15 @@
         "location_J7QG7c"
       ],
       "settings": {
-        "section_colors": "",
+        "section_colors": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
         "title": "ALL",
         "text_alignment": "ts-text-center",
         "region": "CANADA",
         "pad_desk": 80,
         "pad_lap": 70,
         "pad_tab": 50,
-        "pad_mob": 40
+        "pad_mob": 40,
+        "text_alignment_mobile": "center"
       }
     }
   },

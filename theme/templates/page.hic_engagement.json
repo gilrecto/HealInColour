@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hic_topic_yQbFBW": {
@@ -7,21 +16,21 @@
           "type": "topic",
           "settings": {
             "title": "Building Inclusive Products",
-            "body": "<p>Discover why inclusivity is essential in today’s market and how inclusive products can help transform lives.<\/p>"
+            "body": "<p>Discover why inclusivity is essential in today’s market and how inclusive products can help transform lives.</p>"
           }
         },
         "topic_eE9qRW": {
           "type": "topic",
           "settings": {
             "title": "Starting a Purpose-Driven Business",
-            "body": "<p>Gain insight into the highs and lows of entrepreneurship, from idea to execution.<\/p>"
+            "body": "<p>Gain insight into the highs and lows of entrepreneurship, from idea to execution.</p>"
           }
         },
         "topic_AcyXBB": {
           "type": "topic",
           "settings": {
             "title": "Becoming a Changemaker",
-            "body": "<p>Learn practical ways to create positive change, no matter where you are on your journey.<\/p>"
+            "body": "<p>Learn practical ways to create positive change, no matter where you are on your journey.</p>"
           }
         }
       },
@@ -31,21 +40,24 @@
         "topic_AcyXBB"
       ],
       "custom_css": [
-        ".topics {padding-top: 7.813vw;}"
+        ".topics {padding-top: 7.813vw;}",
+        "h2.section__heading {line-height: 1; color: #4b2d20;}"
       ],
       "settings": {
-        "section_colors": "scheme-4efb9cd3-608a-438d-9d46-5808b1ae8bf5",
-        "title": "Topics I Speak On",
+        "section_colors": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
+        "title": "ENGAGE WITH HEAL IN COLOUR",
         "heading_size": "ts-text-clamp_xl",
-        "image": "shopify:\/\/shop_images\/topic_img1.jpg",
+        "image": "shopify://shop_images/topic_img1.jpg",
         "img_border_color": "#000000",
         "btn_label": "BOOK TODAY",
-        "btn_url": "#",
+        "btn_url": "https://calendly.com/healincolour",
+        "calendly_popup": true,
         "border_color": "#b7703f",
         "pad_desk": 80,
         "pad_lap": 70,
         "pad_tab": 70,
-        "pad_mob": 40
+        "pad_mob": 40,
+        "text_alignment_mobile": "center"
       }
     },
     "rich_text_nAKY9r": {
@@ -69,7 +81,7 @@
         "text_mhNpRf": {
           "type": "text",
           "settings": {
-            "text": "<p>I’m Tianna Mcfarlane, founder of Heal in Colour, a movement dedicated to inclusivity, healing, and empowerment through thoughtfully designed, inclusive products. I’m passionate about breaking down barriers in the industry and empowering communities with practical insights and inspiration.<\/p>"
+            "text": "<p>I’m Tianna Mcfarlane, founder of Heal in Colour, a movement dedicated to inclusivity, healing, and empowerment through thoughtfully designed, inclusive products. I’m passionate about breaking down barriers in the industry and empowering communities with practical insights and inspiration.</p>"
           }
         }
       },
@@ -78,6 +90,7 @@
         "caption_X4nrNw",
         "text_mhNpRf"
       ],
+      "disabled": true,
       "custom_css": [
         ".rich-text__blocks {max-width: 98rem;}",
         "h2.rich-text__heading {text-transform: uppercase;}",
@@ -107,7 +120,7 @@
         "text_LAract": {
           "type": "text",
           "settings": {
-            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.<\/p>"
+            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.</p>"
           }
         },
         "button_UC3gww": {
@@ -152,13 +165,14 @@
           "type": "heading",
           "settings": {
             "heading": "Book Me to Speak<br>\nat Your School or Organization",
-            "heading_size": "ts-text-clamp_l"
+            "heading_size": "ts-text-clamp_l",
+            "text_alignment": true
           }
         },
         "text_bfUx6A": {
           "type": "text",
           "settings": {
-            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.<\/p>",
+            "text": "<p>Are you looking for an impactful speaker who can connect with audiences on the importance of inclusivity and making meaningful change? I offer tailored engagements for educational institutions, companies, and organizations, where I share my journey as an entrepreneur, my commitment to change, and the critical role that inclusive products play in fostering representation and belonging.</p>",
             "text_style": "body",
             "use_color": true,
             "text_color": "#000000"
@@ -168,9 +182,10 @@
           "type": "button",
           "settings": {
             "button_label": "BOOK TODAY",
-            "button_link": "#",
+            "button_link": "https://calendly.com/healincolour",
             "button_style_secondary": false,
-            "border_color": "#4b2d20"
+            "border_color": "#4b2d20",
+            "calendly_popup": true
           }
         }
       },
@@ -179,13 +194,16 @@
         "text_bfUx6A",
         "button_mQtckW"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text .grid {gap: 1.1vw;}",
-        "@media screen and (min-width: 750px) {.image-with-text__text-item {width: calc(60% - var(--grid-desktop-horizontal-spacing) \/ 2); } .image-with-text__media-item {width: calc(40% - var(--grid-desktop-horizontal-spacing) \/ 2); }}",
-        "@media screen and (max-width: 749px) {.image-with-text .grid {gap: 2rem; } .image-with-text__text-item .image-with-text__content {padding-left: 2.5rem !important; padding-right: 2.5rem !important; }}"
+        "@media screen and (min-width: 750px) {.image-with-text__text-item {width: calc(60% - var(--grid-desktop-horizontal-spacing) / 2); } .image-with-text__media-item {width: calc(40% - var(--grid-desktop-horizontal-spacing) / 2); }}",
+        "@media screen and (max-width: 749px) {.image-with-text .grid {gap: 2rem; } .image-with-text__text-item .image-with-text__content {padding-left: 2.5rem !important; padding-right: 2.5rem !important; }}",
+        ".image-with-text__media {border: 1px solid #000000;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/ft_img_book_me.jpg",
+        "image": "shopify://shop_images/434994653_18012948935261963_6891352069444031119_n.jpg",
+        "header_left": false,
         "use_video": false,
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -193,12 +211,56 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "center",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-5",
+        "section_color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
+        "color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
         "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "mobile_content_alignment": "center",
         "padding_top": 64,
         "padding_bottom": 64
+      }
+    },
+    "image_with_text_79Vpwk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YjXMCF": {
+          "type": "heading",
+          "settings": {
+            "heading": "TIANNA MCFARLANE, FOUNDER & CEO",
+            "heading_size": "h2",
+            "text_alignment": false
+          }
+        },
+        "text_xNrzw3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tianna McFarlane is an award-winning entrepreneur and the founder of Heal In Colour, Canada’s first inclusive bandage brand.</p><p>The idea started with a simple moment. Tianna cut her knee, went looking for a bandage that matched her skin, and couldn’t find one. So she built the solution herself. She launched Heal In Colour in April 2021, and it’s now sold in Loblaws stores across Canada and used by school boards, universities and workplaces nationwide.</p><p>In a rare honour, Heal In Colour’s prototypes and products were preserved by <a href=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\" title=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\">Ingenium, Canada’s National Science and Technology collection centre</a>, for their significance to Canadian history.</p><p>Tianna’s work has earned national recognition. She is the 2026 recipient of the George Weston Entrepreneurship Award, presented by the BlackNorth Initiative, and has been named a Toronto Star Changemaker.&nbsp;</p><p>Tianna’s message is simple: representation belongs everywhere, even in the first aid kit.</p>",
+            "text_style": "body",
+            "use_color": false,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YjXMCF",
+        "text_xNrzw3"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/BTB_0714__2.jpg",
+        "header_left": false,
+        "use_video": false,
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -206,6 +268,7 @@
     "hic_topic_yQbFBW",
     "rich_text_nAKY9r",
     "rich_text_VrPqjq",
-    "image_with_text_9i6gHq"
+    "image_with_text_9i6gHq",
+    "image_with_text_79Vpwk"
   ]
 }
