@@ -1,0 +1,387 @@
+{% render 'hic-engage-style', section: section %}
+<div id="Engage-{{ section.id }}" class="hic-engage color-{{ section.settings.color_scheme }}">
+  <div class="page-width hic-engage__anchor"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}" tabindex="-1"{% endif %}>
+    <div class="hic-engage__intro">
+      {% if section.settings.eyebrow != blank %}<p class="hic-engage__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2 class="hic-engage__heading">{{ section.settings.heading | escape }}</h2>{% endif %}
+      {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
+    </div>
+    {%- capture topics -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'topic' %}
+          {% if block.settings.title != blank or block.settings.description != blank or block.settings.audience != blank %}
+            <article class="hic-engage__card" {{ block.shopify_attributes }}>
+              {% if block.settings.number != blank %}<span class="hic-engage__number" aria-hidden="true">{{ block.settings.number | escape }}</span>{% endif %}
+              {% if block.settings.title != blank %}<h3 class="hic-engage__card-heading ">{{ block.settings.title | escape }}</h3>{% endif %}
+              {% if block.settings.description != blank %}<div class="rte">{{ block.settings.description }}</div>{% endif %}
+              {% if block.settings.audience != blank %}<p class="hic-engage__audience">{{ block.settings.audience | escape }}</p>{% endif %}
+            </article>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {%- endcapture -%}
+    {% if topics != blank %}<div class="hic-engage__grid">{{ topics }}</div>{% endif %}
+    {%- capture formats -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'format' %}
+          {% if block.settings.title != blank or block.settings.description != blank %}
+            <div {{ block.shopify_attributes }}>
+              {% if block.settings.title != blank %}<h3 class="hic-engage__card-heading">{{ block.settings.title | escape }}</h3>{% endif %}
+              {% if block.settings.description != blank %}<div class="rte">{{ block.settings.description }}</div>{% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {%- endcapture -%}
+    {% if formats != blank %}<div class="hic-engage__grid hic-engage__formats">{{ formats }}</div>{% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Talks and workshops",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Talks & workshops"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What we can bring to your audience"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Introduction",
+      "default": "<p>Every session is tailored to your group, from a 20-minute keynote to a hands-on workshop.</p>"
+    },
+    {
+      "type": "paragraph",
+      "content": "Confirm available formats, session lengths and audience commitments with the client before publishing. Topic and format blocks keep their relative order within their own areas."
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section anchor",
+      "info": "Must match the Hero topics anchor. Use a unique value without #.",
+      "default": "engage-topics"
+    },
+    {
+      "type": "header",
+      "content": "Colours and typography"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "paragraph",
+      "content": "Optional colours inherit the selected theme scheme when empty. Check contrast after changing colours. Buttons use the theme scheme, with a contrasting foreground/background pair when its button contrast is too low."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text override"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading override"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent override"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background override"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border override"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 28,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "label": "Card heading size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Layout and spacing"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop card columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card spacing",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "class": "section",
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Speaking topic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Display number"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "audience",
+          "label": "Target audience"
+        }
+      ]
+    },
+    {
+      "type": "format",
+      "name": "Engagement format",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "[HIC] Talks and workshops",
+      "blocks": [
+        {
+          "type": "topic",
+          "settings": {
+            "number": "01",
+            "title": "Building Inclusive Products",
+            "description": "<p>Discover why inclusivity is essential in today’s market and how inclusive products can help transform lives.</p>",
+            "audience": "Great for: Product teams, students"
+          }
+        },
+        {
+          "type": "topic",
+          "settings": {
+            "number": "02",
+            "title": "Starting a Purpose-Driven Business",
+            "description": "<p>Gain insight into the highs and lows of entrepreneurship, from idea to execution.</p>",
+            "audience": "Great for: Founders, colleges"
+          }
+        },
+        {
+          "type": "topic",
+          "settings": {
+            "number": "03",
+            "title": "Becoming a Changemaker",
+            "description": "<p>Learn practical ways to create positive change, no matter where you are on your journey.</p>",
+            "audience": "Great for: Schools, youth groups"
+          }
+        },
+        {
+          "type": "format",
+          "settings": {
+            "title": "Keynotes",
+            "description": "<p>Inspiring talks for conferences and company events</p>"
+          }
+        },
+        {
+          "type": "format",
+          "settings": {
+            "title": "Workshops",
+            "description": "<p>Interactive sessions for teams and classrooms</p>"
+          }
+        },
+        {
+          "type": "format",
+          "settings": {
+            "title": "Panels & fireside chats",
+            "description": "<p>Candid conversations on business and inclusion</p>"
+          }
+        },
+        {
+          "type": "format",
+          "settings": {
+            "title": "Brand partnerships",
+            "description": "<p>Collaborations with brands who share our values</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

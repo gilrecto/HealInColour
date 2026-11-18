@@ -1,0 +1,484 @@
+{% render 'hic-engage-style', section: section %}
+{%- assign form_id = 'EngageContact-' | append: section.id -%}
+{%- assign form_label = section.settings.form_heading | default: section.settings.heading | default: 'Booking enquiry' -%}
+<div id="Engage-{{ section.id }}" class="hic-engage color-{{ section.settings.color_scheme }}">
+  <div class="page-width hic-engage__anchor"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}" tabindex="-1"{% endif %}>
+    <div class="hic-engage__split hic-engage__split--booking">
+      <div class="hic-engage__copy">
+        {% if section.settings.eyebrow != blank %}<p class="hic-engage__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.heading != blank %}<h2 class="hic-engage__heading">{{ section.settings.heading | escape }}</h2>{% endif %}
+        {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
+        {%- capture benefits -%}
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' and block.settings.text != blank %}<li {{ block.shopify_attributes }}><span class="hic-engage__check" aria-hidden="true">&#10003;</span><span>{{ block.settings.text | escape }}</span></li>{% endif %}
+          {% endfor %}
+        {%- endcapture -%}
+        {% if benefits != blank %}<ul class="hic-engage__checklist" role="list">{{ benefits }}</ul>{% endif %}
+      </div>
+      <div class="hic-engage__form-panel color-{{ section.settings.form_color_scheme }}">
+        {% if section.settings.form_heading != blank %}<h3 class="hic-engage__card-heading" id="{{ form_id }}-heading">{{ section.settings.form_heading | escape }}</h3>{% endif %}
+        {%- form 'contact', id: form_id, class: 'hic-engage__form', aria-label: form_label, data-shopify-captcha: 'true' -%}
+          {% if form.posted_successfully? %}
+            <div class="hic-engage__status" role="status" tabindex="-1" autofocus>{{ section.settings.success_message | default: 'Thank you. Your enquiry has been sent.' | escape }}</div>
+          {% elsif form.errors %}
+            <div class="hic-engage__status" role="alert" tabindex="-1" autofocus>
+              <p>{{ section.settings.error_heading | default: 'Please correct the following errors:' | escape }}</p>
+              <ul role="list">
+                {% for error in form.errors %}
+                  <li>
+                    {% if error == 'form' %}
+                      {{ form.errors.messages[error] }}
+                    {% else %}
+                      <a href="#{{ form_id }}-{{ error | handleize }}">{{ form.errors.translated_fields[error] | capitalize | escape }} {{ form.errors.messages[error] | escape }}</a>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if section.settings.required_note != blank %}<p>{{ section.settings.required_note | escape }}</p>{% endif %}
+          <div class="hic-engage__form-fields">
+            {%- assign fields = 'name,email,organization,event_date' | split: ',' -%}
+            {% for field in fields %}
+              {%- liquid
+                assign label_key = field | append: '_label'
+                assign placeholder_key = field | append: '_placeholder'
+                assign input_type = 'text'
+                assign autocomplete = 'off'
+                assign label = section.settings[label_key]
+                assign value = form[field]
+                case field
+                  when 'name'
+                    assign autocomplete = 'name'
+                    assign value = form.name | default: customer.name
+                    assign label = label | default: 'Full name'
+                  when 'email'
+                    assign input_type = 'email'
+                    assign autocomplete = 'email'
+                    assign value = form.email | default: customer.email
+                    assign label = label | default: 'Email'
+                  when 'organization'
+                    assign autocomplete = 'organization'
+                    assign label = label | default: 'Organization'
+                  when 'event_date'
+                    assign input_type = 'date'
+                    assign label = label | default: 'Event date'
+                endcase
+              -%}
+              <div class="hic-engage__field">
+                <label for="{{ form_id }}-{{ field | handleize }}">{{ label | escape }}{% if field == 'name' or field == 'email' %} <span aria-hidden="true">*</span>{% endif %}</label>
+                <input class="hic-engage__input" type="{{ input_type }}" id="{{ form_id }}-{{ field | handleize }}" name="contact[{{ field }}]" autocomplete="{{ autocomplete }}" value="{{ value | escape }}"
+                  {% if input_type != 'date' %}placeholder="{{ section.settings[placeholder_key] | escape }}"{% endif %}
+                  {% if field == 'name' or field == 'email' %}required aria-required="true"{% endif %}
+                  {% if field == 'email' %}spellcheck="false" autocapitalize="off"{% endif %}
+                  {% if form.errors contains field %}aria-invalid="true" aria-describedby="{{ form_id }}-{{ field | handleize }}-error"{% endif %}>
+                {% if form.errors contains field %}<small class="hic-engage__error" id="{{ form_id }}-{{ field | handleize }}-error">{{ form.errors.messages[field] | escape }}</small>{% endif %}
+              </div>
+            {% endfor %}
+            {%- capture engagement_options -%}
+              {% for block in section.blocks %}
+                {% if block.type == 'engagement' and block.settings.label != blank %}
+                  <option value="{{ block.settings.label | escape }}"{% if form.engagement_type == block.settings.label %} selected{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</option>
+                {% endif %}
+              {% endfor %}
+            {%- endcapture -%}
+            {% if engagement_options != blank %}
+              <div class="hic-engage__field hic-engage__field--wide">
+                <label for="{{ form_id }}-engagement-type">{{ section.settings.engagement_label | default: 'Engagement type' | escape }}</label>
+                <select class="hic-engage__input" id="{{ form_id }}-engagement-type" name="contact[engagement_type]">
+                  <option value="">{{ section.settings.engagement_placeholder | escape }}</option>
+                  {{ engagement_options }}
+                </select>
+              </div>
+            {% endif %}
+            <div class="hic-engage__field hic-engage__field--wide">
+              <label for="{{ form_id }}-body">{{ section.settings.message_label | default: 'Event details' | escape }} <span aria-hidden="true">*</span></label>
+              <textarea class="hic-engage__input" id="{{ form_id }}-body" name="contact[body]" rows="6" required aria-required="true" placeholder="{{ section.settings.message_placeholder | escape }}"{% if form.errors contains 'body' %} aria-invalid="true" aria-describedby="{{ form_id }}-body-error"{% endif %}>{{ form.body | escape }}</textarea>
+              {% if form.errors contains 'body' %}<small class="hic-engage__error" id="{{ form_id }}-body-error">{{ form.errors.messages.body | escape }}</small>{% endif %}
+            </div>
+          </div>
+          <button type="submit" class="button hic-engage__button">{{ section.settings.button_label | default: 'Send request' | escape }}</button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Booking enquiry",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Book Tianna"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Let’s bring this to your audience"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Tell us a little about your event and we’ll get back to you within two business days.</p>"
+    },
+    {
+      "type": "paragraph",
+      "content": "Verify the two-business-day response time, travel/virtual availability and attendee bandage commitments with the client before publishing. Submissions use Shopify’s existing contact handling. Keep contact-form spam protection enabled in Online Store > Preferences."
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section anchor",
+      "info": "Must match the Hero booking anchor. Use a unique value without #.",
+      "default": "engage-booking"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Booking request"
+    },
+    {
+      "type": "color_scheme",
+      "id": "form_color_scheme",
+      "label": "Form colour scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "id": "required_note",
+      "label": "Required fields note",
+      "default": "Fields marked * are required."
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Full name label",
+      "default": "Full name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Full name placeholder",
+      "default": "Full name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "organization_label",
+      "label": "Organization label",
+      "default": "Organization"
+    },
+    {
+      "type": "text",
+      "id": "organization_placeholder",
+      "label": "Organization placeholder",
+      "default": "Organization"
+    },
+    {
+      "type": "text",
+      "id": "event_date_label",
+      "label": "Event date label",
+      "default": "Event date"
+    },
+    {
+      "type": "text",
+      "id": "engagement_label",
+      "label": "Engagement type label",
+      "default": "Engagement type"
+    },
+    {
+      "type": "text",
+      "id": "engagement_placeholder",
+      "label": "Engagement type placeholder",
+      "default": "Choose an engagement type"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Event details label",
+      "default": "Event details"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Event details placeholder",
+      "default": "Tell us about your event"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Submit button label",
+      "default": "Send request"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success confirmation",
+      "default": "Thank you. Your booking enquiry has been sent."
+    },
+    {
+      "type": "text",
+      "id": "error_heading",
+      "label": "Error heading",
+      "default": "Please correct the following errors:"
+    },
+    {
+      "type": "header",
+      "content": "Colours and typography"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "paragraph",
+      "content": "Optional colours inherit the selected theme scheme when empty. Check contrast after changing colours. Buttons use the theme scheme, with a contrasting foreground/background pair when its button contrast is too low."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text override"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading override"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent override"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 28,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Layout and spacing"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "class": "section",
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Booking benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text"
+        }
+      ]
+    },
+    {
+      "type": "engagement",
+      "name": "Engagement option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Option label"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "[HIC] Booking enquiry",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Talks tailored to your audience and goals"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "In person across Ontario or virtual anywhere"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Heal In Colour bandages for every attendee"
+          }
+        },
+        {
+          "type": "engagement",
+          "settings": {
+            "label": "Keynote"
+          }
+        },
+        {
+          "type": "engagement",
+          "settings": {
+            "label": "Workshop"
+          }
+        },
+        {
+          "type": "engagement",
+          "settings": {
+            "label": "Panel"
+          }
+        },
+        {
+          "type": "engagement",
+          "settings": {
+            "label": "Partnership"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

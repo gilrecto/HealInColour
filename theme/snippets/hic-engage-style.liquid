@@ -1,0 +1,79 @@
+{% doc %}
+  Loads shared Engage styles and applies section-specific design settings.
+  @param {section} section - The Engage section.
+{% enddoc %}
+{{ 'hic-engage.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign scheme = section.settings.color_scheme
+  assign button_contrast = scheme.settings.button | color_contrast: scheme.settings.button_label
+  assign heading_contrast = scheme.settings.secondary_button_label | color_contrast: scheme.settings.background
+
+  comment
+    Resolve empty overrides before Theme Editor colour substitution in style.
+    Keep the setting output inside style so populated colours still preview live.
+  endcomment
+  assign color_overrides = 'background_color,text_color,heading_color,accent_color,card_color,border_color' | split: ','
+  assign active_overrides = ''
+  for color_id in color_overrides
+    if section.settings[color_id] != blank
+      assign active_overrides = active_overrides | append: color_id | append: ','
+    endif
+  endfor
+  assign active_overrides = active_overrides | split: ','
+
+  assign form_scheme = section.settings.form_color_scheme
+  if form_scheme != blank
+    assign form_button_contrast = form_scheme.settings.button | color_contrast: form_scheme.settings.button_label
+    assign form_background_brightness = form_scheme.settings.background | color_brightness
+  endif
+-%}
+{%- style -%}
+  #Engage-{{ section.id }} {
+    --page-width: {% if settings.fluid %}100%{% else %}{{ settings.page_width | divided_by: 10.0 }}rem{% endif %};
+    {% if active_overrides contains 'background_color' %}
+      --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }}, {{ section.settings.background_color.blue }};
+      --gradient-background: {{ section.settings.background_color }};
+      --color-secondary-button: var(--color-background);
+    {% endif %}
+    {% if active_overrides contains 'text_color' %}
+      --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }}, {{ section.settings.text_color.blue }};
+    {% endif %}
+    {% if button_contrast < 4.5 %}
+      --color-button: var(--color-foreground);
+      --color-button-text: var(--color-background);
+    {% endif %}
+    {% if heading_contrast < 4.5 %}
+      --color-secondary-button-text: var(--color-foreground);
+      --color-link: var(--color-foreground);
+    {% endif %}
+    {% if active_overrides contains 'heading_color' %}--eng-heading: {{ section.settings.heading_color }};{% endif %}
+    {% if active_overrides contains 'accent_color' %}--eng-accent: {{ section.settings.accent_color }};{% endif %}
+    {% if active_overrides contains 'card_color' %}--eng-card: {{ section.settings.card_color }};{% endif %}
+    {% if active_overrides contains 'border_color' %}--eng-border: {{ section.settings.border_color }};{% endif %}
+    --eng-heading-size: {{ section.settings.heading_size | divided_by: 10.0 }}rem;
+    --eng-heading-mobile: {{ section.settings.heading_size_mobile | divided_by: 10.0 }}rem;
+    --eng-card-heading: {{ section.settings.card_heading_size | default: 28 | divided_by: 10.0 }}rem;
+    --eng-body-size: {{ section.settings.body_size | divided_by: 10.0 }}rem;
+    --eng-radius: {{ section.settings.corner_radius | default: 16 }}px;
+    --eng-gap: {{ section.settings.card_gap | default: 24 }}px;
+    --eng-columns: {{ section.settings.columns_desktop | default: 3 }};
+    --eng-image-ratio: {{ section.settings.image_ratio | default: '3/4' }};
+    --eng-align: {{ section.settings.text_alignment }};
+    --eng-mobile-align: {{ section.settings.text_alignment_mobile }};
+    --eng-justify: {{ section.settings.text_alignment | replace: 'left', 'flex-start' | replace: 'right', 'flex-end' }};
+    --eng-mobile-justify: {{ section.settings.text_alignment_mobile | replace: 'left', 'flex-start' | replace: 'right', 'flex-end' }};
+    --eng-padding-top: {{ section.settings.padding_top }}px;
+    --eng-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --eng-mobile-top: {{ section.settings.padding_top_mobile }}px;
+    --eng-mobile-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+  {% if form_scheme != blank %}
+    #Engage-{{ section.id }} .hic-engage__form-panel {
+      color-scheme: {% if form_background_brightness < 128 %}dark{% else %}light{% endif %};
+      {% if form_button_contrast < 4.5 %}
+        --color-button: var(--color-foreground);
+        --color-button-text: var(--color-background);
+      {% endif %}
+    }
+  {% endif %}
+{%- endstyle -%}

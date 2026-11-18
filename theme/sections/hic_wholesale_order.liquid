@@ -1,0 +1,385 @@
+{% render 'hic-wholesale-style', section: section %}
+{%- liquid
+  assign cta_link = section.settings.cta_url
+  if section.settings.cta_type == 'email'
+    assign cta_link = ''
+    if section.settings.cta_email != blank
+      assign email_address = section.settings.cta_email | strip | remove: 'mailto:' | url_encode | replace: '%40', '@'
+      assign cta_link = 'mailto:' | append: email_address
+    endif
+  endif
+-%}
+<div id="Wholesale-{{ section.id }}" class="hic-wholesale color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="hic-wholesale__header">
+        {%- if section.settings.eyebrow != blank -%}<p class="hic-wholesale__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="hic-wholesale__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- capture steps -%}
+      {%- for block in section.blocks -%}
+        {%- if block.settings.number != blank or block.settings.title != blank or block.settings.description != blank -%}
+          <li class="hic-wholesale__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.number != blank -%}<span class="hic-wholesale__number" aria-hidden="true">{{ block.settings.number | escape }}</span>{%- endif -%}
+            {%- if block.settings.title != blank -%}<h3 class="hic-wholesale__card-heading">{{ block.settings.title | escape }}</h3>{%- endif -%}
+            {%- if block.settings.description != blank -%}<div class="rte">{{ block.settings.description }}</div>{%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if steps != blank -%}<ol class="hic-wholesale__grid" role="list">{{ steps }}</ol>{%- endif -%}
+    {%- if section.settings.cta_label != blank and cta_link != blank -%}
+      <div class="hic-wholesale__actions hic-wholesale__order-actions">
+        <a class="button hic-wholesale__button" href="{{ cta_link | escape }}">{{ section.settings.cta_label | escape }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] How to order",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How to order"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Wholesale in three easy steps"
+    },
+    {
+      "type": "header",
+      "content": "Enquiry button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Request our price list"
+    },
+    {
+      "type": "select",
+      "id": "cta_type",
+      "label": "Button destination type",
+      "options": [
+        {
+          "value": "email",
+          "label": "Email"
+        },
+        {
+          "value": "url",
+          "label": "URL"
+        }
+      ],
+      "default": "email"
+    },
+    {
+      "type": "text",
+      "id": "cta_email",
+      "label": "Email address",
+      "info": "Enter the enquiry email address without mailto:."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Typography and layout"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "label": "Card heading size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card and column spacing",
+      "min": 12,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop card columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow, highlight and numbers",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Cards and audience chips",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Card borders",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Primary button background",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Primary button text",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "[HIC] How to order",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Reach out",
+            "description": "<p>Tell us about your store or organization.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Get your price list",
+            "description": "<p>We will send our wholesale price list and vendor information form.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Place your order",
+            "description": "<p>Choose your shades and quantities, and we will get every shade to you.</p>"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Step heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

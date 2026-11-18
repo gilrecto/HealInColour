@@ -11,62 +11,139 @@
   "wrapper": "div.hic--main-stokist",
   "sections": {
     "image_with_text_VFmANd": {
-      "type": "image-with-text",
+      "type": "hic_wholesale_hero",
+      "settings": {
+        "eyebrow": "Wholesale & retail",
+        "heading": "Bring every shade",
+        "highlight": "To your organization",
+        "heading_tag": "h1",
+        "description": "<p>We would be happy to assist with your wholesale needs, please send us an email to <a href=\"mailto:info@healincolour.ca\" title=\"mailto:info@healincolour.ca\">info@healincolour.ca</a> for our price list and vendor information form.</p>",
+        "image": "shopify://shop_images/HOMEPAGE_2_5f80c7e6-4672-4969-a72b-383fd5e371eb.jpg",
+        "image_alt": "",
+        "mobile_layout": "content-first",
+        "primary_label": "Request our price list",
+        "primary_link": "mailto:info@healincolour.ca",
+        "secondary_label": "Find a store",
+        "secondary_action": "locations",
+        "locations_anchor": "wholesale-locations",
+        "secondary_link": "",
+        "heading_size": 60,
+        "heading_size_mobile": 28,
+        "body_size": 16,
+        "corner_radius": 16,
+        "card_gap": 48,
+        "text_alignment": "left",
+        "text_alignment_mobile": "center",
+        "color_scheme": "",
+        "background_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "accent_color": "",
+        "button_color": "",
+        "button_text_color": "",
+        "padding_top": 96,
+        "padding_bottom": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
+      }
+    },
+    "wholesale_benefits": {
+      "type": "hic_wholesale_benefits",
       "blocks": {
-        "heading_gFWFx6": {
-          "type": "heading",
+        "1": {
+          "type": "benefit",
           "settings": {
-            "heading": "Visit Us",
-            "heading_size": "ts-text-clamp_l",
-            "text_alignment": false
+            "title": "Canada's First",
+            "description": "<p>The original Canadian inclusive bandage brand, with products preserved by Ingenium.</p>"
           }
         },
-        "text_YAnH6K": {
-          "type": "text",
+        "2": {
+          "type": "benefit",
           "settings": {
-            "text": "<p>We would be happy to assist with your wholesale needs, please send us an email to <a href=\"mailto:info@healincolour.ca\" title=\"mailto:info@healincolour.ca\">info@healincolour.ca</a> for our price list and vendor information form.</p>",
-            "text_style": "body",
-            "use_color": true,
-            "text_color": "#000000"
+            "title": "Shelf-Ready",
+            "description": "<p>Bilingual English and French packaging, five SKUs, 30 bandages per box.</p>"
           }
         },
-        "button_Mxfi3N": {
-          "type": "button",
+        "3": {
+          "type": "benefit",
           "settings": {
-            "button_label": "SEE MORE",
-            "button_link": "#",
-            "button_style_secondary": false,
-            "border_color": "#4b2d20",
-            "calendly_popup": false
+            "title": "Quality You Can Trust",
+            "description": "<p>Latex-free, sterile and made with flexible elastic fabric.</p>"
+          }
+        },
+        "4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Proven on Shelf",
+            "description": "<p>Already sold in major grocery banners across Canada.</p>"
+          }
+        },
+        "5": {
+          "type": "audience",
+          "settings": {
+            "title": "Retailers"
+          }
+        },
+        "6": {
+          "type": "audience",
+          "settings": {
+            "title": "School boards"
+          }
+        },
+        "7": {
+          "type": "audience",
+          "settings": {
+            "title": "Universities & bookstores"
+          }
+        },
+        "8": {
+          "type": "audience",
+          "settings": {
+            "title": "Workplaces & first aid kits"
+          }
+        },
+        "9": {
+          "type": "audience",
+          "settings": {
+            "title": "Clinics & pharmacies"
           }
         }
       },
       "block_order": [
-        "heading_gFWFx6",
-        "text_YAnH6K",
-        "button_Mxfi3N"
-      ],
-      "custom_css": [
-        ".image-with-text__media {border: 1px solid #000000;}",
-        "@media only screen and (min-width: 992px) {.image-with-text {padding-top: 6rem; }}",
-        "@media only screen and (min-width: 750px) {.image-with-text__text-item.grid__item {width: calc(40% - var(--grid-desktop-horizontal-spacing) / 2); } .image-with-text__text-item.grid__item .image-with-text__content {padding-left: 4.8vw !important; padding-top: 0; }}"
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
       ],
       "settings": {
-        "image": "shopify://shop_images/DSC08578-Edit.jpg",
-        "header_left": false,
-        "use_video": false,
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
-        "color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "padding_top": 96,
-        "padding_bottom": 0
+        "eyebrow": "Why stock Heal In Colour",
+        "heading": "Made for everyone. Ready for retail.",
+        "audience_heading": "We work with",
+        "heading_size": 40,
+        "heading_size_mobile": 24,
+        "card_heading_size": 20,
+        "body_size": 16,
+        "corner_radius": 16,
+        "card_gap": 20,
+        "columns_desktop": "4",
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "accent_color": "",
+        "card_color": "",
+        "border_color": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
       }
     },
     "hic_locations_GKMj87": {
@@ -130,20 +207,104 @@
         "location_J7QG7c"
       ],
       "settings": {
-        "section_colors": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
-        "title": "ALL",
-        "text_alignment": "ts-text-center",
+        "layout": "retailer_cards",
+        "retailers": [],
+        "eyebrow": "Visit us",
+        "anchor_id": "wholesale-locations",
+        "locator_label": "Store locator",
+        "section_colors": "scheme-1",
+        "title": "Find us in store",
+        "text_alignment": "ts-text-left",
         "region": "CANADA",
         "pad_desk": 80,
         "pad_lap": 70,
         "pad_tab": 50,
         "pad_mob": 40,
-        "text_alignment_mobile": "center"
+        "text_alignment_mobile": "left",
+        "heading_size": 44,
+        "heading_size_mobile": 32,
+        "card_heading_size": 24,
+        "body_size": 16,
+        "corner_radius": 16,
+        "card_gap": 20,
+        "columns_desktop": "3",
+        "background_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "accent_color": "",
+        "card_color": "",
+        "border_color": ""
+      }
+    },
+    "wholesale_order": {
+      "type": "hic_wholesale_order",
+      "blocks": {
+        "1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Reach out",
+            "description": "<p>Tell us about your store or organization.</p>"
+          }
+        },
+        "2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Get your price list",
+            "description": "<p>We will send our wholesale price list and vendor information form.</p>"
+          }
+        },
+        "3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Place your order",
+            "description": "<p>Choose your shades and quantities, and we will get every shade to you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "1",
+        "2",
+        "3"
+      ],
+      "settings": {
+        "eyebrow": "How to order",
+        "heading": "Wholesale in three easy steps",
+        "cta_label": "Email info@healincolour.ca",
+        "cta_type": "email",
+        "cta_email": "info@healincolour.ca",
+        "cta_url": "",
+        "heading_size": 44,
+        "heading_size_mobile": 32,
+        "card_heading_size": 24,
+        "body_size": 16,
+        "corner_radius": 16,
+        "card_gap": 20,
+        "columns_desktop": "3",
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "color_scheme": "scheme-2",
+        "background_color": "",
+        "heading_color": "",
+        "text_color": "",
+        "accent_color": "",
+        "card_color": "",
+        "border_color": "",
+        "button_color": "",
+        "button_text_color": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
       }
     }
   },
   "order": [
     "image_with_text_VFmANd",
-    "hic_locations_GKMj87"
+    "wholesale_benefits",
+    "hic_locations_GKMj87",
+    "wholesale_order"
   ]
 }

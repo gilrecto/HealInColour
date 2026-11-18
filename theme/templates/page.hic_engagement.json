@@ -9,6 +9,451 @@
  */
 {
   "sections": {
+    "engage_hero": {
+      "type": "hic_engage_hero",
+      "blocks": {
+        "audience_1": {
+          "type": "audience",
+          "settings": {
+            "label": "Schools K–12"
+          }
+        },
+        "audience_2": {
+          "type": "audience",
+          "settings": {
+            "label": "Colleges & universities"
+          }
+        },
+        "audience_3": {
+          "type": "audience",
+          "settings": {
+            "label": "Corporate teams & ERGs"
+          }
+        },
+        "audience_4": {
+          "type": "audience",
+          "settings": {
+            "label": "Conferences & panels"
+          }
+        }
+      },
+      "block_order": [
+        "audience_1",
+        "audience_2",
+        "audience_3",
+        "audience_4"
+      ],
+      "settings": {
+        "eyebrow": "Speaking · Workshops · Partnerships",
+        "heading": "Engage with",
+        "highlight": "Heal In Colour",
+        "heading_tag": "h1",
+        "description": "<p>Bring founder Tianna McFarlane to your school, team or event for honest, energizing talks on inclusive products, purpose-driven business and creating real change.</p>",
+        "image": "shopify://shop_images/BTB_0714__2.jpg",
+        "image_alt": "Tianna McFarlane, Founder and CEO of Heal In Colour",
+        "caption": "Tianna McFarlane, Founder & CEO",
+        "image_ratio": "adapt",
+        "mobile_layout": "text-first",
+        "primary_label": "Book Tianna",
+        "booking_anchor": "engage-booking",
+        "secondary_label": "Explore topics",
+        "topics_anchor": "engage-topics",
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accent_color": "",
+        "heading_size": 72,
+        "heading_size_mobile": 36,
+        "body_size": 16,
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "corner_radius": 16,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "engage_featured_in": {
+      "type": "hic_featured_in",
+      "blocks": {
+        "logo_img_KgrYxV": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/ctvnews_500x500_a0af3540-5ae2-44df-bf59-1a6f6c8c6c93.jpg",
+            "link": "https://www.ctvnews.ca/lifestyle/canadian-startup-creates-bandages-for-black-and-brown-skin-tones-1.5411063",
+            "new_tab": true
+          }
+        },
+        "logo_img_yamnWP": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/CBC.jpg",
+            "link": "https://www.cbc.ca/news/canada/toronto/toronto-entrepreneur-creates-startup-to-offer-bandages-for-black-and-brown-skin-tones-1.6014831",
+            "new_tab": true
+          }
+        },
+        "logo_img_MHYakQ": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/Toronto_Star_logo_transparent.png",
+            "link": "https://www.thestar.com/life/together/people/she-couldn-t-find-bandages-to-match-her-skin-tone-so-she-launched-heal-in/article_72b1c263-73f7-5f0c-83bf-eb0d8a1d6e9e.html",
+            "new_tab": false
+          }
+        },
+        "logo_img_WYmAV4": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/bt.png",
+            "link": "https://www.breakfasttelevision.ca/videos/heal-in-colour/",
+            "new_tab": false
+          }
+        },
+        "logo_img_6mtmap": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/durham-college-vector-logo.png",
+            "link": "https://durhamcollege.ca/new-notable/dc-highlights/dc-grad-launches-inclusive-bandage-brand-heal-in-colour",
+            "new_tab": false
+          }
+        },
+        "logo_img_d3dmxC": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/GLOBAL.png",
+            "link": "https://globalnews.ca/news/4352512/living-in-colour/",
+            "new_tab": false
+          }
+        },
+        "logo_img_9mCBDR": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/Metrolandlogo.png",
+            "link": "https://www.toronto.com/news/north-york-woman-launches-line-of-bandages-to-match-skin-tone/article_3a7e1f35-c366-55e7-a04d-33e38614d611.html?",
+            "new_tab": false
+          }
+        },
+        "logo_img_g9eWDd": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/CITYNEWS.png",
+            "link": "https://toronto.citynews.ca/video/2021/05/06/healing-diversity-one-bandage-at-a-time/",
+            "new_tab": true
+          }
+        },
+        "logo_img_JBN9kH": {
+          "type": "logo_img",
+          "settings": {
+            "image": "shopify://shop_images/cp24_breakfast-logo-web_400x400_0e605bce-11a5-42ef-94c3-ce6ace110ee2.jpg",
+            "link": "https://www.breakfasttelevision.ca/videos/heal-in-colour/",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_KgrYxV",
+        "logo_img_yamnWP",
+        "logo_img_MHYakQ",
+        "logo_img_WYmAV4",
+        "logo_img_6mtmap",
+        "logo_img_d3dmxC",
+        "logo_img_9mCBDR",
+        "logo_img_g9eWDd",
+        "logo_img_JBN9kH"
+      ],
+      "settings": {
+        "section_colors": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
+        "heading": "AS FEATURED IN",
+        "heading_size": "ts-text-clamp_l",
+        "subheading": "",
+        "alignment": "ts-text-center",
+        "pad_desk_top": 40,
+        "pad_desk_btm": 40,
+        "pad_lap_top": 40,
+        "pad_lap_btm": 40,
+        "pad_tab_top": 40,
+        "pad_tab_btm": 40,
+        "pad_mob_top": 40,
+        "pad_mob_btm": 40
+      }
+    },
+    "engage_topics": {
+      "type": "hic_engage_topics",
+      "blocks": {
+        "topic_1": {
+          "type": "topic",
+          "settings": {
+            "number": "01",
+            "title": "Building Inclusive Products",
+            "description": "<p>Discover why inclusivity is essential in today’s market and how inclusive products can help transform lives.</p>",
+            "audience": "Great for: Product teams, students"
+          }
+        },
+        "topic_2": {
+          "type": "topic",
+          "settings": {
+            "number": "02",
+            "title": "Starting a Purpose-Driven Business",
+            "description": "<p>Gain insight into the highs and lows of entrepreneurship, from idea to execution.</p>",
+            "audience": "Great for: Founders, colleges"
+          }
+        },
+        "topic_3": {
+          "type": "topic",
+          "settings": {
+            "number": "03",
+            "title": "Becoming a Changemaker",
+            "description": "<p>Learn practical ways to create positive change, no matter where you are on your journey.</p>",
+            "audience": "Great for: Schools, youth groups"
+          }
+        },
+        "format_4": {
+          "type": "format",
+          "settings": {
+            "title": "Keynotes",
+            "description": "<p>Inspiring talks for conferences and company events</p>"
+          }
+        },
+        "format_5": {
+          "type": "format",
+          "settings": {
+            "title": "Workshops",
+            "description": "<p>Interactive sessions for teams and classrooms</p>"
+          }
+        },
+        "format_6": {
+          "type": "format",
+          "settings": {
+            "title": "Panels & fireside chats",
+            "description": "<p>Candid conversations on business and inclusion</p>"
+          }
+        },
+        "format_7": {
+          "type": "format",
+          "settings": {
+            "title": "Brand partnerships",
+            "description": "<p>Collaborations with brands who share our values</p>"
+          }
+        }
+      },
+      "block_order": [
+        "topic_1",
+        "topic_2",
+        "topic_3",
+        "format_4",
+        "format_5",
+        "format_6",
+        "format_7"
+      ],
+      "settings": {
+        "eyebrow": "Talks & workshops",
+        "heading": "What we can bring to your audience",
+        "description": "<p>Every session is tailored to your group, from a 20-minute keynote to a hands-on workshop.</p>",
+        "anchor": "engage-topics",
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accent_color": "",
+        "card_color": "#FFFAF4",
+        "border_color": "#B59D83",
+        "heading_size": 52,
+        "heading_size_mobile": 36,
+        "body_size": 16,
+        "card_heading_size": 28,
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "columns_desktop": 3,
+        "card_gap": 24,
+        "corner_radius": 16,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "engage_founder": {
+      "type": "hic_engage_founder",
+      "blocks": {
+        "achievement_1": {
+          "type": "achievement",
+          "settings": {
+            "title": "Ingenium",
+            "description": "<p>Products preserved in Canada’s national collection</p>"
+          }
+        },
+        "achievement_2": {
+          "type": "achievement",
+          "settings": {
+            "title": "CSB100",
+            "description": "<p>2026 Canada Small Business 100</p>"
+          }
+        },
+        "achievement_3": {
+          "type": "achievement",
+          "settings": {
+            "title": "Dragons’ Den",
+            "description": "<p>As seen on CBC, November 2026</p>"
+          }
+        }
+      },
+      "block_order": [
+        "achievement_1",
+        "achievement_2",
+        "achievement_3"
+      ],
+      "settings": {
+        "eyebrow": "Meet the founder",
+        "name": "Tianna McFarlane",
+        "title": "Award-winning entrepreneur · Founder & CEO",
+        "biography": "<p>Tianna McFarlane is an award-winning entrepreneur and the founder of Heal In Colour, Canada’s first inclusive bandage brand.</p><p>The idea started with a simple moment. Tianna cut her knee, went looking for a bandage that matched her skin, and couldn’t find one. So she built the solution herself. She launched Heal In Colour in April 2021, and it’s now sold in Loblaws stores across Canada and used by school boards, universities and workplaces nationwide.</p><p>In a rare honour, Heal In Colour’s prototypes and products were preserved by <a href=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\" title=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\">Ingenium, Canada’s National Science and Technology collection centre</a>, for their significance to Canadian history.</p><p>Tianna’s work has earned national recognition. She is the 2026 recipient of the George Weston Entrepreneurship Award, presented by the BlackNorth Initiative, and has been named a Toronto Star Changemaker.&nbsp;</p><p>Tianna’s message is simple: representation belongs everywhere, even in the first aid kit.</p>",
+        "image": "shopify://shop_images/whoweare_img_c0494849-3ccb-4641-bb27-dc2ca2975914.png",
+        "image_alt": "Tianna McFarlane, founder of Heal In Colour",
+        "caption": "",
+        "image_ratio": "adapt",
+        "mobile_layout": "image-first",
+        "primary_label": "",
+        "primary_link": "",
+        "secondary_label": "",
+        "secondary_link": "",
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accent_color": "",
+        "card_color": "#FFFAF4",
+        "border_color": "#B59D83",
+        "heading_size": 52,
+        "heading_size_mobile": 36,
+        "body_size": 16,
+        "card_heading_size": 28,
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "columns_desktop": 3,
+        "card_gap": 24,
+        "corner_radius": 16,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "engage_quote": {
+      "type": "hic_engage_quote",
+      "settings": {
+        "quote": "“Representation belongs everywhere, even in the first aid kit.”",
+        "attribution": "Tianna McFarlane",
+        "color_scheme": "scheme-cc7267ca-e1da-41a9-85b9-cb71f3eb9260",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accent_color": "#B7703F",
+        "heading_size": 52,
+        "heading_size_mobile": 32,
+        "body_size": 16,
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "engage_booking": {
+      "type": "hic_engage_booking",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Talks tailored to your audience and goals"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "In person across Ontario or virtual anywhere"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Heal In Colour bandages for every attendee"
+          }
+        },
+        "engagement_4": {
+          "type": "engagement",
+          "settings": {
+            "label": "Keynote"
+          }
+        },
+        "engagement_5": {
+          "type": "engagement",
+          "settings": {
+            "label": "Workshop"
+          }
+        },
+        "engagement_6": {
+          "type": "engagement",
+          "settings": {
+            "label": "Panel"
+          }
+        },
+        "engagement_7": {
+          "type": "engagement",
+          "settings": {
+            "label": "Partnership"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "engagement_4",
+        "engagement_5",
+        "engagement_6",
+        "engagement_7"
+      ],
+      "settings": {
+        "eyebrow": "Book Tianna",
+        "heading": "Let’s bring this to your audience",
+        "description": "<p>Tell us a little about your event and we’ll get back to you within two business days.</p>",
+        "anchor": "engage-booking",
+        "form_heading": "Booking request",
+        "form_color_scheme": "scheme-4",
+        "required_note": "Fields marked * are required.",
+        "name_label": "Full name",
+        "name_placeholder": "Full name",
+        "email_label": "Email",
+        "email_placeholder": "Email",
+        "organization_label": "Organization",
+        "organization_placeholder": "Organization",
+        "event_date_label": "Event date",
+        "engagement_label": "Engagement type",
+        "engagement_placeholder": "Choose an engagement type",
+        "message_label": "Event details",
+        "message_placeholder": "Tell us about your event",
+        "button_label": "Send request",
+        "success_message": "Thank you. Your booking enquiry has been sent.",
+        "error_heading": "Please correct the following errors:",
+        "color_scheme": "scheme-1",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accent_color": "",
+        "heading_size": 52,
+        "heading_size_mobile": 36,
+        "body_size": 16,
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "corner_radius": 16,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "hic_topic_yQbFBW": {
       "type": "hic_topic",
       "blocks": {
@@ -39,6 +484,7 @@
         "topic_eE9qRW",
         "topic_AcyXBB"
       ],
+      "disabled": true,
       "custom_css": [
         ".topics {padding-top: 7.813vw;}",
         "h2.section__heading {line-height: 1; color: #4b2d20;}"
@@ -244,6 +690,7 @@
         "heading_YjXMCF",
         "text_xNrzw3"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/BTB_0714__2.jpg",
@@ -265,6 +712,12 @@
     }
   },
   "order": [
+    "engage_hero",
+    "engage_featured_in",
+    "engage_topics",
+    "engage_founder",
+    "engage_quote",
+    "engage_booking",
     "hic_topic_yQbFBW",
     "rich_text_nAKY9r",
     "rich_text_VrPqjq",

@@ -1,3 +1,44 @@
+{%- if section.settings.layout == 'retailer_cards' -%}
+  {% render 'hic-wholesale-style', section: section, location_spacing: true %}
+  <div id="Wholesale-{{ section.id }}" class="hic-wholesale color-{{ section.settings.section_colors }}">
+    <div class="page-width">
+      <div class="hic-wholesale__anchor"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handleize }}" tabindex="-1"{% endif %}>
+        {%- if section.settings.eyebrow != blank or section.settings.title != blank or section.settings.region != blank -%}
+          <div class="hic-wholesale__header">
+            {%- if section.settings.eyebrow != blank -%}<p class="hic-wholesale__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+            {%- if section.settings.title != blank -%}<h2 class="hic-wholesale__heading">{{ section.settings.title }}</h2>{%- endif -%}
+            {%- if section.settings.region != blank -%}<div class="rte">{{ section.settings.region }}</div>{%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- capture retailer_cards -%}
+          {%- if section.settings.retailers != blank -%}
+            {%- for retailer in section.settings.retailers -%}
+              {%- if retailer.retailer_name.value != blank -%}
+                {%- assign retailer_link_label = retailer.store_locator_url.value.text | default: section.settings.locator_label -%}
+                {% render 'hic-retailer-card',
+                  name: retailer.retailer_name.value,
+                  coverage: retailer.coverage_region.value,
+                  country: retailer.country.value,
+                  province: retailer.province.value,
+                  logo: retailer.retailer_logo.value,
+                  url: retailer.store_locator_url.value.url,
+                  link_label: retailer_link_label
+                %}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in section.blocks -%}
+              {%- if block.settings.name != blank or block.settings.address != blank or block.settings.phone != blank -%}
+                {% render 'hic-retailer-card', name: block.settings.name, coverage: block.settings.address, phone: block.settings.phone, attributes: block.shopify_attributes, legacy_content: true %}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- if retailer_cards != blank -%}<ul class="hic-wholesale__grid" role="list">{{ retailer_cards }}</ul>{%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- else -%}
 {{ 'global.css' | asset_url | stylesheet_tag }}
 
 {% assign setting = section.settings %}
@@ -84,12 +125,21 @@
 	</div>
 </div>
 
+{%- endif -%}
+
 {% schema %}
 	{
 		"name": "[HIC] Locations",
 		"class": "hic-locations",
 		"tag": "section",
 		"settings": [
+      {"type": "select", "id": "layout", "label": "Layout", "options": [{"value": "legacy", "label": "Original locations"}, {"value": "retailer_cards", "label": "Retailer cards"}], "default": "legacy"},
+      {"type": "header", "content": "Retailer card content"},
+      {"type": "metaobject_list", "id": "retailers", "label": "Retailer entries", "metaobject_type": "hic_retailer_location", "limit": 50, "info": "Create the storefront-accessible hic_retailer_location definition first. Select and reorder entries here. If none are available, saved Store Location blocks are shown."},
+      {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Visit us"},
+      {"type": "text", "id": "anchor_id", "label": "Anchor ID", "info": "For retailer cards. Must match the Wholesale hero anchor ID. Use a unique ID without #.", "default": "wholesale-locations"},
+      {"type": "text", "id": "locator_label", "label": "Store locator link label", "default": "Store locator"},
+      {"type": "header", "content": "Existing location settings"},
 			{
 				"type": "color_scheme",
 				"id": "section_colors",
@@ -200,7 +250,23 @@
 				],
 				"default": "center",
 				"label": "Alignment"
-			}
+			},
+      {"type": "paragraph", "content": "The following design controls apply only to the Retailer cards layout. The original layout and saved location blocks remain available."},
+      {"type": "header", "content": "Typography and layout"},
+      {"type": "range", "id": "heading_size", "label": "Desktop heading size", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 44},
+      {"type": "range", "id": "heading_size_mobile", "label": "Mobile heading size", "min": 24, "max": 56, "step": 2, "unit": "px", "default": 32},
+      {"type": "range", "id": "card_heading_size", "label": "Card heading size", "min": 18, "max": 36, "step": 2, "unit": "px", "default": 24},
+      {"type": "range", "id": "body_size", "label": "Body text size", "min": 14, "max": 22, "step": 1, "unit": "px", "default": 16},
+      {"type": "range", "id": "corner_radius", "label": "Corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 16},
+      {"type": "range", "id": "card_gap", "label": "Card and column spacing", "min": 12, "max": 64, "step": 4, "unit": "px", "default": 20},
+      {"type": "select", "id": "columns_desktop", "label": "Desktop card columns", "options": [{"value": "2", "label": "2"}, {"value": "3", "label": "3"}, {"value": "4", "label": "4"}], "default": "3"},
+      {"type": "header", "content": "Colours"},
+      {"type": "color", "id": "background_color", "label": "Background", "info": "Optional override. Clear to inherit the selected theme colour scheme."},
+      {"type": "color", "id": "heading_color", "label": "Headings", "info": "Optional override. Clear to inherit the selected theme colour scheme."},
+      {"type": "color", "id": "text_color", "label": "Body text", "info": "Optional override. Clear to inherit the selected theme colour scheme."},
+      {"type": "color", "id": "accent_color", "label": "Eyebrow, highlight and numbers", "info": "Optional override. Clear to inherit the selected theme colour scheme."},
+      {"type": "color", "id": "card_color", "label": "Cards and audience chips", "info": "Optional override. Clear to inherit the selected theme colour scheme."},
+      {"type": "color", "id": "border_color", "label": "Card borders", "info": "Optional override. Clear to inherit the selected theme colour scheme."}
 		],
 		"blocks": [
 			{

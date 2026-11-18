@@ -34,6 +34,9 @@
     },
     "banner": {
       "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__description > p {display: flex; align-items: center; gap: 4px;}"
+      ],
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -59,11 +62,86 @@
         "padding_top": 0,
         "padding_bottom": 84
       }
+    },
+    "hic_every_shade_NgptEa": {
+      "type": "hic_every_shade",
+      "blocks": {
+        "shade_twQMkc": {
+          "type": "shade",
+          "settings": {
+            "image": "shopify://shop_images/DSC08683-Edit.jpg",
+            "image_alt": "",
+            "title": "Honey",
+            "description": "<p>For lighter skin tones</p>",
+            "swatch_color": "#daa063",
+            "button_label": "Shop Honey",
+            "button_link": "shopify://products/honey-bandages"
+          }
+        },
+        "shade_jH7pqJ": {
+          "type": "shade",
+          "settings": {
+            "image": "shopify://shop_images/DSC08436-Edit.jpg",
+            "image_alt": "",
+            "title": "Almond",
+            "description": "<p>For medium skin tones</p>",
+            "swatch_color": "#a96938",
+            "button_label": "Shop Almond",
+            "button_link": "shopify://products/almond-bandages"
+          }
+        },
+        "shade_HDVGEW": {
+          "type": "shade",
+          "settings": {
+            "image": "shopify://shop_images/chestnut_guy.jpg",
+            "image_alt": "",
+            "title": "Chestnut",
+            "description": "<p>For deeper skin tones</p>",
+            "swatch_color": "#603a24",
+            "button_label": "Shop Chestnut",
+            "button_link": "shopify://products/chestnut-bandages"
+          }
+        }
+      },
+      "block_order": [
+        "shade_twQMkc",
+        "shade_jH7pqJ",
+        "shade_HDVGEW"
+      ],
+      "name": "Made For Everyone, Every Shade",
+      "settings": {
+        "eyebrow": "Find your shade",
+        "heading": "Made For Everyone, Every Shade",
+        "subheading": "Heal your way",
+        "description": "<p>Find your shade. Every box is latex-free, sterile and made with flexible elastic fabric.</p>",
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading_size": 52,
+        "heading_size_mobile": 36,
+        "subheading_size": 24,
+        "card_heading_size": 28,
+        "background_color": "#fffbf7",
+        "card_color": "#f3e7da",
+        "heading_color": "#3e2518",
+        "text_color": "#755a49",
+        "accent_color": "#ad541b",
+        "columns_desktop": "3",
+        "columns_mobile": "1",
+        "image_ratio": "3 / 4",
+        "border_radius": 18,
+        "card_spacing": 30,
+        "card_spacing_mobile": 20,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
     "image_banner_m79q7w",
     "banner",
-    "product-grid"
+    "product-grid",
+    "hic_every_shade_NgptEa"
   ]
 }

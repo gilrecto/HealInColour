@@ -1,0 +1,32 @@
+{% doc %}
+  Renders a retailer card from a metaobject or a saved legacy location block.
+  @param {string} name - Retailer name.
+  @param {string} [coverage] - Coverage text or existing address markup.
+  @param {string} [country] - Country name.
+  @param {string} [province] - Province name.
+  @param {image} [logo] - Retailer logo image.
+  @param {string} [url] - Verified retailer store locator URL.
+  @param {string} [link_label] - Store locator link text.
+  @param {string} [phone] - Existing legacy telephone number.
+  @param {string} [attributes] - Theme Editor block attributes.
+  @param {boolean} [legacy_content] - Preserve HTML in saved legacy name and address fields.
+{% enddoc %}
+<li class="hic-wholesale__card hic-wholesale__retailer" {{ attributes }}>
+  {%- if logo != blank -%}
+    {%- assign logo_alt = logo.alt | default: name | strip_html -%}
+    {{ logo | image_url: width: 360 | image_tag: widths: '120, 240, 360', sizes: '120px', alt: logo_alt, class: 'hic-wholesale__logo' }}
+  {%- endif -%}
+  {%- if name != blank -%}<h3 class="hic-wholesale__card-heading">{% if legacy_content %}{{ name }}{% else %}{{ name | escape }}{% endif %}</h3>{%- endif -%}
+  {%- if coverage != blank -%}<p class="hic-wholesale__coverage">{% if legacy_content %}{{ coverage }}{% else %}{{ coverage | escape }}{% endif %}</p>{%- endif -%}
+  {%- if province != blank or country != blank -%}
+    <p class="hic-wholesale__region">{{ province | escape }}{% if province != blank and country != blank %}, {% endif %}{{ country | escape }}</p>
+  {%- endif -%}
+  {%- if phone != blank -%}
+    <a class="hic-wholesale__locator" href="tel:{{ phone | remove: '(' | remove: ')' | remove: '-' | remove: ' ' | escape }}">{{ phone | escape }}</a>
+  {%- endif -%}
+  {%- if url != blank and link_label != blank -%}
+    <a class="hic-wholesale__locator" href="{{ url | escape }}" aria-label="{{ link_label | escape }}: {{ name | strip_html | escape }}">
+      {{ link_label | escape }} {% render 'icon-arrow' %}
+    </a>
+  {%- endif -%}
+</li>

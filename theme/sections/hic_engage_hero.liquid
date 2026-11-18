@@ -1,0 +1,370 @@
+{% render 'hic-engage-style', section: section %}
+<div id="Engage-{{ section.id }}" class="hic-engage color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="hic-engage__split hic-engage__split--hero{% if section.settings.image != blank %} hic-engage__split--with-image{% endif %} hic-engage__split--{{ section.settings.mobile_layout }}">
+      <div class="hic-engage__copy">
+        {% if section.settings.eyebrow != blank %}<p class="hic-engage__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.heading != blank or section.settings.highlight != blank %}
+          <{{ section.settings.heading_tag }} class="hic-engage__heading">
+            {{ section.settings.heading | escape }}
+            {% if section.settings.highlight != blank %}<span class="hic-engage__highlight">{{ section.settings.highlight | escape }}</span>{% endif %}
+          </{{ section.settings.heading_tag }}>
+        {% endif %}
+        {% if section.settings.description != blank %}<div class="rte">{{ section.settings.description }}</div>{% endif %}
+        {%- capture actions -%}
+          {% if section.settings.primary_label != blank and section.settings.booking_anchor != blank %}<a class="button hic-engage__button" href="#{{ section.settings.booking_anchor | handleize }}">{{ section.settings.primary_label | escape }}</a>{% endif %}
+          {% if section.settings.secondary_label != blank and section.settings.topics_anchor != blank %}<a class="button button--secondary hic-engage__button" href="#{{ section.settings.topics_anchor | handleize }}">{{ section.settings.secondary_label | escape }}</a>{% endif %}
+        {%- endcapture -%}
+        {% if actions != blank %}<div class="hic-engage__actions">{{ actions }}</div>{% endif %}
+        {%- capture audiences -%}
+          {% for block in section.blocks %}
+            {% if block.settings.label != blank %}<li class="hic-engage__chip" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</li>{% endif %}
+          {% endfor %}
+        {%- endcapture -%}
+        {% if audiences != blank %}<ul class="hic-engage__chips" role="list">{{ audiences }}</ul>{% endif %}
+      </div>
+      {% render 'hic-engage-image', section: section, hero: true %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Engage hero",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Speaking · Workshops · Partnerships"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Engage with"
+    },
+    {
+      "type": "text",
+      "id": "highlight",
+      "label": "Highlighted heading text",
+      "default": "Heal In Colour"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1 - page heading"
+        },
+        {
+          "value": "h2",
+          "label": "H2 - section heading"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Introduction",
+      "default": "<p>Bring founder Tianna McFarlane to your school, team or event for honest, energizing talks on inclusive products, purpose-driven business and creating real change.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alternative text",
+      "info": "Describe the image. If empty, the image library alternative text is used."
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Original image"
+        },
+        {
+          "value": "3/4",
+          "label": "Portrait 3:4"
+        },
+        {
+          "value": "1/1",
+          "label": "Square"
+        },
+        {
+          "value": "4/5",
+          "label": "Portrait 4:5"
+        }
+      ],
+      "default": "adapt"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        {
+          "value": "text-first",
+          "label": "Text first"
+        },
+        {
+          "value": "image-first",
+          "label": "Image first"
+        }
+      ],
+      "default": "text-first"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Booking button label",
+      "default": "Book Tianna"
+    },
+    {
+      "type": "text",
+      "id": "booking_anchor",
+      "label": "Booking section anchor",
+      "info": "Use the same anchor as the Booking enquiry section, without #. Make anchors unique on each page.",
+      "default": "engage-booking"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Topics button label",
+      "default": "Explore topics"
+    },
+    {
+      "type": "text",
+      "id": "topics_anchor",
+      "label": "Topics section anchor",
+      "info": "Use the same anchor as the Talks and workshops section, without #.",
+      "default": "engage-topics"
+    },
+    {
+      "type": "header",
+      "content": "Colours and typography"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "paragraph",
+      "content": "Optional colours inherit the selected theme scheme when empty. Check contrast after changing colours. Buttons use the theme scheme, with a contrasting foreground/background pair when its button contrast is too low."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text override"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading override"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent override"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 28,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Layout and spacing"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "class": "section",
+  "blocks": [
+    {
+      "type": "audience",
+      "name": "Audience category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Audience label"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "[HIC] Engage hero",
+      "blocks": [
+        {
+          "type": "audience",
+          "settings": {
+            "label": "Schools K–12"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "label": "Colleges & universities"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "label": "Corporate teams & ERGs"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "label": "Conferences & panels"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

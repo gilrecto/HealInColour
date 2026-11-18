@@ -1,0 +1,394 @@
+{% render 'hic-engage-style', section: section %}
+<div id="Engage-{{ section.id }}" class="hic-engage color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="hic-engage__split hic-engage__split--founder{% if section.settings.image != blank %} hic-engage__split--with-image{% endif %} hic-engage__split--{{ section.settings.mobile_layout }}">
+      <div class="hic-engage__copy">
+        {% if section.settings.eyebrow != blank %}<p class="hic-engage__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.name != blank %}<h2 class="hic-engage__heading">{{ section.settings.name | escape }}</h2>{% endif %}
+        {% if section.settings.title != blank %}<p class="hic-engage__title">{{ section.settings.title | escape }}</p>{% endif %}
+        {% if section.settings.biography != blank %}<div class="rte">{{ section.settings.biography }}</div>{% endif %}
+        {%- capture achievements -%}
+          {% for block in section.blocks %}
+            {% if block.settings.title != blank or block.settings.description != blank %}
+              <div class="hic-engage__card" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}<h3 class="hic-engage__card-heading">{{ block.settings.title | escape }}</h3>{% endif %}
+                {% if block.settings.description != blank %}<div class="rte">{{ block.settings.description }}</div>{% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {%- endcapture -%}
+        {% if achievements != blank %}<div class="hic-engage__grid hic-engage__recognition">{{ achievements }}</div>{% endif %}
+        {%- capture actions -%}
+          {% if section.settings.primary_label != blank and section.settings.primary_link != blank %}<a class="button hic-engage__button" href="{{ section.settings.primary_link | escape }}">{{ section.settings.primary_label | escape }}</a>{% endif %}
+          {% if section.settings.secondary_label != blank and section.settings.secondary_link != blank %}<a class="button button--secondary hic-engage__button" href="{{ section.settings.secondary_link | escape }}">{{ section.settings.secondary_label | escape }}</a>{% endif %}
+        {%- endcapture -%}
+        {% if actions != blank %}<div class="hic-engage__actions">{{ actions }}</div>{% endif %}
+      </div>
+      {% render 'hic-engage-image', section: section %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Meet the founder",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Meet the founder"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Founder name",
+      "default": "Tianna McFarlane"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Founder title",
+      "default": "Award-winning entrepreneur · Founder & CEO"
+    },
+    {
+      "type": "richtext",
+      "id": "biography",
+      "label": "Biography",
+      "default": "<p>Tianna McFarlane is an award-winning entrepreneur and the founder of Heal In Colour, Canada’s first inclusive bandage brand.</p><p>The idea started with a simple moment. Tianna cut her knee, went looking for a bandage that matched her skin, and couldn’t find one. So she built the solution herself. She launched Heal In Colour in April 2021, and it’s now sold in Loblaws stores across Canada and used by school boards, universities and workplaces nationwide.</p><p>In a rare honour, Heal In Colour’s prototypes and products were preserved by <a href=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\" title=\"https://collection.ingenium.ca/en/search/?q=heal+in+colour&type=all&sort=score_des&page=1\">Ingenium, Canada’s National Science and Technology collection centre</a>, for their significance to Canadian history.</p><p>Tianna’s work has earned national recognition. She is the 2026 recipient of the George Weston Entrepreneurship Award, presented by the BlackNorth Initiative, and has been named a Toronto Star Changemaker.&nbsp;</p><p>Tianna’s message is simple: representation belongs everywhere, even in the first aid kit.</p>"
+    },
+    {
+      "type": "paragraph",
+      "content": "Client verification required: Canada’s first claim, launch date, distribution, Ingenium, George Weston/BlackNorth award, Toronto Star Changemaker, CSB100 and Dragons’ Den appearance/date. Reference copy is editable and is not independently verified."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alternative text",
+      "info": "Describe the image. If empty, the image library alternative text is used."
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Original image"
+        },
+        {
+          "value": "3/4",
+          "label": "Portrait 3:4"
+        },
+        {
+          "value": "1/1",
+          "label": "Square"
+        },
+        {
+          "value": "4/5",
+          "label": "Portrait 4:5"
+        }
+      ],
+      "default": "adapt"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        {
+          "value": "text-first",
+          "label": "Text first"
+        },
+        {
+          "value": "image-first",
+          "label": "Image first"
+        }
+      ],
+      "default": "text-first"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Colours and typography"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "paragraph",
+      "content": "Optional colours inherit the selected theme scheme when empty. Check contrast after changing colours. Buttons use the theme scheme, with a contrasting foreground/background pair when its button contrast is too low."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text override"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading override"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent override"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background override"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border override"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 28,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "label": "Card heading size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Layout and spacing"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop card columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card spacing",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "class": "section",
+  "blocks": [
+    {
+      "type": "achievement",
+      "name": "Recognition",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "[HIC] Meet the founder",
+      "blocks": [
+        {
+          "type": "achievement",
+          "settings": {
+            "title": "Ingenium",
+            "description": "<p>Products preserved in Canada’s national collection</p>"
+          }
+        },
+        {
+          "type": "achievement",
+          "settings": {
+            "title": "CSB100",
+            "description": "<p>2026 Canada Small Business 100</p>"
+          }
+        },
+        {
+          "type": "achievement",
+          "settings": {
+            "title": "Dragons’ Den",
+            "description": "<p>As seen on CBC, November 2026</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

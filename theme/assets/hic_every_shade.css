@@ -1,0 +1,181 @@
+.hic-every-shade {
+	background: rgb(var(--color-background));
+	color: rgb(var(--color-foreground));
+	padding-block: var(--shade-mobile-padding-top) var(--shade-mobile-padding-bottom);
+}
+
+.hic-every-shade .hic-every-shade__header {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	text-align: var(--shade-mobile-align);
+	margin-bottom: 4rem;
+}
+
+.hic-every-shade .hic-every-shade__header > *,
+.hic-every-shade .hic-every-shade__name,
+.hic-every-shade .rte > :first-child {
+	margin-top: 0;
+}
+
+.hic-every-shade .hic-every-shade__header > *,
+.hic-every-shade .hic-every-shade__name,
+.hic-every-shade .rte > :last-child {
+	margin-bottom: 0;
+}
+
+.hic-every-shade .hic-every-shade__eyebrow {
+	color: var(--shade-accent-color);
+	font-size: 1.3rem;
+	font-weight: var(--font-body-weight-bold);
+	text-transform: uppercase;
+}
+
+.hic-every-shade .hic-every-shade__heading {
+	color: var(--shade-heading-color);
+	font-size: calc(var(--shade-mobile-heading-size) * var(--font-heading-scale));
+	line-height: 1.1;
+	text-transform: uppercase;
+	overflow-wrap: anywhere;
+}
+
+.hic-every-shade .hic-every-shade__subheading {
+	color: var(--shade-accent-color);
+	font-size: calc(var(--shade-subheading-size) * var(--font-heading-scale));
+	line-height: 1.3;
+	text-transform: uppercase;
+	overflow-wrap: anywhere;
+	font-weight: 600;
+}
+
+.hic-every-shade .hic-every-shade__description {
+	max-width: 52rem;
+	align-self: var(--shade-mobile-align-self);
+}
+
+.hic-every-shade .hic-every-shade__grid {
+	display: grid;
+	grid-template-columns: repeat(var(--shade-mobile-columns), minmax(0, 1fr));
+	gap: var(--shade-mobile-gap);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.hic-every-shade .hic-every-shade__card {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	border-radius: var(--shade-radius);
+	background: var(--shade-card-color);
+}
+
+.hic-every-shade .hic-every-shade__media {
+	aspect-ratio: var(--shade-image-ratio);
+	overflow: hidden;
+	border-radius: var(--shade-radius) var(--shade-radius) 0 0;
+}
+
+.hic-every-shade .hic-every-shade__media:only-child {
+	border-radius: var(--shade-radius);
+}
+
+.hic-every-shade .hic-every-shade__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.hic-every-shade--adapt .hic-every-shade__image {
+	height: auto;
+}
+
+.hic-every-shade .hic-every-shade__content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 1.5rem;
+	padding: clamp(1rem, 2vw, 2rem);
+}
+
+.hic-every-shade .hic-every-shade__details {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+}
+
+.hic-every-shade .hic-every-shade__swatch {
+	width: 3.6rem;
+	height: 3.6rem;
+	flex-shrink: 0;
+	border: 0.2rem solid rgb(var(--color-background));
+	box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+	border-radius: 50%;
+}
+
+.hic-every-shade .hic-every-shade__copy {
+	flex: 1 1 10rem;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.hic-every-shade .hic-every-shade__name {
+	color: var(--shade-heading-color);
+	font-size: calc(var(--shade-card-heading-size) * var(--font-heading-scale));
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.hic-every-shade .hic-every-shade__card-description {
+	font-size: 1.4rem;
+	line-height: 1.5;
+}
+
+.hic-every-shade .hic-every-shade__button {
+	--buttons-radius: 4rem;
+	--buttons-radius-outset: 4rem;
+	--buttons-border-width: 1px;
+	--buttons-border-opacity: 1;
+	--alpha-button-background: 0;
+	width: 100%;
+	min-width: 0;
+	margin-top: auto;
+	padding: 1rem;
+	font-size: 1.2rem;
+	font-weight: var(--font-body-weight-bold);
+	letter-spacing: 0.15rem;
+	text-transform: uppercase;
+	text-align: center;
+	overflow-wrap: anywhere;
+}
+
+@media screen and (min-width: 750px) {
+	.hic-every-shade {
+		padding-block: var(--shade-padding-top) var(--shade-padding-bottom);
+	}
+
+	.hic-every-shade .hic-every-shade__header {
+		text-align: var(--shade-align);
+	}
+
+	.hic-every-shade .hic-every-shade__heading {
+		font-size: calc(var(--shade-heading-size) * var(--font-heading-scale));
+	}
+
+	.hic-every-shade .hic-every-shade__description {
+		align-self: var(--shade-align-self);
+	}
+
+	.hic-every-shade .hic-every-shade__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--shade-gap);
+	}
+}
+
+@media screen and (min-width: 990px) {
+	.hic-every-shade .hic-every-shade__grid {
+		grid-template-columns: repeat(var(--shade-columns), minmax(0, 1fr));
+	}
+}

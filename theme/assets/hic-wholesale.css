@@ -1,0 +1,190 @@
+.hic-wholesale {
+  --ws-heading: rgb(var(--color-secondary-button-text));
+  --ws-accent: rgb(var(--color-foreground));
+  --ws-card: rgba(var(--color-foreground), 0.04);
+  --ws-border: rgba(var(--color-foreground), 0.2);
+  color: rgb(var(--color-foreground));
+  background: var(--gradient-background);
+  padding-block: var(--ws-mobile-top) var(--ws-mobile-bottom);
+  font-size: var(--ws-body-size);
+  text-align: var(--ws-mobile-align);
+}
+
+.hic-wholesale .hic-wholesale__header,
+.hic-wholesale .hic-wholesale__hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  min-width: 0;
+}
+
+.hic-wholesale .hic-wholesale__header { margin-bottom: 3.2rem; }
+.hic-wholesale .hic-wholesale__header:last-child { margin-bottom: 0; }
+.hic-wholesale .hic-wholesale__eyebrow,
+.hic-wholesale .hic-wholesale__heading,
+.hic-wholesale .hic-wholesale__card-heading,
+.hic-wholesale .hic-wholesale__audience-heading { margin: 0; }
+
+.hic-wholesale .hic-wholesale__eyebrow {
+  color: var(--ws-accent);
+  font-size: 1.3rem;
+  letter-spacing: 0.22rem;
+  font-weight: var(--font-body-weight-bold);
+  text-transform: uppercase;
+}
+
+.hic-wholesale .hic-wholesale__heading {
+  color: var(--ws-heading);
+  font-size: calc(var(--ws-heading-mobile) * var(--font-heading-scale));
+  line-height: 1.08;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.hic-wholesale .hic-wholesale__highlight { display: block; color: var(--ws-accent); }
+.hic-wholesale .rte > :first-child { margin-top: 0; }
+.hic-wholesale .rte > :last-child { margin-bottom: 0; }
+.hic-wholesale .rte { overflow-wrap: anywhere; }
+
+.hic-wholesale .hic-wholesale__hero {
+  display: grid;
+  gap: max(3.2rem, var(--ws-gap));
+  align-items: center;
+}
+
+.hic-wholesale .hic-wholesale__hero-media {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--ws-radius);
+}
+
+.hic-wholesale .hic-wholesale__hero-image { width: 100%; height: auto; display: block; }
+.hic-wholesale .hic-wholesale__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--ws-mobile-justify);
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.hic-wholesale .hic-wholesale__button {
+  --buttons-radius: 4rem;
+  --buttons-radius-outset: 4rem;
+  --buttons-border-width: 1px;
+  --buttons-border-opacity: 1;
+  --buttons-border-offset: 0px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 1.2rem 2.4rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: var(--font-body-weight-bold);
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.hic-wholesale .hic-wholesale__button.button--secondary { --alpha-button-background: 0; }
+.hic-wholesale .hic-wholesale__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ws-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hic-wholesale .hic-wholesale__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 0;
+  padding: 2.4rem;
+  border: 1px solid var(--ws-border);
+  border-radius: var(--ws-radius);
+  background: var(--ws-card);
+}
+
+.hic-wholesale .hic-wholesale__benefit { border-top: 3px solid var(--ws-accent); }
+.hic-wholesale .hic-wholesale__card-heading {
+  font-size: calc(var(--ws-card-heading) * var(--font-heading-scale));
+  color: var(--ws-heading);
+  line-height: 1.2;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.hic-wholesale .hic-wholesale__icon { width: 4rem; height: 4rem; object-fit: contain; align-self: var(--ws-mobile-justify); }
+.hic-wholesale .hic-wholesale__audiences {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 3.2rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid var(--ws-border);
+}
+
+.hic-wholesale .hic-wholesale__audience-heading { color: var(--ws-heading); font-size: 1.8rem; }
+.hic-wholesale .hic-wholesale__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: var(--ws-mobile-justify);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.hic-wholesale .hic-wholesale__chip {
+  background: var(--ws-card);
+  border: 1px solid var(--ws-border);
+  border-radius: 4rem;
+  padding: 0.8rem 1.6rem;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.hic-wholesale .hic-wholesale__number {
+  color: var(--ws-accent);
+  font-size: 4rem;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.hic-wholesale .hic-wholesale__order-actions { margin-top: 3.2rem; }
+.hic-wholesale .hic-wholesale__anchor { scroll-margin-top: 18rem; outline-offset: 0.4rem; }
+.hic-wholesale .hic-wholesale__retailer { text-align: start; }
+.hic-wholesale .hic-wholesale__logo { width: 100%; max-width: 12rem; height: 6rem; object-fit: contain; object-position: left center; }
+.hic-wholesale .hic-wholesale__coverage,
+.hic-wholesale .hic-wholesale__region { margin: 0; overflow-wrap: anywhere; }
+.hic-wholesale .hic-wholesale__region { font-size: 1.3rem; }
+.hic-wholesale .hic-wholesale__locator {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 1rem;
+  min-height: 4.4rem;
+  color: var(--ws-heading);
+  margin-top: auto;
+  text-underline-offset: 0.3rem;
+  overflow-wrap: anywhere;
+}
+.hic-wholesale .hic-wholesale__locator .icon { width: 1.4rem; flex-shrink: 0; }
+
+@media screen and (max-width: 749px) {
+  .hic-wholesale .hic-wholesale__hero--image-first .hic-wholesale__hero-media { grid-row: 1; }
+}
+
+@media screen and (min-width: 750px) {
+  .hic-wholesale { padding-block: var(--ws-padding-top) var(--ws-padding-bottom); text-align: var(--ws-align); }
+  .hic-wholesale .hic-wholesale__heading { font-size: calc(var(--ws-heading-size) * var(--font-heading-scale)); }
+  .hic-wholesale .hic-wholesale__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hic-wholesale .hic-wholesale__actions,
+  .hic-wholesale .hic-wholesale__chips { justify-content: var(--ws-justify); }
+  .hic-wholesale .hic-wholesale__icon { align-self: var(--ws-justify); }
+}
+
+@media screen and (min-width: 990px) {
+  .hic-wholesale .hic-wholesale__hero--with-image { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+  .hic-wholesale .hic-wholesale__grid { grid-template-columns: repeat(var(--ws-columns), minmax(0, 1fr)); }
+}

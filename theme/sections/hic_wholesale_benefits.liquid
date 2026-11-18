@@ -1,0 +1,393 @@
+{% render 'hic-wholesale-style', section: section %}
+{%- liquid
+  assign benefits = section.blocks | where: 'type', 'benefit'
+  assign audiences = section.blocks | where: 'type', 'audience'
+-%}
+<div id="Wholesale-{{ section.id }}" class="hic-wholesale color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="hic-wholesale__header">
+        {%- if section.settings.eyebrow != blank -%}<p class="hic-wholesale__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="hic-wholesale__heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- capture benefit_cards -%}
+      {%- for block in benefits -%}
+        {%- if block.settings.title != blank or block.settings.description != blank or block.settings.icon != blank -%}
+          <li class="hic-wholesale__card hic-wholesale__benefit" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon | image_url: width: 120 | image_tag: widths: '40, 80, 120', sizes: '40px', alt: '', class: 'hic-wholesale__icon' }}
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}<h3 class="hic-wholesale__card-heading">{{ block.settings.title | escape }}</h3>{%- endif -%}
+            {%- if block.settings.description != blank -%}<div class="rte">{{ block.settings.description }}</div>{%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if benefit_cards != blank -%}<ul class="hic-wholesale__grid" role="list">{{ benefit_cards }}</ul>{%- endif -%}
+    {%- capture audience_chips -%}
+      {%- for block in audiences -%}
+        {%- if block.settings.title != blank -%}<li class="hic-wholesale__chip" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</li>{%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if audience_chips != blank -%}
+      <div class="hic-wholesale__audiences">
+        {%- if section.settings.audience_heading != blank -%}<h3 class="hic-wholesale__audience-heading">{{ section.settings.audience_heading | escape }}</h3>{%- endif -%}
+        <ul class="hic-wholesale__chips" role="list">{{ audience_chips }}</ul>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Wholesale benefits",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why stock Heal In Colour"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Made for everyone. Ready for retail."
+    },
+    {
+      "type": "text",
+      "id": "audience_heading",
+      "label": "Audience heading",
+      "default": "We work with"
+    },
+    {
+      "type": "paragraph",
+      "content": "Benefits appear in the card grid; audiences appear as chips below. Reorder blocks within each group to change their display order."
+    },
+    {
+      "type": "header",
+      "content": "Typography and layout"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_heading_size",
+      "label": "Card heading size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card and column spacing",
+      "min": 12,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop card columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow, highlight and numbers",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Cards and audience chips",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Card borders",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "[HIC] Wholesale benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Canada's First",
+            "description": "<p>The original Canadian inclusive bandage brand, with products preserved by Ingenium.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Shelf-Ready",
+            "description": "<p>Bilingual English and French packaging, five SKUs, 30 bandages per box.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Quality You Can Trust",
+            "description": "<p>Latex-free, sterile and made with flexible elastic fabric.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Proven on Shelf",
+            "description": "<p>Already sold in major grocery banners across Canada.</p>"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "title": "Retailers"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "title": "School boards"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "title": "Universities & bookstores"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "title": "Workplaces & first aid kits"
+          }
+        },
+        {
+          "type": "audience",
+          "settings": {
+            "title": "Clinics & pharmacies"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Benefit"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Optional decorative icon"
+        }
+      ]
+    },
+    {
+      "type": "audience",
+      "name": "Audience",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Audience label",
+          "default": "Retailers"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

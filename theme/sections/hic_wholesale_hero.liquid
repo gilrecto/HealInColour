@@ -1,0 +1,371 @@
+{% render 'hic-wholesale-style', section: section %}
+{%- liquid
+  assign secondary_link = section.settings.secondary_link
+  if section.settings.secondary_action == 'locations' and section.settings.locations_anchor != blank
+    assign locations_anchor = section.settings.locations_anchor | handleize
+    assign secondary_link = '#' | append: locations_anchor
+  endif
+  assign image_alt = section.settings.image_alt | default: section.settings.image.alt
+-%}
+<div id="Wholesale-{{ section.id }}" class="hic-wholesale color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="hic-wholesale__hero{% if section.settings.image != blank %} hic-wholesale__hero--with-image{% endif %} hic-wholesale__hero--{{ section.settings.mobile_layout }}">
+      <div class="hic-wholesale__hero-copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="hic-wholesale__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank or section.settings.highlight != blank -%}
+          <{{ section.settings.heading_tag }} class="hic-wholesale__heading">
+            {{- section.settings.heading | escape -}}
+            {%- if section.settings.highlight != blank -%}
+              {{ ' ' }}<span class="hic-wholesale__highlight">{{ section.settings.highlight | escape }}</span>
+            {%- endif -%}
+          </{{ section.settings.heading_tag }}>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="rte">{{ section.settings.description }}</div>
+        {%- endif -%}
+        {%- capture buttons -%}
+          {%- if section.settings.primary_label != blank and section.settings.primary_link != blank -%}
+            <a class="button hic-wholesale__button" href="{{ section.settings.primary_link | escape }}">{{ section.settings.primary_label | escape }}</a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank and secondary_link != blank -%}
+            <a class="button button--secondary hic-wholesale__button" href="{{ secondary_link | escape }}">{{ section.settings.secondary_label | escape }}</a>
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- if buttons != blank -%}<div class="hic-wholesale__actions">{{ buttons }}</div>{%- endif -%}
+      </div>
+      {%- if section.settings.image != blank -%}
+        <div class="hic-wholesale__hero-media">
+          {{ section.settings.image | image_url: width: 2000 | image_tag: widths: '360, 540, 750, 1000, 1250, 1500, 2000', sizes: '(min-width: 990px) 50vw, 100vw', alt: image_alt, class: 'hic-wholesale__hero-image' }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "[HIC] Wholesale hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Wholesale & retail"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bring every shade"
+    },
+    {
+      "type": "text",
+      "id": "highlight",
+      "label": "Highlighted heading text",
+      "default": "To your organization"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1 - page title"
+        },
+        {
+          "value": "h2",
+          "label": "H2 - section title"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Partner with Canada's first inclusive adhesive bandage brand. We work with retailers, schools and workplaces across the country.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "info": "If blank, the saved image alt text is used."
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile content order",
+      "options": [
+        {
+          "value": "content-first",
+          "label": "Content first"
+        },
+        {
+          "value": "image-first",
+          "label": "Image first"
+        }
+      ],
+      "default": "content-first"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Request our price list"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button destination",
+      "info": "Select a page or enter a URL or mailto: email link."
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Find a store"
+    },
+    {
+      "type": "select",
+      "id": "secondary_action",
+      "label": "Secondary button action",
+      "options": [
+        {
+          "value": "locations",
+          "label": "Scroll to Locations"
+        },
+        {
+          "value": "custom",
+          "label": "Custom link"
+        }
+      ],
+      "default": "locations"
+    },
+    {
+      "type": "text",
+      "id": "locations_anchor",
+      "label": "Locations anchor ID",
+      "info": "Must match the anchor ID in the Locations section. Use a unique ID without #.",
+      "default": "wholesale-locations"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary custom link"
+    },
+    {
+      "type": "header",
+      "content": "Typography and layout"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Column spacing",
+      "min": 12,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Desktop text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Mobile text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow, highlight and numbers",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Primary button background",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Primary button text",
+      "info": "Optional override. Clear to inherit the selected theme colour scheme."
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "[HIC] Wholesale hero"
+    }
+  ]
+}
+{% endschema %}

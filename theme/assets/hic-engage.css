@@ -1,0 +1,110 @@
+.hic-engage {
+  --eng-heading: rgb(var(--color-secondary-button-text));
+  --eng-accent: rgb(var(--color-foreground));
+  --eng-card: rgba(var(--color-foreground), .04);
+  --eng-border: rgba(var(--color-foreground), .22);
+  color: rgb(var(--color-foreground));
+  background: var(--gradient-background);
+  padding-block: var(--eng-mobile-top) var(--eng-mobile-bottom);
+  font-size: var(--eng-body-size);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.hic-engage__anchor { scroll-margin-top: calc(var(--header-height, 12rem) + 3rem); }
+.hic-engage__copy, .hic-engage__intro { text-align: var(--eng-mobile-align); }
+.hic-engage__heading, .hic-engage__card-heading, .hic-engage__quote {
+  color: var(--eng-heading);
+  text-transform: uppercase;
+  line-height: 1.08;
+  letter-spacing: normal;
+  margin: 0;
+}
+.hic-engage__heading, .hic-engage__quote { font-size: var(--eng-heading-mobile); }
+.hic-engage__card-heading { font-size: var(--eng-card-heading); }
+.hic-engage__highlight { display: block; color: var(--eng-accent); }
+.hic-engage__eyebrow, .hic-engage__caption, .hic-engage__audience {
+  font-size: .8em;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--eng-accent);
+}
+.hic-engage__eyebrow { margin: 0 0 1.6rem; }
+.hic-engage .rte { margin-top: 2rem; }
+.hic-engage .rte > :first-child { margin-top: 0; }
+.hic-engage .rte > :last-child { margin-bottom: 0; }
+.hic-engage .rte a { color: inherit; text-underline-offset: .3rem; }
+.hic-engage__split { display: grid; gap: clamp(3rem, 5vw, 8rem); align-items: center; }
+.hic-engage__split > *, .hic-engage__grid > *, .hic-engage__form-fields > * { min-width: 0; }
+.hic-engage__media { margin: 0; }
+.hic-engage__image { width: 100%; height: auto; display: block; border-radius: var(--eng-radius); }
+.hic-engage__image--cropped { aspect-ratio: var(--eng-image-ratio); object-fit: cover; }
+.hic-engage__caption { margin: 1.2rem 0 0; }
+.hic-engage__actions, .hic-engage__chips { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 2.8rem 0 0; justify-content: var(--eng-mobile-justify); }
+.hic-engage__button {
+  --buttons-radius: 999px;
+  --buttons-radius-outset: 999px;
+  --buttons-border-width: 1px;
+  --buttons-border-opacity: 1;
+  --buttons-border-offset: 0px;
+  min-height: 4.8rem;
+  max-width: 100%;
+  padding: 1.4rem 2.6rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .06em;
+}
+.hic-engage__chips { list-style: none; padding: 0; }
+.hic-engage__chip { padding: .7rem 1.4rem; border-radius: 999px; background: var(--eng-card); border: 1px solid var(--eng-border); font-size: .85em; }
+.hic-engage__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--eng-gap); margin-top: 3.2rem; }
+.hic-engage__card { padding: clamp(2rem, 3vw, 3.2rem); border: 1px solid var(--eng-border); border-radius: var(--eng-radius); background: var(--eng-card); }
+.hic-engage__number { display: block; color: var(--eng-accent); font-size: 4rem; line-height: 1; margin-bottom: 1.6rem; }
+.hic-engage__audience { margin: 2rem 0 0; }
+.hic-engage__formats { border-block: 1px solid var(--eng-border); padding-block: 2.4rem; margin-top: 4rem; }
+.hic-engage__formats .rte { margin-top: 1rem; }
+.hic-engage__recognition .hic-engage__card { padding: 1.8rem; }
+.hic-engage__recognition .hic-engage__card-heading { font-size: max(2rem, calc(var(--eng-card-heading) * .8)); }
+.hic-engage__recognition .rte { font-size: .9em; margin-top: 1rem; }
+.hic-engage__title { margin: 1.6rem 0 0; font-weight: 700; color: var(--eng-accent); }
+.hic-engage__quote-wrap { max-width: 110rem; margin: 0 auto; text-align: var(--eng-mobile-align); }
+.hic-engage__quote { padding: 0; border: 0; font-style: normal; font-weight: 900; }
+.hic-engage__attribution { display: block; font-style: normal; margin-top: 2.4rem; }
+.hic-engage__checklist { list-style: none; padding: 0; margin: 2.8rem 0 0; }
+.hic-engage__checklist li { display: flex; align-items: baseline; gap: 1.2rem; margin-top: 1.4rem; }
+.hic-engage__check { color: var(--eng-accent); flex: 0 0 auto; }
+.hic-engage__form-panel { padding: clamp(2rem, 4vw, 4rem); border-radius: var(--eng-radius); background: var(--gradient-background); color: rgb(var(--color-foreground)); }
+.hic-engage__form-panel .hic-engage__card-heading { color: inherit; }
+.hic-engage__form-fields { display: grid; gap: 2rem; margin-block: 2.4rem; }
+.hic-engage__field label { display: block; margin-bottom: .6rem; font-size: .9em; }
+.hic-engage__input { display: block; width: 100%; min-height: 4.8rem; box-sizing: border-box; padding: 1.2rem; border: 1px solid rgba(var(--color-foreground), .65); border-radius: var(--inputs-radius, 0px); color: rgb(var(--color-foreground)); background: rgb(var(--color-background)); font: inherit; font-size: max(16px, var(--eng-body-size)); }
+.hic-engage__input::placeholder { color: rgb(var(--color-foreground)); opacity: .8; }
+.hic-engage textarea.hic-engage__input { resize: vertical; min-height: 15rem; }
+.hic-engage__form-panel a { color: inherit; }
+.hic-engage__form-panel .hic-engage__button { width: 100%; }
+.hic-engage__status { margin: 2rem 0; padding: 1.6rem; border: 1px solid currentColor; }
+.hic-engage__status p { margin-top: 0; }
+.hic-engage__status ul { padding-inline-start: 2rem; }
+.hic-engage__error { display: block; margin-top: .6rem; }
+.hic-engage :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; box-shadow: none; }
+@media screen and (max-width: 749px) {
+  .hic-engage__split--image-first > .hic-engage__media { order: -1; }
+}
+@media screen and (min-width: 750px) {
+  .hic-engage { padding-block: var(--eng-padding-top) var(--eng-padding-bottom); }
+  .hic-engage__heading, .hic-engage__quote { font-size: clamp(var(--eng-heading-mobile), 4.8vw, var(--eng-heading-size)); }
+  .hic-engage__copy, .hic-engage__intro, .hic-engage__quote-wrap { text-align: var(--eng-align); }
+  .hic-engage__actions, .hic-engage__chips { justify-content: var(--eng-justify); }
+  .hic-engage__grid { grid-template-columns: repeat(min(2, var(--eng-columns)), minmax(0, 1fr)); }
+  .hic-engage__form-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hic-engage__field--wide { grid-column: 1 / -1; }
+}
+@media screen and (min-width: 990px) {
+  .hic-engage__split--with-image, .hic-engage__split--booking { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hic-engage__split--hero.hic-engage__split--with-image { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .hic-engage__split--founder > .hic-engage__media { order: -1; }
+  .hic-engage__grid { grid-template-columns: repeat(var(--eng-columns), minmax(0, 1fr)); }
+  .hic-engage__formats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

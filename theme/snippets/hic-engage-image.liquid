@@ -1,0 +1,22 @@
+{% doc %}
+  Renders an optional responsive founder image and caption.
+  @param {section} section - Section with image, image_alt, image_ratio and caption settings.
+  @param {boolean} [hero] - Allow Shopify to prioritize the first section image.
+{% enddoc %}
+{%- if section.settings.image != blank -%}
+  {%- liquid
+    assign image_alt = section.settings.image_alt | default: section.settings.image.alt
+    assign image_class = 'hic-engage__image'
+    if section.settings.image_ratio != 'adapt'
+      assign image_class = image_class | append: ' hic-engage__image--cropped'
+    endif
+    assign loading = 'lazy'
+    if hero and section.index == 1
+      assign loading = 'eager'
+    endif
+  -%}
+  <figure class="hic-engage__media">
+    {{ section.settings.image | image_url: width: 1800 | image_tag: widths: '360, 540, 750, 1000, 1250, 1500, 1800', sizes: '(min-width: 990px) 50vw, 100vw', loading: loading, alt: image_alt, class: image_class }}
+    {% if section.settings.caption != blank %}<figcaption class="hic-engage__caption">{{ section.settings.caption | escape }}</figcaption>{% endif %}
+  </figure>
+{%- endif -%}
